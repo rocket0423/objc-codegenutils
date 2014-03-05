@@ -19,9 +19,9 @@
 
 @implementation AGCatalogParser
 
-+ (NSString *)inputFileExtension;
++ (NSArray *)inputFileExtension;
 {
-    return @"xcassets";
+    return @[@"xcassets"];
 }
 
 - (void)startWithCompletionHandler:(dispatch_block_t)completionBlock;

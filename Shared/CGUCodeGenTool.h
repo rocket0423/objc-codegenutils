@@ -14,7 +14,7 @@
 
 + (int)startWithArgc:(int)argc argv:(const char **)argv;
 
-+ (NSString *)inputFileExtension;
++ (NSArray *)inputFileExtension;
 
 @property (copy) NSURL *inputURL;
 @property (copy) NSString *classPrefix;

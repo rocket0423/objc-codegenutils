@@ -12,9 +12,9 @@
 
 @implementation CDColorListDumper
 
-+ (NSString *)inputFileExtension;
++ (NSArray *)inputFileExtension;
 {
-    return @"clr";
+    return @[@"clr"];
 }
 
 - (void)startWithCompletionHandler:(dispatch_block_t)completionBlock;

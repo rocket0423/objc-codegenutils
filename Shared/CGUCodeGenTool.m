@@ -21,7 +21,7 @@
 
 @implementation CGUCodeGenTool
 
-+ (NSString *)inputFileExtension;
++ (NSArray *)inputFileExtension;
 {
     NSAssert(NO, @"Unimplemented abstract method: %@", NSStringFromSelector(_cmd));
     return nil;
@@ -35,61 +35,63 @@
     BOOL target6 = NO;
     NSMutableArray *inputURLs = [NSMutableArray array];
     
-    while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6")) != -1) {
-        switch (opt) {
-            case 'h': {
-                printf("Usage: %s [-6] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]\n", basename((char *)argv[0]));
-                printf("       %s -h\n\n", basename((char *)argv[0]));
-                printf("Options:\n");
-                printf("    -6          Target iOS 6 in addition to iOS 7\n");
-                printf("    -o <path>   Output files at <path>\n");
-                printf("    -f <path>   Search for *.%s folders starting from <path>\n", [[self inputFileExtension] UTF8String]);
-                printf("    -p <prefix> Use <prefix> as the class prefix in the generated code\n");
-                printf("    -h          Print this help and exit\n");
-                printf("    <paths>     Input files; this and/or -f are required.\n");
-                return 0;
+    for (NSString *fileExtension in [self inputFileExtension]) {
+        while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6")) != -1) {
+            switch (opt) {
+                case 'h': {
+                    printf("Usage: %s [-6] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]\n", basename((char *)argv[0]));
+                    printf("       %s -h\n\n", basename((char *)argv[0]));
+                    printf("Options:\n");
+                    printf("    -6          Target iOS 6 in addition to iOS 7\n");
+                    printf("    -o <path>   Output files at <path>\n");
+                    printf("    -f <path>   Search for *.%s folders starting from <path>\n", [fileExtension UTF8String]);
+                    printf("    -p <prefix> Use <prefix> as the class prefix in the generated code\n");
+                    printf("    -h          Print this help and exit\n");
+                    printf("    <paths>     Input files; this and/or -f are required.\n");
+                    return 0;
+                }
+                    
+                case 'o': {
+                    NSString *outputPath = [[NSString alloc] initWithUTF8String:optarg];
+                    outputPath = [outputPath stringByExpandingTildeInPath];
+                    [[NSFileManager defaultManager] changeCurrentDirectoryPath:outputPath];
+                    break;
+                }
+                    
+                case 'f': {
+                    NSString *searchPath = [[NSString alloc] initWithUTF8String:optarg];
+                    searchPath = [searchPath stringByExpandingTildeInPath];
+                    searchURL = [NSURL fileURLWithPath:searchPath];
+                    break;
+                }
+                    
+                case 'p': {
+                    classPrefix = [[NSString alloc] initWithUTF8String:optarg];
+                    break;
+                }
+                    
+                case '6': {
+                    target6 = YES;
+                    break;
+                }
+                    
+                default:
+                    break;
             }
-                
-            case 'o': {
-                NSString *outputPath = [[NSString alloc] initWithUTF8String:optarg];
-                outputPath = [outputPath stringByExpandingTildeInPath];
-                [[NSFileManager defaultManager] changeCurrentDirectoryPath:outputPath];
-                break;
-            }
-                
-            case 'f': {
-                NSString *searchPath = [[NSString alloc] initWithUTF8String:optarg];
-                searchPath = [searchPath stringByExpandingTildeInPath];
-                searchURL = [NSURL fileURLWithPath:searchPath];
-                break;
-            }
-                
-            case 'p': {
-                classPrefix = [[NSString alloc] initWithUTF8String:optarg];
-                break;
-            }
-                
-            case '6': {
-                target6 = YES;
-                break;
-            }
-                
-            default:
-                break;
         }
-    }
-    
-    for (int index = optind; index < argc; index++) {
-        NSString *inputPath = [[NSString alloc] initWithUTF8String:argv[index]];
-        inputPath = [inputPath stringByExpandingTildeInPath];
-        [inputURLs addObject:[NSURL fileURLWithPath:inputPath]];
-    }
-    
-    if (searchURL) {
-        NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtURL:searchURL includingPropertiesForKeys:@[NSURLNameKey] options:0 errorHandler:NULL];
-        for (NSURL *url in enumerator) {
-            if ([url.pathExtension isEqualToString:[self inputFileExtension]]) {
-                [inputURLs addObject:url];
+        
+        for (int index = optind; index < argc; index++) {
+            NSString *inputPath = [[NSString alloc] initWithUTF8String:argv[index]];
+            inputPath = [inputPath stringByExpandingTildeInPath];
+            [inputURLs addObject:[NSURL fileURLWithPath:inputPath]];
+        }
+        
+        if (searchURL) {
+            NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtURL:searchURL includingPropertiesForKeys:@[NSURLNameKey] options:0 errorHandler:NULL];
+            for (NSURL *url in enumerator) {
+                if ([url.pathExtension isEqualToString:fileExtension]) {
+                    [inputURLs addObject:url];
+                }
             }
         }
     }
