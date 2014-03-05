@@ -29,11 +29,16 @@
     self.skipClassDeclaration = YES;
     NSString *storyboardFilename = [[self.inputURL lastPathComponent] stringByDeletingPathExtension];
     NSString *storyboardName = [storyboardFilename stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    self.className = [NSString stringWithFormat:@"%@%@StoryboardIdentifiers", self.classPrefix, storyboardName];
+    BOOL containsStoryboardText = NO;
+    if ([storyboardName rangeOfString:@"Storyboard" options:NSCaseInsensitiveSearch].location == NSNotFound){
+        self.className = [NSString stringWithFormat:@"%@%@StoryboardIdentifiers", self.classPrefix, storyboardName];
+    } else {
+        containsStoryboardText = YES;
+        self.className = [NSString stringWithFormat:@"%@%@Identifiers", self.classPrefix, storyboardName];
+    }
     NSError *error = nil;
     NSXMLDocument *document = [[NSXMLDocument alloc] initWithContentsOfURL:self.inputURL options:0 error:&error];
-
+    
     NSArray *storyboardIdentifiers = [[document nodesForXPath:@"//@storyboardIdentifier" error:&error] valueForKey:NSStringFromSelector(@selector(stringValue))];
     NSArray *reuseIdentifiers = [[document nodesForXPath:@"//@reuseIdentifier" error:&error] valueForKey:NSStringFromSelector(@selector(stringValue))];
     NSArray *segueIdentifiers = [[document nodesForXPath:@"//segue/@identifier" error:&error] valueForKey:NSStringFromSelector(@selector(stringValue))];
@@ -46,10 +51,19 @@
     self.implementationContents = [NSMutableArray array];
     
     NSMutableDictionary *uniqueKeys = [NSMutableDictionary dictionary];
-    uniqueKeys[[NSString stringWithFormat:@"%@%@StoryboardName", self.classPrefix, storyboardName]] = storyboardFilename;
+    if (containsStoryboardText){
+        uniqueKeys[[NSString stringWithFormat:@"%@%@Name", self.classPrefix, storyboardName]] = storyboardFilename;
+    } else {
+        uniqueKeys[[NSString stringWithFormat:@"%@%@StoryboardName", self.classPrefix, storyboardName]] = storyboardFilename;
+    }
     
     for (NSString *identifier in identifiers) {
-        NSString *key = [NSString stringWithFormat:@"%@%@Storyboard%@Identifier", self.classPrefix, storyboardName, [identifier IDS_titlecaseString]];
+        NSString *key = nil;
+        if (containsStoryboardText){
+            key = [NSString stringWithFormat:@"%@%@%@Identifier", self.classPrefix, storyboardName, [identifier IDS_titlecaseString]];
+        } else {
+            key = [NSString stringWithFormat:@"%@%@Storyboard%@Identifier", self.classPrefix, storyboardName, [identifier IDS_titlecaseString]];
+        }
         uniqueKeys[key] = identifier;
     }
     for (NSString *key in [uniqueKeys keysSortedByValueUsingSelector:@selector(caseInsensitiveCompare:)]) {
