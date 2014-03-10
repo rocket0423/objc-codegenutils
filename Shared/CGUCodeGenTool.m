@@ -33,10 +33,11 @@
     NSURL *searchURL = nil;
     NSString *classPrefix = @"";
     BOOL target6 = NO;
+    BOOL singleFile = NO;
     NSMutableArray *inputURLs = [NSMutableArray array];
     
     for (NSString *fileExtension in [self inputFileExtension]) {
-        while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6")) != -1) {
+        while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6s")) != -1) {
             switch (opt) {
                 case 'h': {
                     printf("Usage: %s [-6] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]\n", basename((char *)argv[0]));
@@ -46,6 +47,7 @@
                     printf("    -o <path>   Output files at <path>\n");
                     printf("    -f <path>   Search for *.%s folders starting from <path>\n", [fileExtension UTF8String]);
                     printf("    -p <prefix> Use <prefix> as the class prefix in the generated code\n");
+                    printf("    -s          Generates everything in one file instead of multiple files");
                     printf("    -h          Print this help and exit\n");
                     printf("    <paths>     Input files; this and/or -f are required.\n");
                     return 0;
@@ -75,6 +77,11 @@
                     break;
                 }
                     
+                case 's': {
+                    singleFile = YES;
+                    break;
+                }
+                    
                 default:
                     break;
             }
@@ -97,14 +104,21 @@
     }
     
     dispatch_group_t group = dispatch_group_create();
-    
+   
+    CGUCodeGenTool *target;
+    if (singleFile){
+        target = [self new];
+    }
     for (NSURL *url in inputURLs) {
         dispatch_group_enter(group);
-        
-        CGUCodeGenTool *target = [self new];
+        if (!singleFile){
+            target = [self new];
+        }
         target.inputURL = url;
         target.targetiOS6 = target6;
         target.classPrefix = classPrefix;
+        target.writeSingleFile = singleFile;
+        target.lastFile = ([inputURLs lastObject] == url);
         target.toolName = [[NSString stringWithUTF8String:argv[0]] lastPathComponent];
         [target startWithCompletionHandler:^{
             dispatch_group_leave(group);
@@ -176,6 +190,7 @@
     }
     [mutableKey replaceOccurrencesOfString:@" " withString:@"" options:0 range:NSMakeRange(0, mutableKey.length)];
     [mutableKey replaceOccurrencesOfString:@"~" withString:@"" options:0 range:NSMakeRange(0, mutableKey.length)];
+    [mutableKey replaceOccurrencesOfString:@"-" withString:@"_" options:0 range:NSMakeRange(0, mutableKey.length)];
     return [mutableKey copy];
 }
 

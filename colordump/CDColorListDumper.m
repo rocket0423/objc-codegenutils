@@ -20,16 +20,21 @@
 - (void)startWithCompletionHandler:(dispatch_block_t)completionBlock;
 {
     NSString *colorListName = [[self.inputURL lastPathComponent] stringByDeletingPathExtension];
-
-    self.className = [[NSString stringWithFormat:@"%@%@ColorList", self.classPrefix, colorListName]stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    if (self.writeSingleFile)
+        self.className = [[NSString stringWithFormat:@"%@AppColorList", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    else
+        self.className = [[NSString stringWithFormat:@"%@%@ColorList", self.classPrefix, colorListName] stringByReplacingOccurrencesOfString:@" " withString:@""];
 
     NSColorList *colorList = [[NSColorList alloc] initWithName:colorListName fromFile:self.inputURL.path];
     
     // Install this color list
     [colorList writeToFile:nil];
     
-    self.interfaceContents = [NSMutableArray array];
-    self.implementationContents = [NSMutableArray array];
+    if (!self.interfaceContents)
+        self.interfaceContents = [NSMutableArray array];
+    if (!self.implementationContents)
+        self.implementationContents = [NSMutableArray array];
     
     for (NSString *key in colorList.allKeys) {
         NSColor *color = [colorList colorWithKey:key];
@@ -49,7 +54,8 @@
         [self.implementationContents addObject:method];
     }
     
-    [self writeOutputFiles];
+    if (!self.writeSingleFile || self.lastFile)
+        [self writeOutputFiles];
     completionBlock();
 }
 

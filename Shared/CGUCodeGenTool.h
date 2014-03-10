@@ -20,6 +20,8 @@
 @property (copy) NSString *classPrefix;
 @property BOOL targetiOS6;
 @property BOOL skipClassDeclaration;
+@property BOOL writeSingleFile;
+@property BOOL lastFile;
 
 @property (copy) NSString *className;
 @property (strong) NSMutableArray *interfaceContents;

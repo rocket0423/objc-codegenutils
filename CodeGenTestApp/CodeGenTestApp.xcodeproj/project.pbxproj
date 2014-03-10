@@ -15,12 +15,14 @@
 		A881853A18A9B614002803FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83878F418A0367C00B386D6 /* Images.xcassets */; };
 		A881853C18A9B622002803FC /* CGTAMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A83878EF18A0367C00B386D6 /* CGTAMasterViewController.m */; };
 		A881853D18A9B622002803FC /* CGTADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A83878F218A0367C00B386D6 /* CGTADetailViewController.m */; };
-		A881853E18A9B622002803FC /* CGTAImagesCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = A838791518A0455E00B386D6 /* CGTAImagesCatalog.m */; };
-		A881853F18A9B622002803FC /* CGTAMainStoryboardIdentifiers.m in Sources */ = {isa = PBXBuildFile; fileRef = A838793218A0557E00B386D6 /* CGTAMainStoryboardIdentifiers.m */; };
-		A881854018A9B622002803FC /* CGTATestAppColorList.m in Sources */ = {isa = PBXBuildFile; fileRef = A838791918A04AB300B386D6 /* CGTATestAppColorList.m */; };
 		A881854118A9B622002803FC /* CGTAImagesCatalog+RuntimeHackery.m in Sources */ = {isa = PBXBuildFile; fileRef = A838793518A05B6D00B386D6 /* CGTAImagesCatalog+RuntimeHackery.m */; };
 		A881854218A9B622002803FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A83878E518A0367C00B386D6 /* main.m */; };
 		A881854418A9B663002803FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83878EB18A0367C00B386D6 /* Main.storyboard */; };
+		BDFA8B1E18CE4EC10087BB74 /* tracfk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDFA8B1D18CE4EC10087BB74 /* tracfk.ttf */; };
+		BDFA8B4B18CE5E230087BB74 /* CGTAImagesCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFA8B4118CE5E230087BB74 /* CGTAImagesCatalog.m */; };
+		BDFA8B4C18CE5E230087BB74 /* CGTATestAppColorList.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFA8B4418CE5E230087BB74 /* CGTATestAppColorList.m */; };
+		BDFA8B4D18CE5E230087BB74 /* CGTAFontList.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFA8B4718CE5E230087BB74 /* CGTAFontList.m */; };
+		BDFA8B4E18CE5E230087BB74 /* CGTAMainStoryboardIdentifiers.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFA8B4A18CE5E230087BB74 /* CGTAMainStoryboardIdentifiers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,20 @@
 			remoteGlobalIDString = A838791E18A04BF700B386D6;
 			remoteInfo = identifierconstants;
 		};
+		BDFA8B1618CE47970087BB74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A881852718A9B520002803FC /* codegenutils.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BDC4D70718CE443D00C439FC;
+			remoteInfo = customfontlist;
+		};
+		BDFA8B1918CE47970087BB74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A881852718A9B520002803FC /* codegenutils.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BDC4D71218CE443D00C439FC;
+			remoteInfo = customfontlist;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -84,17 +100,20 @@
 		A83878F218A0367C00B386D6 /* CGTADetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGTADetailViewController.m; sourceTree = "<group>"; };
 		A83878F418A0367C00B386D6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A83878FB18A0367C00B386D6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		A838791418A0455E00B386D6 /* CGTAImagesCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTAImagesCatalog.h; sourceTree = "<group>"; };
-		A838791518A0455E00B386D6 /* CGTAImagesCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTAImagesCatalog.m; sourceTree = "<group>"; };
-		A838791818A04AB300B386D6 /* CGTATestAppColorList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTATestAppColorList.h; sourceTree = "<group>"; };
-		A838791918A04AB300B386D6 /* CGTATestAppColorList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTATestAppColorList.m; sourceTree = "<group>"; };
-		A838793118A0557E00B386D6 /* CGTAMainStoryboardIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTAMainStoryboardIdentifiers.h; sourceTree = "<group>"; };
-		A838793218A0557E00B386D6 /* CGTAMainStoryboardIdentifiers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTAMainStoryboardIdentifiers.m; sourceTree = "<group>"; };
 		A838793418A05B6D00B386D6 /* CGTAImagesCatalog+RuntimeHackery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CGTAImagesCatalog+RuntimeHackery.h"; path = "../CGTAImagesCatalog+RuntimeHackery.h"; sourceTree = "<group>"; };
 		A838793518A05B6D00B386D6 /* CGTAImagesCatalog+RuntimeHackery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CGTAImagesCatalog+RuntimeHackery.m"; path = "../CGTAImagesCatalog+RuntimeHackery.m"; sourceTree = "<group>"; };
 		A881852518A9B512002803FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A881852718A9B520002803FC /* codegenutils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = codegenutils.xcodeproj; path = ../codegenutils.xcodeproj; sourceTree = "<group>"; };
 		A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BDFA8B1D18CE4EC10087BB74 /* tracfk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tracfk.ttf; sourceTree = "<group>"; };
+		BDFA8B4018CE5E230087BB74 /* CGTAImagesCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTAImagesCatalog.h; sourceTree = "<group>"; };
+		BDFA8B4118CE5E230087BB74 /* CGTAImagesCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTAImagesCatalog.m; sourceTree = "<group>"; };
+		BDFA8B4318CE5E230087BB74 /* CGTATestAppColorList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTATestAppColorList.h; sourceTree = "<group>"; };
+		BDFA8B4418CE5E230087BB74 /* CGTATestAppColorList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTATestAppColorList.m; sourceTree = "<group>"; };
+		BDFA8B4618CE5E230087BB74 /* CGTAFontList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTAFontList.h; sourceTree = "<group>"; };
+		BDFA8B4718CE5E230087BB74 /* CGTAFontList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTAFontList.m; sourceTree = "<group>"; };
+		BDFA8B4918CE5E230087BB74 /* CGTAMainStoryboardIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTAMainStoryboardIdentifiers.h; sourceTree = "<group>"; };
+		BDFA8B4A18CE5E230087BB74 /* CGTAMainStoryboardIdentifiers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTAMainStoryboardIdentifiers.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +150,7 @@
 		A83878E018A0367C00B386D6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BDFA8B1D18CE4EC10087BB74 /* tracfk.ttf */,
 				A83878E118A0367C00B386D6 /* CodeGenTestApp-Info.plist */,
 				A83878E218A0367C00B386D6 /* InfoPlist.strings */,
 				A83878E518A0367C00B386D6 /* main.m */,
@@ -142,12 +162,10 @@
 		A838791718A0456500B386D6 /* Derived Sources */ = {
 			isa = PBXGroup;
 			children = (
-				A838791418A0455E00B386D6 /* CGTAImagesCatalog.h */,
-				A838791518A0455E00B386D6 /* CGTAImagesCatalog.m */,
-				A838793118A0557E00B386D6 /* CGTAMainStoryboardIdentifiers.h */,
-				A838793218A0557E00B386D6 /* CGTAMainStoryboardIdentifiers.m */,
-				A838791818A04AB300B386D6 /* CGTATestAppColorList.h */,
-				A838791918A04AB300B386D6 /* CGTATestAppColorList.m */,
+				BDFA8B3F18CE5E230087BB74 /* Catalogs */,
+				BDFA8B4218CE5E230087BB74 /* Colors */,
+				BDFA8B4518CE5E230087BB74 /* Fonts */,
+				BDFA8B4818CE5E230087BB74 /* Identifiers */,
 				A838793418A05B6D00B386D6 /* CGTAImagesCatalog+RuntimeHackery.h */,
 				A838793518A05B6D00B386D6 /* CGTAImagesCatalog+RuntimeHackery.m */,
 			);
@@ -160,6 +178,7 @@
 				A881852E18A9B520002803FC /* objc-assetgen */,
 				A881853018A9B520002803FC /* objc-colordump */,
 				A881853218A9B520002803FC /* objc-identifierconstants */,
+				BDFA8B1A18CE47970087BB74 /* customfontlist */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,6 +212,42 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BDFA8B3F18CE5E230087BB74 /* Catalogs */ = {
+			isa = PBXGroup;
+			children = (
+				BDFA8B4018CE5E230087BB74 /* CGTAImagesCatalog.h */,
+				BDFA8B4118CE5E230087BB74 /* CGTAImagesCatalog.m */,
+			);
+			path = Catalogs;
+			sourceTree = "<group>";
+		};
+		BDFA8B4218CE5E230087BB74 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				BDFA8B4318CE5E230087BB74 /* CGTATestAppColorList.h */,
+				BDFA8B4418CE5E230087BB74 /* CGTATestAppColorList.m */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		BDFA8B4518CE5E230087BB74 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BDFA8B4618CE5E230087BB74 /* CGTAFontList.h */,
+				BDFA8B4718CE5E230087BB74 /* CGTAFontList.m */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BDFA8B4818CE5E230087BB74 /* Identifiers */ = {
+			isa = PBXGroup;
+			children = (
+				BDFA8B4918CE5E230087BB74 /* CGTAMainStoryboardIdentifiers.h */,
+				BDFA8B4A18CE5E230087BB74 /* CGTAMainStoryboardIdentifiers.m */,
+			);
+			path = Identifiers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,6 +263,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				BDFA8B1718CE47970087BB74 /* PBXTargetDependency */,
 				A881853418A9B53F002803FC /* PBXTargetDependency */,
 				A881853618A9B53F002803FC /* PBXTargetDependency */,
 				A881853818A9B53F002803FC /* PBXTargetDependency */,
@@ -272,6 +328,13 @@
 			remoteRef = A881853118A9B520002803FC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BDFA8B1A18CE47970087BB74 /* customfontlist */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = customfontlist;
+			remoteRef = BDFA8B1918CE47970087BB74 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -281,6 +344,7 @@
 			files = (
 				A881854418A9B663002803FC /* Main.storyboard in Resources */,
 				A881853A18A9B614002803FC /* Images.xcassets in Resources */,
+				BDFA8B1E18CE4EC10087BB74 /* tracfk.ttf in Resources */,
 				A83878E418A0367C00B386D6 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,7 +364,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "DERIVED_SOURCES=\"$SRCROOT/Derived Sources\"\nTOOL_PATH=$BUILD_ROOT/$CONFIGURATION\n$TOOL_PATH/objc-assetgen -f \"$SRCROOT\" -o \"$DERIVED_SOURCES\" -p CGTA\n$TOOL_PATH/objc-colordump -f \"$SRCROOT\" -o \"$DERIVED_SOURCES\" -p CGTA\n$TOOL_PATH/objc-identifierconstants -f \"$SRCROOT\" -o \"$DERIVED_SOURCES\" -p CGTA\n";
+			shellScript = "DERIVED_SOURCES=\"$SRCROOT/Derived Sources\"\nTOOL_PATH=\"$BUILD_ROOT/$CONFIGURATION\"\n\nIDENTIFIERS_PATH=\"$DERIVED_SOURCES/Identifiers\"\nCATALOGS_PATH=\"$DERIVED_SOURCES/Catalogs\"\nFONTS_PATH=\"$DERIVED_SOURCES/Fonts\"\nCOLORS_PATH=\"$DERIVED_SOURCES/Colors\"\n\nrm -rf \"$IDENTIFIERS_PATH\"\nrm -rf \"$CATALOGS_PATH\"\nrm -rf \"$FONTS_PATH\"\nrm -rf \"$COLORS_PATH\"\nmkdir -p \"$IDENTIFIERS_PATH\"\nmkdir -p \"$CATALOGS_PATH\"\nmkdir -p \"$FONTS_PATH\"\nmkdir -p \"$COLORS_PATH\"\n\n\"$TOOL_PATH/objc-assetgen\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-identifierconstants\" -f \"$SRCROOT\" -o \"$IDENTIFIERS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-customfontlist\" -s -f \"$SRCROOT\" -o \"$FONTS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-colordump\" -f \"$SRCROOT\" -o \"$COLORS_PATH\" -p CGTA\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -311,10 +375,11 @@
 			files = (
 				A881853918A9B609002803FC /* CGTAAppDelegate.m in Sources */,
 				A881853C18A9B622002803FC /* CGTAMasterViewController.m in Sources */,
-				A881853F18A9B622002803FC /* CGTAMainStoryboardIdentifiers.m in Sources */,
+				BDFA8B4E18CE5E230087BB74 /* CGTAMainStoryboardIdentifiers.m in Sources */,
+				BDFA8B4B18CE5E230087BB74 /* CGTAImagesCatalog.m in Sources */,
+				BDFA8B4D18CE5E230087BB74 /* CGTAFontList.m in Sources */,
+				BDFA8B4C18CE5E230087BB74 /* CGTATestAppColorList.m in Sources */,
 				A881854118A9B622002803FC /* CGTAImagesCatalog+RuntimeHackery.m in Sources */,
-				A881853E18A9B622002803FC /* CGTAImagesCatalog.m in Sources */,
-				A881854018A9B622002803FC /* CGTATestAppColorList.m in Sources */,
 				A881854218A9B622002803FC /* main.m in Sources */,
 				A881853D18A9B622002803FC /* CGTADetailViewController.m in Sources */,
 			);
@@ -337,6 +402,11 @@
 			isa = PBXTargetDependency;
 			name = identifierconstants;
 			targetProxy = A881853718A9B53F002803FC /* PBXContainerItemProxy */;
+		};
+		BDFA8B1718CE47970087BB74 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = customfontlist;
+			targetProxy = BDFA8B1618CE47970087BB74 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -42,7 +42,9 @@
     NSString *storyboardFilename = [[self.inputURL lastPathComponent] stringByDeletingPathExtension];
     NSString *storyboardName = [storyboardFilename stringByReplacingOccurrencesOfString:@" " withString:@""];
     BOOL containsStoryboardText = NO;
-    if ([storyboardName rangeOfString:@"Storyboard" options:NSCaseInsensitiveSearch].location == NSNotFound){
+    if (self.writeSingleFile){
+        self.className = [NSString stringWithFormat:@"%@Identifiers", self.classPrefix];
+    } else if ([storyboardName rangeOfString:@"Storyboard" options:NSCaseInsensitiveSearch].location == NSNotFound){
         self.className = [NSString stringWithFormat:@"%@%@StoryboardIdentifiers", self.classPrefix, storyboardName];
     } else {
         containsStoryboardText = YES;
@@ -59,8 +61,10 @@
     [identifiers addObjectsFromArray:reuseIdentifiers];
     [identifiers addObjectsFromArray:segueIdentifiers];
     
-    self.interfaceContents = [NSMutableArray array];
-    self.implementationContents = [NSMutableArray array];
+    if (!self.interfaceContents)
+        self.interfaceContents = [NSMutableArray array];
+    if (!self.implementationContents)
+        self.implementationContents = [NSMutableArray array];
     
     NSMutableDictionary *uniqueKeys = [NSMutableDictionary dictionary];
     if (containsStoryboardText){
@@ -83,7 +87,8 @@
         [self.implementationContents addObject:[NSString stringWithFormat:@"NSString *const %@ = @\"%@\";\n", key, uniqueKeys[key]]];
     }
     
-    [self writeOutputFiles];
+    if (!self.writeSingleFile || self.lastFile)
+        [self writeOutputFiles];
     completionBlock();
 }
 
@@ -93,7 +98,9 @@
     NSString *xibFilename = [[self.inputURL lastPathComponent] stringByDeletingPathExtension];
     NSString *xibName = [xibFilename stringByReplacingOccurrencesOfString:@" " withString:@""];
     BOOL containsXibText = NO;
-    if ([xibName rangeOfString:@"Xib" options:NSCaseInsensitiveSearch].location == NSNotFound){
+    if (self.writeSingleFile){
+        self.className = [NSString stringWithFormat:@"%@Identifiers", self.classPrefix];
+    } else if ([xibName rangeOfString:@"Xib" options:NSCaseInsensitiveSearch].location == NSNotFound){
         self.className = [NSString stringWithFormat:@"%@%@XibIdentifiers", self.classPrefix, xibName];
     } else {
         containsXibText = YES;
@@ -110,8 +117,10 @@
     [identifiers addObjectsFromArray:reuseIdentifiers];
     [identifiers addObjectsFromArray:segueIdentifiers];
     
-    self.interfaceContents = [NSMutableArray array];
-    self.implementationContents = [NSMutableArray array];
+    if (!self.interfaceContents)
+        self.interfaceContents = [NSMutableArray array];
+    if (!self.implementationContents)
+        self.implementationContents = [NSMutableArray array];
     
     NSMutableDictionary *uniqueKeys = [NSMutableDictionary dictionary];
     if (containsXibText){
@@ -134,7 +143,8 @@
         [self.implementationContents addObject:[NSString stringWithFormat:@"NSString *const %@ = @\"%@\";\n", key, uniqueKeys[key]]];
     }
     
-    [self writeOutputFiles];
+    if (!self.writeSingleFile || self.lastFile)
+        [self writeOutputFiles];
     completionBlock();
 }
 

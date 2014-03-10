@@ -26,28 +26,59 @@
 
 - (void)startWithCompletionHandler:(dispatch_block_t)completionBlock;
 {
-    dispatch_group_t dispatchGroup = dispatch_group_create();
-    dispatch_queue_t dispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(dispatchQueue, ^{
+    if (!self.writeSingleFile){
+        // Added to que to do multiple assets at one time
+        dispatch_group_t dispatchGroup = dispatch_group_create();
+        dispatch_queue_t dispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(dispatchQueue, ^{
+            [self findImageSetURLs];
+            
+            if (!self.interfaceContents)
+                self.interfaceContents = [NSMutableArray array];
+            if (!self.implementationContents)
+                self.implementationContents = [NSMutableArray array];
+            
+            if (self.writeSingleFile)
+                self.className = [[NSString stringWithFormat:@"%@ImageCatalog", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
+            else
+                self.className = [[NSString stringWithFormat:@"%@%@Catalog", self.classPrefix, [[self.inputURL lastPathComponent] stringByDeletingPathExtension]] stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+            for (NSURL *imageSetURL in self.imageSetURLs) {
+                dispatch_group_async(dispatchGroup, dispatchQueue, ^{
+                    [self parseImageSetAtURL:imageSetURL];
+                });
+            }
+            
+            dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER);
+            
+            if (!self.writeSingleFile || self.lastFile)
+                [self writeOutputFiles];
+            
+            completionBlock();
+        });
+    } else {
+        // Since writing to the same file need to do consecutively
         [self findImageSetURLs];
-
-        self.interfaceContents = [NSMutableArray array];
-        self.implementationContents = [NSMutableArray array];
         
-        self.className = [[NSString stringWithFormat:@"%@%@Catalog", self.classPrefix, [[self.inputURL lastPathComponent] stringByDeletingPathExtension]] stringByReplacingOccurrencesOfString:@" " withString:@""];
+        if (!self.interfaceContents)
+            self.interfaceContents = [NSMutableArray array];
+        if (!self.implementationContents)
+            self.implementationContents = [NSMutableArray array];
+        
+        if (self.writeSingleFile)
+            self.className = [[NSString stringWithFormat:@"%@ImageCatalog", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
+        else
+            self.className = [[NSString stringWithFormat:@"%@%@Catalog", self.classPrefix, [[self.inputURL lastPathComponent] stringByDeletingPathExtension]] stringByReplacingOccurrencesOfString:@" " withString:@""];
         
         for (NSURL *imageSetURL in self.imageSetURLs) {
-            dispatch_group_async(dispatchGroup, dispatchQueue, ^{
                 [self parseImageSetAtURL:imageSetURL];
-            });
         }
         
-        dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER);
-        
-        [self writeOutputFiles];
+        if (!self.writeSingleFile || self.lastFile)
+            [self writeOutputFiles];
         
         completionBlock();
-    });
+    }
 }
 
 - (void)findImageSetURLs;
