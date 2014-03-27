@@ -22,6 +22,7 @@
 @property BOOL skipClassDeclaration;
 @property BOOL writeSingleFile;
 @property BOOL lastFile;
+@property BOOL uniqueItemCheck;
 
 @property (copy) NSString *className;
 @property (strong) NSMutableArray *interfaceContents;

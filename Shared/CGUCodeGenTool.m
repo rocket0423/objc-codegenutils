@@ -34,10 +34,11 @@
     NSString *classPrefix = @"";
     BOOL target6 = NO;
     BOOL singleFile = NO;
+    BOOL uniqueCheck = NO;
     NSMutableArray *inputURLs = [NSMutableArray array];
     
     for (NSString *fileExtension in [self inputFileExtension]) {
-        while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6s")) != -1) {
+        while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6su")) != -1) {
             switch (opt) {
                 case 'h': {
                     printf("Usage: %s [-6] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]\n", basename((char *)argv[0]));
@@ -48,6 +49,7 @@
                     printf("    -f <path>   Search for *.%s folders starting from <path>\n", [fileExtension UTF8String]);
                     printf("    -p <prefix> Use <prefix> as the class prefix in the generated code\n");
                     printf("    -s          Generates everything in one file instead of multiple files");
+                    printf("    -u          Used to make sure there are only unique items if they are duplicates it will write the duplicate to file causing error\n");
                     printf("    -h          Print this help and exit\n");
                     printf("    <paths>     Input files; this and/or -f are required.\n");
                     return 0;
@@ -79,6 +81,11 @@
                     
                 case 's': {
                     singleFile = YES;
+                    break;
+                }
+                    
+                case 'u': {
+                    uniqueCheck = YES;
                     break;
                 }
                     
@@ -118,6 +125,7 @@
         target.targetiOS6 = target6;
         target.classPrefix = classPrefix;
         target.writeSingleFile = singleFile;
+		target.uniqueItemCheck = uniqueCheck;
         target.lastFile = ([inputURLs lastObject] == url);
         target.toolName = [[NSString stringWithUTF8String:argv[0]] lastPathComponent];
         [target startWithCompletionHandler:^{

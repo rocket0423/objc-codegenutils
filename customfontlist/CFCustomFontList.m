@@ -30,7 +30,7 @@
     NSString *fontName = [CFCustomFontList fontNameFromTTFPath:self.inputURL];
     if (fontName){
         NSString *declaration = [NSString stringWithFormat:@"+ (UIFont *)%@FontOfSize:(CGFloat)fontSize;\n", [self methodNameForKey:fontName]];
-        if (![self.interfaceContents containsObject:declaration]) {
+        if (self.uniqueItemCheck || ![self.interfaceContents containsObject:declaration]) {
             [self.interfaceContents addObject:declaration];
             
             NSMutableString *method = [declaration mutableCopy];

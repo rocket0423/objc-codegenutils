@@ -67,11 +67,15 @@
         self.implementationContents = [NSMutableArray array];
     
     NSMutableDictionary *uniqueKeys = [NSMutableDictionary dictionary];
+	NSMutableArray *allKeys = [[NSMutableArray alloc] init];
+	NSString *storyboardKey;
     if (containsStoryboardText){
-        uniqueKeys[[NSString stringWithFormat:@"%@%@Name", self.classPrefix, storyboardName]] = storyboardFilename;
+		storyboardKey = [NSString stringWithFormat:@"%@%@Name", self.classPrefix, storyboardName];
     } else {
-        uniqueKeys[[NSString stringWithFormat:@"%@%@StoryboardName", self.classPrefix, storyboardName]] = storyboardFilename;
+       storyboardKey = [NSString stringWithFormat:@"%@%@StoryboardName", self.classPrefix, storyboardName];
     }
+	uniqueKeys[storyboardKey] = storyboardFilename;
+	[allKeys addObject:storyboardKey];
     
     for (NSString *identifier in identifiers) {
         NSString *key = nil;
@@ -81,8 +85,17 @@
             key = [NSString stringWithFormat:@"%@%@Storyboard%@Identifier", self.classPrefix, storyboardName, [identifier IDS_titlecaseString]];
         }
         uniqueKeys[key] = identifier;
+		[allKeys addObject:key];
     }
-    for (NSString *key in [uniqueKeys keysSortedByValueUsingSelector:@selector(caseInsensitiveCompare:)]) {
+	
+	NSArray *loadedKeys;
+	if (self.uniqueItemCheck){
+		loadedKeys = allKeys;
+	} else {
+		loadedKeys = [uniqueKeys allKeys];
+	}
+	
+    for (NSString *key in [loadedKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]) {
         [self.interfaceContents addObject:[NSString stringWithFormat:@"extern NSString *const %@;\n", key]];
         [self.implementationContents addObject:[NSString stringWithFormat:@"NSString *const %@ = @\"%@\";\n", key, uniqueKeys[key]]];
     }
@@ -123,11 +136,15 @@
         self.implementationContents = [NSMutableArray array];
     
     NSMutableDictionary *uniqueKeys = [NSMutableDictionary dictionary];
+	NSMutableArray *allKeys = [[NSMutableArray alloc] init];
+	NSString *xibKey;
     if (containsXibText){
-        uniqueKeys[[NSString stringWithFormat:@"%@%@Name", self.classPrefix, xibName]] = xibFilename;
+		xibKey = [NSString stringWithFormat:@"%@%@Name", self.classPrefix, xibName];
     } else {
-        uniqueKeys[[NSString stringWithFormat:@"%@%@XibName", self.classPrefix, xibName]] = xibFilename;
+		xibKey = [NSString stringWithFormat:@"%@%@XibName", self.classPrefix, xibName];
     }
+	uniqueKeys[xibKey] = xibFilename;
+	[allKeys addObject:xibKey];
     
     for (NSString *identifier in identifiers) {
         NSString *key = nil;
@@ -137,8 +154,17 @@
             key = [NSString stringWithFormat:@"%@%@Xib%@Identifier", self.classPrefix, xibName, [identifier IDS_titlecaseString]];
         }
         uniqueKeys[key] = identifier;
+		[allKeys addObject:key];
     }
-    for (NSString *key in [uniqueKeys keysSortedByValueUsingSelector:@selector(caseInsensitiveCompare:)]) {
+	
+	NSArray *loadedKeys;
+	if (self.uniqueItemCheck){
+		loadedKeys = allKeys;
+	} else {
+		loadedKeys = [uniqueKeys allKeys];
+	}
+	
+    for (NSString *key in [loadedKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]) {
         [self.interfaceContents addObject:[NSString stringWithFormat:@"extern NSString *const %@;\n", key]];
         [self.implementationContents addObject:[NSString stringWithFormat:@"NSString *const %@ = @\"%@\";\n", key, uniqueKeys[key]]];
     }

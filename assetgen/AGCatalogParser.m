@@ -39,7 +39,7 @@
                 self.implementationContents = [NSMutableArray array];
             
             if (self.writeSingleFile)
-                self.className = [[NSString stringWithFormat:@"%@ImageCatalog", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
+                self.className = [[NSString stringWithFormat:@"%@ImagesCatalog", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
             else
                 self.className = [[NSString stringWithFormat:@"%@%@Catalog", self.classPrefix, [[self.inputURL lastPathComponent] stringByDeletingPathExtension]] stringByReplacingOccurrencesOfString:@" " withString:@""];
             
@@ -66,7 +66,7 @@
             self.implementationContents = [NSMutableArray array];
         
         if (self.writeSingleFile)
-            self.className = [[NSString stringWithFormat:@"%@ImageCatalog", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
+            self.className = [[NSString stringWithFormat:@"%@ImagesCatalog", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
         else
             self.className = [[NSString stringWithFormat:@"%@%@Catalog", self.classPrefix, [[self.inputURL lastPathComponent] stringByDeletingPathExtension]] stringByReplacingOccurrencesOfString:@" " withString:@""];
         

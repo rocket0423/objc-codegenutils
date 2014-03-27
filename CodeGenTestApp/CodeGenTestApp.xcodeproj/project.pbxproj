@@ -178,7 +178,7 @@
 				A881852E18A9B520002803FC /* objc-assetgen */,
 				A881853018A9B520002803FC /* objc-colordump */,
 				A881853218A9B520002803FC /* objc-identifierconstants */,
-				BDFA8B1A18CE47970087BB74 /* customfontlist */,
+				BDFA8B1A18CE47970087BB74 /* objc-customfontlist */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -328,10 +328,10 @@
 			remoteRef = A881853118A9B520002803FC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		BDFA8B1A18CE47970087BB74 /* customfontlist */ = {
+		BDFA8B1A18CE47970087BB74 /* objc-customfontlist */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
-			path = customfontlist;
+			path = "objc-customfontlist";
 			remoteRef = BDFA8B1918CE47970087BB74 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -364,7 +364,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "DERIVED_SOURCES=\"$SRCROOT/Derived Sources\"\nTOOL_PATH=\"$BUILD_ROOT/$CONFIGURATION\"\n\nIDENTIFIERS_PATH=\"$DERIVED_SOURCES/Identifiers\"\nCATALOGS_PATH=\"$DERIVED_SOURCES/Catalogs\"\nFONTS_PATH=\"$DERIVED_SOURCES/Fonts\"\nCOLORS_PATH=\"$DERIVED_SOURCES/Colors\"\n\nrm -rf \"$IDENTIFIERS_PATH\"\nrm -rf \"$CATALOGS_PATH\"\nrm -rf \"$FONTS_PATH\"\nrm -rf \"$COLORS_PATH\"\nmkdir -p \"$IDENTIFIERS_PATH\"\nmkdir -p \"$CATALOGS_PATH\"\nmkdir -p \"$FONTS_PATH\"\nmkdir -p \"$COLORS_PATH\"\n\n\"$TOOL_PATH/objc-assetgen\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-identifierconstants\" -f \"$SRCROOT\" -o \"$IDENTIFIERS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-customfontlist\" -s -f \"$SRCROOT\" -o \"$FONTS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-colordump\" -f \"$SRCROOT\" -o \"$COLORS_PATH\" -p CGTA\n";
+			shellScript = "DERIVED_SOURCES=\"$SRCROOT/Derived Sources\"\nTOOL_PATH=\"$BUILD_ROOT/$CONFIGURATION\"\n\nIDENTIFIERS_PATH=\"$DERIVED_SOURCES/Identifiers\"\nCATALOGS_PATH=\"$DERIVED_SOURCES/Catalogs\"\nFONTS_PATH=\"$DERIVED_SOURCES/Fonts\"\nCOLORS_PATH=\"$DERIVED_SOURCES/Colors\"\n\nrm -rf \"$IDENTIFIERS_PATH\"\nrm -rf \"$CATALOGS_PATH\"\nrm -rf \"$FONTS_PATH\"\nrm -rf \"$COLORS_PATH\"\nmkdir -p \"$IDENTIFIERS_PATH\"\nmkdir -p \"$CATALOGS_PATH\"\nmkdir -p \"$FONTS_PATH\"\nmkdir -p \"$COLORS_PATH\"\n\n\"$TOOL_PATH/objc-assetgen\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-identifierconstants\" -f \"$SRCROOT\" -o \"$IDENTIFIERS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-customfontlist\" -u -s -f \"$SRCROOT\" -o \"$FONTS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-colordump\" -f \"$SRCROOT\" -o \"$COLORS_PATH\" -p CGTA\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
