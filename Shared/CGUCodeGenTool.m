@@ -37,11 +37,16 @@
     BOOL uniqueCheck = NO;
     NSMutableArray *inputURLs = [NSMutableArray array];
     
+	NSString *currentAppVersion = [self runStringAsCommand:@"echo \"$IPHONEOS_DEPLOYMENT_TARGET\""];
+	if ([currentAppVersion floatValue] > 0.0 && [currentAppVersion floatValue] < 7.0){
+		target6 = YES;
+	}
+	
     for (NSString *fileExtension in [self inputFileExtension]) {
         while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6su")) != -1) {
             switch (opt) {
                 case 'h': {
-                    printf("Usage: %s [-6] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]\n", basename((char *)argv[0]));
+                    printf("Usage: %s [-6] [-s] [-u] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]\n", basename((char *)argv[0]));
                     printf("       %s -h\n\n", basename((char *)argv[0]));
                     printf("Options:\n");
                     printf("    -6          Target iOS 6 in addition to iOS 7\n");
@@ -200,6 +205,20 @@
     [mutableKey replaceOccurrencesOfString:@"~" withString:@"" options:0 range:NSMakeRange(0, mutableKey.length)];
     [mutableKey replaceOccurrencesOfString:@"-" withString:@"_" options:0 range:NSMakeRange(0, mutableKey.length)];
     return [mutableKey copy];
+}
+
++ (NSString *)runStringAsCommand:(NSString *)string{
+	NSPipe *pipe = [NSPipe pipe];
+	
+	NSTask *task = [[NSTask alloc] init];
+	[task setLaunchPath:@"/bin/sh"];
+	[task setArguments:@[@"-c", [NSString stringWithFormat:@"%@", string]]];
+	[task setStandardOutput:pipe];
+	
+	NSFileHandle *file = [pipe fileHandleForReading];
+	[task launch];
+	
+	return [[NSString alloc] initWithData:[file readDataToEndOfFile] encoding:NSUTF8StringEncoding];
 }
 
 @end

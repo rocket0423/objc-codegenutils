@@ -34,4 +34,6 @@
 
 - (NSString *)methodNameForKey:(NSString *)key;
 
++ (NSString *)runStringAsCommand:(NSString *)string;
+
 @end
