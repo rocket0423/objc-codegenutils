@@ -78,14 +78,16 @@
 	[allKeys addObject:storyboardKey];
     
     for (NSString *identifier in identifiers) {
-        NSString *key = nil;
-        if (containsStoryboardText){
-            key = [NSString stringWithFormat:@"%@%@%@Identifier", self.classPrefix, storyboardName, [identifier IDS_titlecaseString]];
-        } else {
-            key = [NSString stringWithFormat:@"%@%@Storyboard%@Identifier", self.classPrefix, storyboardName, [identifier IDS_titlecaseString]];
+        if ([identifier stringByReplacingOccurrencesOfString:@" " withString:@""].length > 0){
+            NSString *key = nil;
+            if (containsStoryboardText){
+                key = [NSString stringWithFormat:@"%@%@%@Identifier", self.classPrefix, storyboardName, [identifier IDS_titlecaseString]];
+            } else {
+                key = [NSString stringWithFormat:@"%@%@Storyboard%@Identifier", self.classPrefix, storyboardName, [identifier IDS_titlecaseString]];
+            }
+            uniqueKeys[key] = identifier;
+            [allKeys addObject:key];
         }
-        uniqueKeys[key] = identifier;
-		[allKeys addObject:key];
     }
 	
 	NSArray *loadedKeys;
@@ -147,14 +149,16 @@
 	[allKeys addObject:xibKey];
     
     for (NSString *identifier in identifiers) {
-        NSString *key = nil;
-        if (containsXibText){
-            key = [NSString stringWithFormat:@"%@%@%@Identifier", self.classPrefix, xibName, [identifier IDS_titlecaseString]];
-        } else {
-            key = [NSString stringWithFormat:@"%@%@Xib%@Identifier", self.classPrefix, xibName, [identifier IDS_titlecaseString]];
+        if ([identifier stringByReplacingOccurrencesOfString:@" " withString:@""].length > 0){
+            NSString *key = nil;
+            if (containsXibText){
+                key = [NSString stringWithFormat:@"%@%@%@Identifier", self.classPrefix, xibName, [identifier IDS_titlecaseString]];
+            } else {
+                key = [NSString stringWithFormat:@"%@%@Xib%@Identifier", self.classPrefix, xibName, [identifier IDS_titlecaseString]];
+            }
+            uniqueKeys[key] = identifier;
+            [allKeys addObject:key];
         }
-        uniqueKeys[key] = identifier;
-		[allKeys addObject:key];
     }
 	
 	NSArray *loadedKeys;
