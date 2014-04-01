@@ -32,18 +32,20 @@
     char opt = -1;
     NSURL *searchURL = nil;
     NSString *classPrefix = @"";
+    NSString *infoPlist = @"";
     BOOL target6 = NO;
     BOOL singleFile = NO;
     BOOL uniqueCheck = NO;
     NSMutableArray *inputURLs = [NSMutableArray array];
     
-	NSString *currentAppVersion = [self runStringAsCommand:@"echo \"$IPHONEOS_DEPLOYMENT_TARGET\""];
+	NSString *currentAppVersion = [CGUCodeGenTool runStringAsCommand:@"echo \"$IPHONEOS_DEPLOYMENT_TARGET\""];
 	if ([currentAppVersion floatValue] > 0.0 && [currentAppVersion floatValue] < 7.0){
 		target6 = YES;
 	}
+    infoPlist = [CGUCodeGenTool runStringAsCommand:@"echo \"$SRCROOT/$INFOPLIST_FILE\""];
 	
     for (NSString *fileExtension in [self inputFileExtension]) {
-        while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6su")) != -1) {
+        while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6sui:")) != -1) {
             switch (opt) {
                 case 'h': {
                     printf("Usage: %s [-6] [-s] [-u] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]\n", basename((char *)argv[0]));
@@ -51,6 +53,7 @@
                     printf("Options:\n");
                     printf("    -6          Target iOS 6 in addition to iOS 7\n");
                     printf("    -o <path>   Output files at <path>\n");
+                    printf("    -i <path>   Info Plist file at <path>\n");
                     printf("    -f <path>   Search for *.%s folders starting from <path>\n", [fileExtension UTF8String]);
                     printf("    -p <prefix> Use <prefix> as the class prefix in the generated code\n");
                     printf("    -s          Generates everything in one file instead of multiple files");
@@ -94,6 +97,11 @@
                     break;
                 }
                     
+                case 'i': {
+                    infoPlist = [[[NSString alloc] initWithUTF8String:optarg] stringByExpandingTildeInPath];
+                    break;
+                }
+                    
                 default:
                     break;
             }
@@ -126,6 +134,7 @@
         if (!singleFile){
             target = [self new];
         }
+        target.infoPlistFile = infoPlist;
         target.inputURL = url;
         target.targetiOS6 = target6;
         target.classPrefix = classPrefix;

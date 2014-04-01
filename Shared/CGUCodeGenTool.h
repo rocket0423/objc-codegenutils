@@ -23,8 +23,9 @@
 @property BOOL writeSingleFile;
 @property BOOL lastFile;
 @property BOOL uniqueItemCheck;
-
 @property (copy) NSString *className;
+
+@property (copy) NSString *infoPlistFile;
 @property (strong) NSMutableArray *interfaceContents;
 @property (strong) NSMutableArray *implementationContents;
 
