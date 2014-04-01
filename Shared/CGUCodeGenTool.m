@@ -174,7 +174,12 @@
         return [obj1 compare:obj2];
     }];
     
-    NSMutableString *interface = [NSMutableString stringWithFormat:@"//\n// This file is generated from %@ by %@.\n// Please do not edit.\n//\n\n#import <UIKit/UIKit.h>\n\n\n", self.inputURL.lastPathComponent, self.toolName];
+    NSMutableString *interface;
+    if (self.writeSingleFile){
+        interface = [NSMutableString stringWithFormat:@"//\n// This file is generated from all .%@ files by %@.\n// Please do not edit.\n//\n\n#import <UIKit/UIKit.h>\n\n\n", self.inputURL.pathExtension, self.toolName];
+    } else {
+        interface = [NSMutableString stringWithFormat:@"//\n// This file is generated from %@ by %@.\n// Please do not edit.\n//\n\n#import <UIKit/UIKit.h>\n\n\n", self.inputURL.lastPathComponent, self.toolName];
+    }
 
     if (self.skipClassDeclaration) {
         [interface appendString:[self.interfaceContents componentsJoinedByString:@""]];
@@ -186,7 +191,13 @@
         [interface writeToURL:interfaceURL atomically:YES encoding:NSUTF8StringEncoding error:NULL];
     }
     
-    NSMutableString *implementation = [NSMutableString stringWithFormat:@"//\n// This file is generated from %@ by %@.\n// Please do not edit.\n//\n\n#import \"%@\"\n\n\n", self.inputURL.lastPathComponent, self.toolName, classNameH];
+    NSMutableString *implementation;
+    if (self.writeSingleFile){
+        implementation = [NSMutableString stringWithFormat:@"//\n// This file is generated from all .%@ files by %@.\n// Please do not edit.\n//\n\n#import \"%@\"\n\n\n", self.inputURL.pathExtension, self.toolName, classNameH];
+    } else {
+        implementation = [NSMutableString stringWithFormat:@"//\n// This file is generated from %@ by %@.\n// Please do not edit.\n//\n\n#import \"%@\"\n\n\n", self.inputURL.lastPathComponent, self.toolName, classNameH];
+    }
+    
     if (self.skipClassDeclaration) {
         [implementation appendString:[self.implementationContents componentsJoinedByString:@""]];
     } else {
