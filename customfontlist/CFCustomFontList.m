@@ -36,6 +36,26 @@
             NSMutableString *method = [declaration mutableCopy];
             [method appendFormat:@"{\n    return [UIFont fontWithName:@\"%@\" size:fontSize];\n}\n", fontName];
             [self.implementationContents addObject:method];
+            
+            NSString *infoPlistFile = [CGUCodeGenTool runStringAsCommand:@"echo \"$SRCROOT/$INFOPLIST_FILE\""];
+            if (infoPlistFile.length > 0){
+                NSMutableDictionary *plist = [NSMutableDictionary dictionaryWithContentsOfFile:infoPlistFile];
+                if (plist){
+                    NSString *fontKey = @"UIAppFonts";
+                    NSMutableArray *fontList;
+                    if ([[plist allKeys] containsObject:fontKey]){
+                        fontList = [plist objectForKey:fontKey];
+                    } else {
+                        fontList = [[NSMutableArray alloc] init];
+                    }
+                    NSString *fontFile = [self.inputURL lastPathComponent];
+                    if (![fontList containsObject:fontFile]){
+                        [fontList addObject:fontFile];
+                        [plist setObject:fontList forKey:fontKey];
+                        [plist writeToFile:infoPlistFile atomically:YES];
+                    }
+                }
+            }
         }
     }
     

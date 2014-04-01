@@ -218,7 +218,12 @@
 	NSFileHandle *file = [pipe fileHandleForReading];
 	[task launch];
 	
-	return [[NSString alloc] initWithData:[file readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+    NSString *resultString = [[NSString alloc] initWithData:[file readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+    if (resultString.length > 0){
+        return [resultString substringToIndex:resultString.length - 1];
+    } else {
+        return nil;
+    }
 }
 
 @end
