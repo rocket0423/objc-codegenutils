@@ -12,6 +12,8 @@ Pod::Spec.new do |s|
   s.version      = "0.0.1"
   s.summary      = "A short description of objc-codegenutils."
 
+  s.osx.deployment_target = '10.9'
+
   s.source       = { :git => "https://github.com/rocket0423/objc-codegenutils.git" }
 
   s.source_files  = 'colordump/*.{h,m}', 'assetgen/*.{h,m}', 'customfontlist/*.{h,m}', 'identifierconstants/*.{h,m}', 'Shared/*.{h,m}'
