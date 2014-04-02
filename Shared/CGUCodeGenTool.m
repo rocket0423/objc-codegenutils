@@ -48,7 +48,7 @@
         while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6sui:")) != -1) {
             switch (opt) {
                 case 'h': {
-                    printf("Usage: %s [-6] [-s] [-u] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]\n", basename((char *)argv[0]));
+                    printf("Usage: %s [-6] [-s] [-u] [-i <path>] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]\n", basename((char *)argv[0]));
                     printf("       %s -h\n\n", basename((char *)argv[0]));
                     printf("Options:\n");
                     printf("    -6          Target iOS 6 in addition to iOS 7\n");

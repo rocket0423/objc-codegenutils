@@ -56,16 +56,38 @@ Call `objc-identifierconstants` with the `.storyboard` paths as arguments from t
 
 For a storyboard named "Foo" with view controller identifier "Bar" and segue identifier "Baz" somewhere in it, you'll get `FooStoryboardIdenfitiers.h` and `FooStoryboardIdentifiers.m` with `extern NSString *const FooStoryboardBarIdentifier` and `extern NSString *const FooStoryboardBazIdentifier` in it. Put them in your DerivedSources folder and you're good to go.
 
+## objc-customfontlist
+
+Sometimes the fonts that the system provides us are not enough and we have to add our custom fonts.  Sometimes when we get a font we don't know the actual name since it is different from the file name.
+
+Now with this utility we get a list of the fonts from all our .ttf files with the correct font naming so we can reference them in the project.  You also don't have to make sure you spell the name correctly any more.
+
+If you provide the infoplist file or just run the script in the Xcode build script all the fonts will be added to the infoplist file making sure all items are available to use within you app with very little work.
+
+
+### Usage
+
+Call `objc-customfontlist ` with the `.ttf` paths as arguments from the directory into which it should output the code.
+
+For a ttf file name "Foo" containing the font name "Foo-Bold", you will get 'FooFont.h" and "FooFont.m", with class methods `+ (UIFont *)Foo_BoldFontOfSize:(CGFloat)fontSize`.  Put them in your DerivedSources folder and you're good to go.
+
+If you have the command-line option '[-s]' all fonts will be placed into files 'FontList.h' and 'FontList.m'
+
 ## Command-line options (common to all three tools)
 
 Usage:
-* `objc-assetgen [-6] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]`
-* `objc-colordump [-6] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]`
-* `objc-identifierconstants [-6] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]`
+
+* `objc-assetgen [-6] [-s] [-i <path>] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]`
+* `objc-colordump [-o <path>] [-f <path>] [-p <prefix>] [<paths>]`
+* `objc-identifierconstants [-s] [-u] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]`
+* `objc-customfontlist [-s] [-u] [-i <path>] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]`
 
 Options:
 <dl>
 <dt><code>-6</code></dt><dd>Target iOS 6 in addition to iOS 7</dd>
+<dt><code>-s</code></dt><dd>Write all files into a single file</dd>
+<dt><code>-u</code></dt><dd>Check for all items to be unique (Writes both items to file causing error in build due to duplicate methods)</dd>
+<dt><code>-i &lt;path></code></dt><dd>Info Plist File at <code>&lt;path></code></dd>
 <dt><code>-o &lt;path></code></dt><dd>Output files at <code>&lt;path></code></dd>
 <dt><code>-f &lt;path></code></dt><dd>Search for input files starting from <code>&lt;path></code></dd>
 <dt><code>-p &lt;prefix></code></dt><dd>Use <code>&lt;prefix></code> as the class prefix in the generated code</dd>
