@@ -43,6 +43,9 @@
 		target6 = YES;
 	}
     infoPlist = [CGUCodeGenTool runStringAsCommand:@"echo \"$SRCROOT/$INFOPLIST_FILE\""];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:infoPlist]){
+        infoPlist = [CGUCodeGenTool runStringAsCommand:@"echo \"$INFOPLIST_FILE\""];
+    }
 	
     for (NSString *fileExtension in [self inputFileExtension]) {
         while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6sui:")) != -1) {
