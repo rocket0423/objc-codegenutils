@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Argentina</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)argentinaImage;</string>
+			<string>    return [UIImage imageNamed:@"Argentina"];</string>
+		</array>
+	</dict>
+	<key>Australia</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)australiaImage;</string>
+			<string>    return [UIImage imageNamed:@"Australia"];</string>
+		</array>
+		<key>CGTAMasterViewController.m</key>
+		<array>
+			<string>    allFlagImages = @[[UIImage imageNamed:@"USA"], [UIImage imageNamed:@"Canada"], [UIImage imageNamed:@"UK"], [UIImage imageNamed:@"Australia"]];</string>
+			<string>    allFlagImages = @[[CGTAImagesCatalog usa2Image], [CGTAImagesCatalog canadaImage], [CGTAImagesCatalog ukImage], [CGTAImagesCatalog australiaImage]];</string>
+		</array>
+	</dict>
+	<key>Austria</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)austriaImage;</string>
+			<string>    return [UIImage imageNamed:@"Austria"];</string>
+		</array>
+	</dict>
+	<key>Belgium</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)belgiumImage;</string>
+			<string>    return [UIImage imageNamed:@"Belgium"];</string>
+		</array>
+	</dict>
+	<key>Brazil</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)brazilImage;</string>
+			<string>    return [UIImage imageNamed:@"Brazil"];</string>
+		</array>
+	</dict>
+	<key>Cameroon</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)cameroonImage;</string>
+			<string>    return [UIImage imageNamed:@"Cameroon"];</string>
+		</array>
+	</dict>
+	<key>Canada</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)canadaImage;</string>
+			<string>    return [UIImage imageNamed:@"Canada"];</string>
+		</array>
+		<key>CGTAMasterViewController.m</key>
+		<array>
+			<string>    allFlagImages = @[[UIImage imageNamed:@"USA"], [UIImage imageNamed:@"Canada"], [UIImage imageNamed:@"UK"], [UIImage imageNamed:@"Australia"]];</string>
+			<string>    allFlagImages = @[[CGTAImagesCatalog usa2Image], [CGTAImagesCatalog canadaImage], [CGTAImagesCatalog ukImage], [CGTAImagesCatalog australiaImage]];</string>
+		</array>
+	</dict>
+	<key>Chile</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)chileImage;</string>
+			<string>    return [UIImage imageNamed:@"Chile"];</string>
+		</array>
+	</dict>
+	<key>China</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)chinaImage;</string>
+			<string>    return [UIImage imageNamed:@"China"];</string>
+		</array>
+	</dict>
+	<key>Denmark</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)denmarkImage;</string>
+			<string>    return [UIImage imageNamed:@"Denmark"];</string>
+		</array>
+	</dict>
+	<key>Finland</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)finlandImage;</string>
+			<string>    return [UIImage imageNamed:@"Finland"];</string>
+		</array>
+	</dict>
+	<key>France</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)franceImage;</string>
+			<string>    return [UIImage imageNamed:@"France"];</string>
+		</array>
+	</dict>
+	<key>Germany</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)germanyImage;</string>
+			<string>    return [UIImage imageNamed:@"Germany"];</string>
+		</array>
+	</dict>
+	<key>Greece</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)greeceImage;</string>
+			<string>    return [UIImage imageNamed:@"Greece"];</string>
+		</array>
+	</dict>
+	<key>Hong Kong</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>    return [UIImage imageNamed:@"Hong Kong"];</string>
+		</array>
+	</dict>
+	<key>Hungary</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)hungaryImage;</string>
+			<string>    return [UIImage imageNamed:@"Hungary"];</string>
+		</array>
+	</dict>
+	<key>Iceland</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)icelandImage;</string>
+			<string>    return [UIImage imageNamed:@"Iceland"];</string>
+		</array>
+	</dict>
+	<key>India</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)indiaImage;</string>
+			<string>    return [UIImage imageNamed:@"India"];</string>
+		</array>
+	</dict>
+	<key>Indonesia</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)indonesiaImage;</string>
+			<string>    return [UIImage imageNamed:@"Indonesia"];</string>
+		</array>
+	</dict>
+	<key>Ireland</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)irelandImage;</string>
+			<string>    return [UIImage imageNamed:@"Ireland"];</string>
+		</array>
+	</dict>
+	<key>Israel</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)israelImage;</string>
+			<string>    return [UIImage imageNamed:@"Israel"];</string>
+		</array>
+	</dict>
+	<key>Italy</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)italyImage;</string>
+			<string>    return [UIImage imageNamed:@"Italy"];</string>
+		</array>
+	</dict>
+	<key>Japan</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)japanImage;</string>
+			<string>    return [UIImage imageNamed:@"Japan"];</string>
+		</array>
+	</dict>
+	<key>Malaysia</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)malaysiaImage;</string>
+			<string>    return [UIImage imageNamed:@"Malaysia"];</string>
+		</array>
+	</dict>
+	<key>Mexico</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)mexicoImage;</string>
+			<string>    return [UIImage imageNamed:@"Mexico"];</string>
+		</array>
+	</dict>
+	<key>Netherlands</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)netherlandsImage;</string>
+			<string>    return [UIImage imageNamed:@"Netherlands"];</string>
+		</array>
+	</dict>
+	<key>New Zealand</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>    return [UIImage imageNamed:@"New Zealand"];</string>
+		</array>
+	</dict>
+	<key>Norway</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)norwayImage;</string>
+			<string>    return [UIImage imageNamed:@"Norway"];</string>
+		</array>
+	</dict>
+	<key>Pakistan</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)pakistanImage;</string>
+			<string>    return [UIImage imageNamed:@"Pakistan"];</string>
+		</array>
+	</dict>
+	<key>Palestine</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)palestineImage;</string>
+			<string>    return [UIImage imageNamed:@"Palestine"];</string>
+		</array>
+	</dict>
+	<key>Peru</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)peruImage;</string>
+			<string>    return [UIImage imageNamed:@"Peru"];</string>
+		</array>
+	</dict>
+	<key>Poland</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)polandImage;</string>
+			<string>    return [UIImage imageNamed:@"Poland"];</string>
+		</array>
+	</dict>
+	<key>Portugal</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)portugalImage;</string>
+			<string>    return [UIImage imageNamed:@"Portugal"];</string>
+		</array>
+	</dict>
+	<key>Puerto Rico</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>    return [UIImage imageNamed:@"Puerto Rico"];</string>
+		</array>
+	</dict>
+	<key>Romania</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)romaniaImage;</string>
+			<string>    return [UIImage imageNamed:@"Romania"];</string>
+		</array>
+	</dict>
+	<key>Russia</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)russiaImage;</string>
+			<string>    return [UIImage imageNamed:@"Russia"];</string>
+		</array>
+	</dict>
+	<key>Saudi Arabia</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>    return [UIImage imageNamed:@"Saudi Arabia"];</string>
+		</array>
+	</dict>
+	<key>Singapore</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)singaporeImage;</string>
+			<string>    return [UIImage imageNamed:@"Singapore"];</string>
+		</array>
+	</dict>
+	<key>South Africa</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>    return [UIImage imageNamed:@"South Africa"];</string>
+		</array>
+	</dict>
+	<key>South Korea</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>    return [UIImage imageNamed:@"South Korea"];</string>
+		</array>
+	</dict>
+	<key>Spain</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)spainImage;</string>
+			<string>    return [UIImage imageNamed:@"Spain"];</string>
+		</array>
+	</dict>
+	<key>Sweden</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)swedenImage;</string>
+			<string>    return [UIImage imageNamed:@"Sweden"];</string>
+		</array>
+	</dict>
+	<key>Switzerland</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)switzerlandImage;</string>
+			<string>    return [UIImage imageNamed:@"Switzerland"];</string>
+		</array>
+	</dict>
+	<key>Thailand</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)thailandImage;</string>
+			<string>    return [UIImage imageNamed:@"Thailand"];</string>
+		</array>
+	</dict>
+	<key>Turkey</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)turkeyImage;</string>
+			<string>    return [UIImage imageNamed:@"Turkey"];</string>
+		</array>
+	</dict>
+	<key>UK</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)ukImage;</string>
+			<string>    return [UIImage imageNamed:@"UK"];</string>
+			<string>+ (UIImage *)ukraineImage;</string>
+			<string>    return [UIImage imageNamed:@"Ukraine"];</string>
+		</array>
+		<key>CGTAMasterViewController.m</key>
+		<array>
+			<string>    allFlagImages = @[[UIImage imageNamed:@"USA"], [UIImage imageNamed:@"Canada"], [UIImage imageNamed:@"UK"], [UIImage imageNamed:@"Australia"]];</string>
+			<string>    allFlagImages = @[[CGTAImagesCatalog usa2Image], [CGTAImagesCatalog canadaImage], [CGTAImagesCatalog ukImage], [CGTAImagesCatalog australiaImage]];</string>
+		</array>
+	</dict>
+	<key>USA</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)usaImage;</string>
+			<string>    return [UIImage imageNamed:@"USA"];</string>
+		</array>
+		<key>CGTAMasterViewController.m</key>
+		<array>
+			<string>    allFlagImages = @[[UIImage imageNamed:@"USA"], [UIImage imageNamed:@"Canada"], [UIImage imageNamed:@"UK"], [UIImage imageNamed:@"Australia"]];</string>
+			<string>    allFlagImages = @[[CGTAImagesCatalog usa2Image], [CGTAImagesCatalog canadaImage], [CGTAImagesCatalog ukImage], [CGTAImagesCatalog australiaImage]];</string>
+			<string>    CGTAFlagCollectionViewCell *cell = (CGTAFlagCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CGTAMainStoryboardImageCellIdentifier forIndexPath:indexPath];</string>
+		</array>
+		<key>Main.storyboard</key>
+		<array>
+			<string>                                        &lt;imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="USA" translatesAutoresizingMaskIntoConstraints="NO" id="LPM-aq-eVP"&gt;</string>
+			<string>                                        &lt;imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="USA" translatesAutoresizingMaskIntoConstraints="NO" id="2NO-Yu-fto"&gt;</string>
+			<string>                            &lt;imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="USA" translatesAutoresizingMaskIntoConstraints="NO" id="A76-iE-vAf"&gt;</string>
+			<string>        &lt;image name="USA" width="128" height="128"/&gt;</string>
+		</array>
+	</dict>
+	<key>Ukraine</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)ukraineImage;</string>
+			<string>    return [UIImage imageNamed:@"Ukraine"];</string>
+		</array>
+	</dict>
+	<key>Uruguay</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)uruguayImage;</string>
+			<string>    return [UIImage imageNamed:@"Uruguay"];</string>
+		</array>
+	</dict>
+	<key>Venezuela</key>
+	<dict>
+		<key>CGTAImagesCatalog.m</key>
+		<array>
+			<string>+ (UIImage *)venezuelaImage;</string>
+			<string>    return [UIImage imageNamed:@"Venezuela"];</string>
+		</array>
+	</dict>
+</dict>
+</plist>

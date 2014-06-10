@@ -17,6 +17,7 @@
 + (NSArray *)inputFileExtension;
 
 @property (copy) NSURL *inputURL;
+@property (copy) NSURL *searchingURL;
 @property (copy) NSString *classPrefix;
 @property BOOL targetiOS6;
 @property BOOL skipClassDeclaration;

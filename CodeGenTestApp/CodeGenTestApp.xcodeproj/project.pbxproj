@@ -68,6 +68,20 @@
 			remoteGlobalIDString = A838791E18A04BF700B386D6;
 			remoteInfo = identifierconstants;
 		};
+		BDA8B7F8192ABB6F00F18A49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A881852718A9B520002803FC /* codegenutils.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BDA8B7EB192AB25600F18A49;
+			remoteInfo = assetverify;
+		};
+		BDA8B7FA192ABC6400F18A49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A881852718A9B520002803FC /* codegenutils.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BDA8B7E0192AB25600F18A49;
+			remoteInfo = assetverify;
+		};
 		BDFA8B1618CE47970087BB74 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A881852718A9B520002803FC /* codegenutils.xcodeproj */;
@@ -179,6 +193,7 @@
 				A881853018A9B520002803FC /* objc-colordump */,
 				A881853218A9B520002803FC /* objc-identifierconstants */,
 				BDFA8B1A18CE47970087BB74 /* objc-customfontlist */,
+				BDA8B7F9192ABB6F00F18A49 /* objc-assetverify */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -263,6 +278,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				BDA8B7FB192ABC6400F18A49 /* PBXTargetDependency */,
 				BDFA8B1718CE47970087BB74 /* PBXTargetDependency */,
 				A881853418A9B53F002803FC /* PBXTargetDependency */,
 				A881853618A9B53F002803FC /* PBXTargetDependency */,
@@ -328,6 +344,13 @@
 			remoteRef = A881853118A9B520002803FC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BDA8B7F9192ABB6F00F18A49 /* objc-assetverify */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "objc-assetverify";
+			remoteRef = BDA8B7F8192ABB6F00F18A49 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		BDFA8B1A18CE47970087BB74 /* objc-customfontlist */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
@@ -364,7 +387,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "DERIVED_SOURCES=\"$SRCROOT/Derived Sources\"\nTOOL_PATH=\"$BUILD_ROOT/$CONFIGURATION\"\n\nIDENTIFIERS_PATH=\"$DERIVED_SOURCES/Identifiers\"\nCATALOGS_PATH=\"$DERIVED_SOURCES/Catalogs\"\nFONTS_PATH=\"$DERIVED_SOURCES/Fonts\"\nCOLORS_PATH=\"$DERIVED_SOURCES/Colors\"\n\nrm -rf \"$IDENTIFIERS_PATH\"\nrm -rf \"$CATALOGS_PATH\"\nrm -rf \"$FONTS_PATH\"\nrm -rf \"$COLORS_PATH\"\nmkdir -p \"$IDENTIFIERS_PATH\"\nmkdir -p \"$CATALOGS_PATH\"\nmkdir -p \"$FONTS_PATH\"\nmkdir -p \"$COLORS_PATH\"\n\n\"$TOOL_PATH/objc-assetgen\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-identifierconstants\" -f \"$SRCROOT\" -o \"$IDENTIFIERS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-customfontlist\" -u -s -f \"$SRCROOT\" -o \"$FONTS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-colordump\" -f \"$SRCROOT\" -o \"$COLORS_PATH\" -p CGTA\n";
+			shellScript = "DERIVED_SOURCES=\"$SRCROOT/Derived Sources\"\nTOOL_PATH=\"$BUILD_ROOT/$CONFIGURATION\"\n\nIDENTIFIERS_PATH=\"$DERIVED_SOURCES/Identifiers\"\nCATALOGS_PATH=\"$DERIVED_SOURCES/Catalogs\"\nFONTS_PATH=\"$DERIVED_SOURCES/Fonts\"\nCOLORS_PATH=\"$DERIVED_SOURCES/Colors\"\nVERIFY_PATH=\"$DERIVED_SOURCES/Verify\"\n\nrm -rf \"$IDENTIFIERS_PATH\"\nrm -rf \"$CATALOGS_PATH\"\nrm -rf \"$FONTS_PATH\"\nrm -rf \"$COLORS_PATH\"\nrm -rf \"$VERIFY_PATH\"\nmkdir -p \"$IDENTIFIERS_PATH\"\nmkdir -p \"$CATALOGS_PATH\"\nmkdir -p \"$FONTS_PATH\"\nmkdir -p \"$COLORS_PATH\"\nmkdir -p \"$VERIFY_PATH\"\n\n\"$TOOL_PATH/objc-assetgen\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-identifierconstants\" -f \"$SRCROOT\" -o \"$IDENTIFIERS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-customfontlist\" -u -s -f \"$SRCROOT\" -o \"$FONTS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-colordump\" -f \"$SRCROOT\" -o \"$COLORS_PATH\" -p CGTA\n\"$TOOL_PATH/objc-assetverify\" -f \"$SRCROOT\" -o \"$VERIFY_PATH\" -p CGTA\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -402,6 +425,11 @@
 			isa = PBXTargetDependency;
 			name = identifierconstants;
 			targetProxy = A881853718A9B53F002803FC /* PBXContainerItemProxy */;
+		};
+		BDA8B7FB192ABC6400F18A49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = assetverify;
+			targetProxy = BDA8B7FA192ABC6400F18A49 /* PBXContainerItemProxy */;
 		};
 		BDFA8B1718CE47970087BB74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -137,6 +137,7 @@
         if (!singleFile){
             target = [self new];
         }
+        target.searchingURL = searchURL;
         target.infoPlistFile = infoPlist;
         target.inputURL = url;
         target.targetiOS6 = target6;
@@ -232,7 +233,6 @@
 
 + (NSString *)runStringAsCommand:(NSString *)string{
 	NSPipe *pipe = [NSPipe pipe];
-	
 	NSTask *task = [[NSTask alloc] init];
 	[task setLaunchPath:@"/bin/sh"];
 	[task setArguments:@[@"-c", [NSString stringWithFormat:@"%@", string]]];
