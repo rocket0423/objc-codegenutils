@@ -31,8 +31,6 @@
     // Install this color list
     [colorList writeToFile:nil];
     
-    if (!self.interfaceContents)
-        self.interfaceContents = [NSMutableArray array];
     if (!self.implementationContents)
         self.implementationContents = [NSMutableArray array];
     
@@ -46,11 +44,8 @@
         CGFloat r, g, b, a;
         [color getRed:&r green:&g blue:&b alpha:&a];
         
-        NSString *declaration = [NSString stringWithFormat:@"+ (UIColor *)%@Color;\n", [self methodNameForKey:key]];
-        [self.interfaceContents addObject:declaration];
-        
-        NSMutableString *method = [declaration mutableCopy];
-        [method appendFormat:@"{\n    return [UIColor colorWithRed:%.3ff green:%.3ff blue:%.3ff alpha:%.3ff];\n}\n", r, g, b, a];
+        NSMutableString *method = [[NSMutableString alloc] initWithFormat:@"    class func %@Color() -> UIColor", [self methodNameForKey:key]];
+        [method appendFormat:@"{\n        return UIColor(red: %.3f, green: %.3f, blue: %.3f, alpha: %.3f)\n    }\n\n", r, g, b, a];
         [self.implementationContents addObject:method];
     }
     

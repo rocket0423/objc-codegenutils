@@ -50,10 +50,10 @@
     [identifiers addObjectsFromArray:reuseIdentifiers];
     [identifiers addObjectsFromArray:segueIdentifiers];
     
-    if (!self.interfaceContents)
-        self.interfaceContents = [NSMutableArray array];
     if (!self.implementationContents)
         self.implementationContents = [NSMutableArray array];
+    if (!self.objcItems && self.targetObjC)
+        self.objcItems = [NSMutableArray array];
     
     NSMutableDictionary *uniqueKeys = [NSMutableDictionary dictionary];
 	NSMutableArray *allKeys = [[NSMutableArray alloc] init];
@@ -63,7 +63,7 @@
     } else {
         extensionKey = [NSString stringWithFormat:@"%@%@%@Name", self.classPrefix, formattedFilename, extension];
     }
-	uniqueKeys[extensionKey] = filename;
+    uniqueKeys[extensionKey] = filename;
 	[allKeys addObject:extensionKey];
     
     for (NSString *identifier in identifiers) {
@@ -84,11 +84,15 @@
 		loadedKeys = allKeys;
 	} else {
 		loadedKeys = [uniqueKeys allKeys];
-	}
-	
+    }
+    
     for (NSString *key in [loadedKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]) {
-        [self.interfaceContents addObject:[NSString stringWithFormat:@"extern NSString *const %@;\n", key]];
-        [self.implementationContents addObject:[NSString stringWithFormat:@"NSString *const %@ = @\"%@\";\n", key, uniqueKeys[key]]];
+        if (self.targetObjC) {
+            [self.objcItems addObject:[NSString stringWithFormat:@"extern NSString *const %@;\n", key]];
+            [self.implementationContents addObject:[NSString stringWithFormat:@"NSString *const %@ = @\"%@\";\n", key, uniqueKeys[key]]];
+        } else {
+            [self.implementationContents addObject:[NSString stringWithFormat:@"let %@ = \"%@\"\n", key, uniqueKeys[key]]];
+        }
     }
     
     if (!self.writeSingleFile || self.lastFile)

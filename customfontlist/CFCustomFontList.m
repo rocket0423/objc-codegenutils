@@ -22,19 +22,14 @@
         self.className = [NSString stringWithFormat:@"%@FontList", self.classPrefix];
     else
         self.className = [NSString stringWithFormat:@"%@%@Font", self.classPrefix, fontFileName];
-    if (!self.interfaceContents)
-        self.interfaceContents = [NSMutableArray array];
     if (!self.implementationContents)
         self.implementationContents = [NSMutableArray array];
     
     NSString *fontName = [CFCustomFontList fontNameFromTTFPath:self.inputURL];
     if (fontName){
-        NSString *declaration = [NSString stringWithFormat:@"+ (UIFont *)%@FontOfSize:(CGFloat)fontSize;\n", [self methodNameForKey:fontName]];
-        if (self.uniqueItemCheck || ![self.interfaceContents containsObject:declaration]) {
-            [self.interfaceContents addObject:declaration];
-            
-            NSMutableString *method = [declaration mutableCopy];
-            [method appendFormat:@"{\n    return [UIFont fontWithName:@\"%@\" size:fontSize];\n}\n", fontName];
+        NSMutableString *method = [[NSMutableString alloc] initWithFormat:@"    class func %@FontOfSize(fontSize : CGFloat) -> UIFont {", [self methodNameForKey:fontName]];
+        [method appendFormat:@"\n        return UIFont(name: \"%@\", size: fontSize)\n    }\n\n", fontName];
+        if (self.uniqueItemCheck || ![self.implementationContents containsObject:method]) {
             [self.implementationContents addObject:method];
             
             if (self.infoPlistFile.length > 0){

@@ -29,13 +29,13 @@
 
 + (int)startWithArgc:(int)argc argv:(const char **)argv;
 {
-    char opt = -1;
     NSURL *searchURL = nil;
     NSString *classPrefix = @"";
     NSString *infoPlist = @"";
     BOOL target6 = NO;
     BOOL singleFile = NO;
     BOOL uniqueCheck = NO;
+    BOOL objc = NO;
     NSMutableArray *inputURLs = [NSMutableArray array];
     
 	NSString *currentAppVersion = [CGUCodeGenTool runStringAsCommand:@"echo \"$IPHONEOS_DEPLOYMENT_TARGET\""];
@@ -46,74 +46,45 @@
     if (![[NSFileManager defaultManager] fileExistsAtPath:infoPlist]){
         infoPlist = [CGUCodeGenTool runStringAsCommand:@"echo \"$INFOPLIST_FILE\""];
     }
-	
+    
     for (NSString *fileExtension in [self inputFileExtension]) {
-        while ((opt = getopt(argc, (char *const*)argv, "o:f:p:h6sui:")) != -1) {
-            switch (opt) {
-                case 'h': {
-                    printf("Usage: %s [-6] [-s] [-u] [-i <path>] [-o <path>] [-f <path>] [-p <prefix>] [<paths>]\n", basename((char *)argv[0]));
-                    printf("       %s -h\n\n", basename((char *)argv[0]));
-                    printf("Options:\n");
-                    printf("    -6          Target iOS 6 in addition to iOS 7\n");
-                    printf("    -o <path>   Output files at <path>\n");
-                    printf("    -i <path>   Info Plist file at <path>\n");
-                    printf("    -f <path>   Search for *.%s folders starting from <path>\n", [fileExtension UTF8String]);
-                    printf("    -p <prefix> Use <prefix> as the class prefix in the generated code\n");
-                    printf("    -s          Generates everything in one file instead of multiple files");
-                    printf("    -u          Used to make sure there are only unique items if they are duplicates it will write the duplicate to file causing error\n");
-                    printf("    -h          Print this help and exit\n");
-                    printf("    <paths>     Input files; this and/or -f are required.\n");
-                    return 0;
-                }
-                    
-                case 'o': {
-                    NSString *outputPath = [[NSString alloc] initWithUTF8String:optarg];
-                    outputPath = [outputPath stringByExpandingTildeInPath];
-                    [[NSFileManager defaultManager] changeCurrentDirectoryPath:outputPath];
-                    break;
-                }
-                    
-                case 'f': {
-                    NSString *searchPath = [[NSString alloc] initWithUTF8String:optarg];
-                    searchPath = [searchPath stringByExpandingTildeInPath];
-                    searchURL = [NSURL fileURLWithPath:searchPath];
-                    break;
-                }
-                    
-                case 'p': {
-                    classPrefix = [[NSString alloc] initWithUTF8String:optarg];
-                    break;
-                }
-                    
-                case '6': {
-                    target6 = YES;
-                    break;
-                }
-                    
-                case 's': {
-                    singleFile = YES;
-                    break;
-                }
-                    
-                case 'u': {
-                    uniqueCheck = YES;
-                    break;
-                }
-                    
-                case 'i': {
-                    infoPlist = [[[NSString alloc] initWithUTF8String:optarg] stringByExpandingTildeInPath];
-                    break;
-                }
-                    
-                default:
-                    break;
+        for (int i=0;i<argc;i++){
+            NSString *nextArgument = [NSString stringWithFormat:@"%s", argv[i]];
+            if ([nextArgument isEqualToString:@"-h"]){
+                printf("Usage: %s [-6] [-s] [-u] [-objc] [-i <path>] [-o <path>] [-f <path>] [-p <prefix>]\n", basename((char *)argv[0]));
+                printf("       %s -h\n\n", basename((char *)argv[0]));
+                printf("Options:\n");
+                printf("    -6          Target iOS 6 in addition to iOS 7\n");
+                printf("    -o <path>   Output files at <path>\n");
+                printf("    -i <path>   Info Plist file at <path>\n");
+                printf("    -f <path>   Search for *.%s folders starting from <path>\n", [fileExtension UTF8String]);
+                printf("    -p <prefix> Use <prefix> as the class prefix in the generated code\n");
+                printf("    -s          Generates everything in one file instead of multiple files");
+                printf("    -objc       Generates files that can be used by objc by default they are created for swift only");
+                printf("    -u          Used to make sure there are only unique items if they are duplicates it will write the duplicate to file causing error\n");
+                printf("    -h          Print this help and exit\n");
+                return 0;
+            } else if ([nextArgument isEqualToString:@"-o"]){
+                NSString *outputPath = [NSString stringWithFormat:@"%s", argv[++i]];
+                outputPath = [outputPath stringByExpandingTildeInPath];
+                [[NSFileManager defaultManager] changeCurrentDirectoryPath:outputPath];
+            } else if ([nextArgument isEqualToString:@"-f"]){
+                NSString *searchPath = [NSString stringWithFormat:@"%s", argv[++i]];
+                searchPath = [searchPath stringByExpandingTildeInPath];
+                searchURL = [NSURL fileURLWithPath:searchPath];
+            } else if ([nextArgument isEqualToString:@"-p"]){
+                classPrefix = [NSString stringWithFormat:@"%s", argv[++i]];
+            } else if ([nextArgument isEqualToString:@"-6"]){
+                target6 = YES;
+            } else if ([nextArgument isEqualToString:@"-s"]){
+                singleFile = YES;
+            } else if ([nextArgument isEqualToString:@"-u"]){
+                uniqueCheck = YES;
+            } else if ([nextArgument isEqualToString:@"-i"]){
+                infoPlist = [[NSString stringWithFormat:@"%s", argv[++i]] stringByExpandingTildeInPath];
+            } else if ([nextArgument isEqualToString:@"-objc"]){
+                objc = YES;
             }
-        }
-        
-        for (int index = optind; index < argc; index++) {
-            NSString *inputPath = [[NSString alloc] initWithUTF8String:argv[index]];
-            inputPath = [inputPath stringByExpandingTildeInPath];
-            [inputURLs addObject:[NSURL fileURLWithPath:inputPath]];
         }
         
         if (searchURL) {
@@ -141,6 +112,7 @@
         target.infoPlistFile = infoPlist;
         target.inputURL = url;
         target.targetiOS6 = target6;
+        target.targetObjC = objc;
         target.classPrefix = classPrefix;
         target.writeSingleFile = singleFile;
 		target.uniqueItemCheck = uniqueCheck;
@@ -164,48 +136,49 @@
 {
     NSAssert(self.className, @"Class name isn't set");
 
-    NSString *classNameH = [self.className stringByAppendingPathExtension:@"h"];
-    NSString *classNameM = [self.className stringByAppendingPathExtension:@"m"];
+    NSString *classNameSwift = [self.className stringByAppendingPathExtension:@"swift"];
 
     NSURL *currentDirectory = [NSURL fileURLWithPath:[[NSFileManager new] currentDirectoryPath]];
-    NSURL *interfaceURL = [currentDirectory URLByAppendingPathComponent:classNameH];
-    NSURL *implementationURL = [currentDirectory URLByAppendingPathComponent:classNameM];
+    NSURL *implementationURL = [currentDirectory URLByAppendingPathComponent:classNameSwift];
     
-    [self.interfaceContents sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [obj1 compare:obj2];
-    }];
     [self.implementationContents sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         return [obj1 compare:obj2];
     }];
-    
-    NSMutableString *interface;
-    if (self.writeSingleFile){
-        interface = [NSMutableString stringWithFormat:@"//\n// This file is generated from all .%@ files by %@.\n// Please do not edit.\n//\n\n#import <UIKit/UIKit.h>\n\n\n", self.inputURL.pathExtension, self.toolName];
-    } else {
-        interface = [NSMutableString stringWithFormat:@"//\n// This file is generated from %@ by %@.\n// Please do not edit.\n//\n\n#import <UIKit/UIKit.h>\n\n\n", self.inputURL.lastPathComponent, self.toolName];
-    }
-
-    if (self.skipClassDeclaration) {
-        [interface appendString:[self.interfaceContents componentsJoinedByString:@""]];
-    } else {
-        [interface appendFormat:@"@interface %@ : NSObject\n\n%@\n@end\n", self.className, [self.interfaceContents componentsJoinedByString:@""]];
-    }
-    
-    if (![interface isEqualToString:[NSString stringWithContentsOfURL:interfaceURL encoding:NSUTF8StringEncoding error:NULL]]) {
-        [interface writeToURL:interfaceURL atomically:YES encoding:NSUTF8StringEncoding error:NULL];
-    }
+    [self.objcItems sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2];
+    }];
     
     NSMutableString *implementation;
     if (self.writeSingleFile){
-        implementation = [NSMutableString stringWithFormat:@"//\n// This file is generated from all .%@ files by %@.\n// Please do not edit.\n//\n\n#import \"%@\"\n\n\n", self.inputURL.pathExtension, self.toolName, classNameH];
+        implementation = [NSMutableString stringWithFormat:@"//\n// This file is generated from all .%@ files by %@.\n// Please do not edit.\n//\n\n", self.inputURL.pathExtension, self.toolName];
     } else {
-        implementation = [NSMutableString stringWithFormat:@"//\n// This file is generated from %@ by %@.\n// Please do not edit.\n//\n\n#import \"%@\"\n\n\n", self.inputURL.lastPathComponent, self.toolName, classNameH];
+        implementation = [NSMutableString stringWithFormat:@"//\n// This file is generated from %@ by %@.\n// Please do not edit.\n//\n\n", self.inputURL.lastPathComponent, self.toolName];
     }
     
     if (self.skipClassDeclaration) {
-        [implementation appendString:[self.implementationContents componentsJoinedByString:@""]];
-    } else {
-        [implementation appendFormat:@"@implementation %@\n\n%@\n@end\n", self.className, [self.implementationContents componentsJoinedByString:@"\n"]];
+        if (self.targetObjC){
+            NSString *classNameH = [self.className stringByAppendingPathExtension:@"h"];
+            NSString *classNameM = [self.className stringByAppendingPathExtension:@"m"];
+            NSURL *objcInterfaceURL = [currentDirectory URLByAppendingPathComponent:classNameH];
+            implementationURL = [currentDirectory URLByAppendingPathComponent:classNameM];
+            
+            NSMutableString *interface = [implementation mutableCopy];
+            [interface appendFormat:@"#import <UIKit/UIKit.h>\n\n\n"];
+            [interface appendString:[self.objcItems componentsJoinedByString:@""]];
+            
+            [implementation appendFormat:@"#import \"%@\"\n\n\n", classNameH];
+            [implementation appendString:[self.implementationContents componentsJoinedByString:@""]];
+            
+            if (![interface isEqualToString:[NSString stringWithContentsOfURL:objcInterfaceURL encoding:NSUTF8StringEncoding error:NULL]]) {
+                [interface writeToURL:objcInterfaceURL atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+            }
+        } else {
+            [implementation appendFormat:@"import UIKit\n\n\n"];
+            [implementation appendString:[self.implementationContents componentsJoinedByString:@""]];
+        }
+    } else if (!self.skipClassDeclaration) {
+        [implementation appendFormat:@"import UIKit\n\n\n"];
+        [implementation appendFormat:@"%@class %@: NSObject {\n\n%@}\n", (self.targetObjC ? @"@objc " : @""), self.className, [self.implementationContents componentsJoinedByString:@""]];
     }
 
     if (![implementation isEqualToString:[NSString stringWithContentsOfURL:implementationURL encoding:NSUTF8StringEncoding error:NULL]]) {

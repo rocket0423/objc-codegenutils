@@ -31,8 +31,8 @@
         dispatch_async(dispatchQueue, ^{
             [self findImageSetURLs];
             
-            if (!self.interfaceContents)
-                self.interfaceContents = [@[[[NSMutableDictionary alloc] initWithCapacity:[self.imageSetURLs count]]] mutableCopy];
+            if (!self.implementationContents)
+                self.implementationContents = [@[[[NSMutableDictionary alloc] initWithCapacity:[self.imageSetURLs count]]] mutableCopy];
             
             if (self.writeSingleFile)
                 self.className = [[NSString stringWithFormat:@"%@CatalogVerify", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -56,8 +56,8 @@
         // Since writing to the same file need to do consecutively
         [self findImageSetURLs];
         
-        if (!self.interfaceContents)
-            self.interfaceContents = [@[[[NSMutableDictionary alloc] initWithCapacity:[self.imageSetURLs count]]] mutableCopy];
+        if (!self.implementationContents)
+            self.implementationContents = [@[[[NSMutableDictionary alloc] initWithCapacity:[self.imageSetURLs count]]] mutableCopy];
         
         if (self.writeSingleFile)
             self.className = [[NSString stringWithFormat:@"%@CatalogVerify", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -80,7 +80,7 @@
     
     NSURL *currentDirectory = [NSURL fileURLWithPath:[[NSFileManager new] currentDirectoryPath]];
     NSURL *plistURL = [currentDirectory URLByAppendingPathComponent:plistFile];
-    NSDictionary *dictionary = [self.interfaceContents firstObject];
+    NSDictionary *dictionary = [self.implementationContents firstObject];
     [dictionary writeToFile:[[[plistURL absoluteString] substringFromIndex:7] stringByReplacingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy] atomically:YES];
     NSLog(@"Wrote %@ to %@", self.className, currentDirectory);
     
@@ -102,7 +102,7 @@
 {
     NSString *absolutePath = [[[self.searchingURL absoluteString] substringFromIndex:7] stringByReplacingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
     NSString *imageSetName = [[url lastPathComponent] stringByDeletingPathExtension];
-    NSMutableDictionary *finalDictionary = [self.interfaceContents firstObject];
+    NSMutableDictionary *finalDictionary = [self.implementationContents firstObject];
     NSMutableDictionary *resultDictionary = [finalDictionary objectForKey:imageSetName];
     if (!resultDictionary){
         resultDictionary = [[NSMutableDictionary alloc] init];
@@ -129,7 +129,7 @@
         }
     }
     [finalDictionary setObject:resultDictionary forKey:imageSetName];
-    self.interfaceContents = [@[finalDictionary] mutableCopy];
+    self.implementationContents = [@[finalDictionary] mutableCopy];
 }
 
 @end

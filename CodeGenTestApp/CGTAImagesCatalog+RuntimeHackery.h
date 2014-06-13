@@ -7,10 +7,10 @@
 //  See the LICENSE file distributed with this work for the terms under
 //  which Square, Inc. licenses this file to you.
 
-#import "CGTAImagesCatalog.h"
-
-@interface CGTAImagesCatalog (RuntimeHackery)
-
-+ (NSArray *)allImages;
-
-@end
+//#import "CGTAImagesCatalog.h"
+//
+//@interface CGTAImagesCatalog (RuntimeHackery)
+//
+//+ (NSArray *)allImages;
+//
+//@end

@@ -33,8 +33,6 @@
         dispatch_async(dispatchQueue, ^{
             [self findImageSetURLs];
             
-            if (!self.interfaceContents)
-                self.interfaceContents = [NSMutableArray array];
             if (!self.implementationContents)
                 self.implementationContents = [NSMutableArray array];
             
@@ -60,8 +58,6 @@
         // Since writing to the same file need to do consecutively
         [self findImageSetURLs];
         
-        if (!self.interfaceContents)
-            self.interfaceContents = [NSMutableArray array];
         if (!self.implementationContents)
             self.implementationContents = [NSMutableArray array];
         
@@ -131,19 +127,13 @@
         
         return -[obj1[@"scale"] compare:obj2[@"scale"]];
     }];
-	
-    NSString *interface = [NSString stringWithFormat:@"+ (UIImage *)%@Image;\n", methodName];
-    @synchronized(self.interfaceContents) {
-        [self.interfaceContents addObject:interface];
-    }
     
-    NSMutableString *implementation = [interface mutableCopy];
-    [implementation appendString:@"{\n"];
+    NSMutableString *implementation = [[NSMutableString alloc] initWithFormat:@"    class func %@Image() -> UIImage? {\n", methodName];
     
     // If we're only targeting iOS 7, short circuit since the asset catalog will have been compiled for us.
     if (!self.targetiOS6) {
-        [implementation appendFormat:@"    return [UIImage imageNamed:@\"%@\"];\n", imageSetName];
-        [implementation appendString:@"}\n"];
+        [implementation appendFormat:@"        return UIImage(named: \"%@\")\n", imageSetName];
+        [implementation appendString:@"    }\n\n"];
     } else {
         NSMutableArray *updatedImagesJson = [[NSMutableArray alloc] initWithCapacity:[variants count]];
         NSMutableArray *pathsToUpdate = [[NSMutableArray alloc] init];
@@ -202,7 +192,7 @@
         }
         
         if (hasResizing){
-            [implementation appendString:@"    UIImage *image = nil;\n\n"];
+            [implementation appendString:@"        var image: UIImage?\n\n"];
             
             for (NSDictionary *variant in variants) {
                 if (!variant[@"filename"]) {
@@ -210,21 +200,17 @@
                 }
                 BOOL isUniversal = [variant[@"idiom"] isEqualToString:@"universal"];
                 BOOL isRetina4Inch = [variant[@"subtype"] isEqualToString:@"retina4"];
-                NSString *indentation = @"";
+                NSString *indentation = @"    ";
                 if (!isUniversal) {
-                    NSString *idiom = [variant[@"idiom"] isEqualToString:@"iphone"] ? @"UIUserInterfaceIdiomPhone" : @"UIUserInterfaceIdiomPad";
-                    [implementation appendFormat:@"    if (UI_USER_INTERFACE_IDIOM() == %@%@) {\n", idiom, isRetina4Inch ? @" && [UIScreen mainScreen].bounds.size.height == 568.0f" : @""];
-                    indentation = @"    ";
+                    indentation = @"        ";
+                    NSString *idiom = [variant[@"idiom"] isEqualToString:@"iphone"] ? @"Phone" : @"Pad";
+                    [implementation appendFormat:@"%@if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.%@%@) {\n", indentation, idiom, isRetina4Inch ? @" && UIScreen.mainScreen().bounds.height == 568.0" : @""];
                 }
                 
                 CGFloat scale = [variant[@"scale"] floatValue];
                 NSString *scaleIndentation = [indentation stringByAppendingString:@"    "];
-                [implementation appendFormat:@"%@if ([UIScreen mainScreen].scale == %.1ff || image == nil) {\n", scaleIndentation, scale];
-                if (isRetina4Inch){
-                    [implementation appendFormat:@"%@    UIImage *tempImage = [UIImage imageNamed:@\"%@-568h\"];\n", scaleIndentation, imageSetName];
-                } else {
-                    [implementation appendFormat:@"%@    UIImage *tempImage = [UIImage imageNamed:@\"%@\"];\n", scaleIndentation, imageSetName];
-                }
+                [implementation appendFormat:@"%@    if (UIScreen.mainScreen().scale == %.1f || image == nil) {\n", scaleIndentation, scale];
+                [implementation appendFormat:@"%@        var tempImage: UIImage? = UIImage(named: \"%@%@\")\n", scaleIndentation, imageSetName, (isRetina4Inch ? @"-568h" : @"")];
                 
                 NSDictionary *resizing = variant[@"resizing"];
                 if (resizing) {
@@ -232,17 +218,17 @@
                     CGFloat left = [resizing[@"capInsets"][@"left"] floatValue] / scale;
                     CGFloat bottom = [resizing[@"capInsets"][@"bottom"] floatValue] / scale;
                     CGFloat right = [resizing[@"capInsets"][@"right"] floatValue] / scale;
-                    NSString *mode = [resizing[@"center"][@"mode"] isEqualToString:@"stretch"] ? @"UIImageResizingModeStretch" : @"UIImageResizingModeTile";
-                    [implementation appendFormat:@"%@    if(tempImage != nil){\n", scaleIndentation];
-                    [implementation appendFormat:@"%@        image = [tempImage resizableImageWithCapInsets:UIEdgeInsetsMake(%.1ff, %.1ff, %.1ff, %.1ff) resizingMode:%@];\n", scaleIndentation, top, left, bottom, right, mode];
-                    [implementation appendFormat:@"%@    }\n", scaleIndentation];
+                    NSString *mode = [resizing[@"center"][@"mode"] isEqualToString:@"stretch"] ? @"Stretch" : @"Tile";
+                    [implementation appendFormat:@"%@        if (tempImage != nil) {\n", scaleIndentation];
+                    [implementation appendFormat:@"%@            image = tempImage?.resizableImageWithCapInsets(UIEdgeInsetsMake(%.1f, %.1f, %.1f, %.1f), resizingMode: UIImageResizingMode.%@)\n", scaleIndentation, top, left, bottom, right, mode];
+                    [implementation appendFormat:@"%@        }\n", scaleIndentation];
                 } else {
-                    [implementation appendFormat:@"%@    if(tempImage != nil){\n", scaleIndentation];
-                    [implementation appendFormat:@"%@        image = tempImage;\n", scaleIndentation];
-                    [implementation appendFormat:@"%@    }\n", scaleIndentation];
+                    [implementation appendFormat:@"%@        if (tempImage != nil) {\n", scaleIndentation];
+                    [implementation appendFormat:@"%@            image = tempImage\n", scaleIndentation];
+                    [implementation appendFormat:@"%@        }\n", scaleIndentation];
                 }
                 
-                [implementation appendFormat:@"%@}\n", scaleIndentation];
+                [implementation appendFormat:@"%@    }\n", scaleIndentation];
                 
                 if (!isUniversal) {
                     [implementation appendFormat:@"%@}\n", indentation];
@@ -251,28 +237,28 @@
                 [implementation appendString:@"\n"];
             }
             
-            [implementation appendString:@"    return image;\n"];
-            [implementation appendString:@"}\n"];
+            [implementation appendString:@"        return image\n"];
+            [implementation appendString:@"    }\n"];
         } else if (hasRetina4Inch){
             if (numImages == 1){
-                [implementation appendFormat:@"    return [UIImage imageNamed:@\"%@-568h\"];\n", imageSetName];
-                [implementation appendString:@"}\n"];
+                [implementation appendFormat:@"        return UIImage(named: \"%@-568h\")\n", imageSetName];
+                [implementation appendString:@"    }\n"];
             } else {
-                [implementation appendString:@"    UIImage *image = nil;\n\n"];
-                [implementation appendString:@"    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && [UIScreen mainScreen].bounds.size.height == 568.0f) {\n"];
-                [implementation appendString:@"        if ([UIScreen mainScreen].scale == 2.0f) {\n"];
-                [implementation appendFormat:@"            image = [UIImage imageNamed:@\"%@-568h\"];\n", imageSetName];
-                [implementation appendString:@"        }\n"];
-                [implementation appendString:@"    }\n\n"];
-                [implementation appendString:@"    if (image == nil){\n"];
-                [implementation appendFormat:@"        image = [UIImage imageNamed:@\"%@\"];\n", imageSetName];
-                [implementation appendString:@"    }\n\n"];
-                [implementation appendString:@"    return image;\n"];
-                [implementation appendString:@"}\n"];
+                [implementation appendString:@"        var image: UIImage?\n\n"];
+                [implementation appendString:@"        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && UIScreen.mainScreen().bounds.height == 568.0) {\n"];
+                [implementation appendString:@"            if (UIScreen.mainScreen().scale == 2.0) {\n"];
+                [implementation appendFormat:@"                image = UIImage(named: \"%@-568h\")\n", imageSetName];
+                [implementation appendString:@"            }\n"];
+                [implementation appendString:@"        }\n\n"];
+                [implementation appendString:@"        if (image == nil) {\n"];
+                [implementation appendFormat:@"            image = UIImage(named: \"%@\")\n", imageSetName];
+                [implementation appendString:@"        }\n\n"];
+                [implementation appendString:@"        return image\n"];
+                [implementation appendString:@"    }\n"];
             }
         } else {
-            [implementation appendFormat:@"    return [UIImage imageNamed:@\"%@\"];\n", imageSetName];
-            [implementation appendString:@"}\n"];
+            [implementation appendFormat:@"        return UIImage(named: \"%@\")\n", imageSetName];
+            [implementation appendString:@"    }\n\n"];
         }
         
         if (updateJson){

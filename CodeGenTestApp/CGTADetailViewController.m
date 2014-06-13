@@ -8,7 +8,6 @@
 //  which Square, Inc. licenses this file to you.
 
 #import "CGTADetailViewController.h"
-#import "CGTATestAppColorList.h"
 
 
 @interface CGTADetailViewController ()
