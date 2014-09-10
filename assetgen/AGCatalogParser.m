@@ -146,7 +146,10 @@
                 [updatedImagesJson addObject:variant];
                 continue;
             }
-            BOOL isRetina = [variant[@"scale"] floatValue] == 2.0;
+            NSString *scaleSuffix = @"";
+            if ([variant[@"scale"] floatValue] >= 2.0){
+                scaleSuffix = [NSString stringWithFormat:@"@%ldx", (long)[variant[@"scale"] integerValue]];
+            }
             BOOL is4inch = [variant[@"subtype"] isEqualToString:@"retina4"];
             NSString *fileName = [variant[@"filename"] stringByDeletingPathExtension];
             
@@ -158,12 +161,12 @@
             
             NSString *expectedFileName;
             if (![variant[@"idiom"] isEqualToString:@"universal"] && ![variant[@"idiom"] isEqualToString:@"iphone"]){
-                expectedFileName = [NSString stringWithFormat:@"%@~ipad%@", imageSetName, isRetina ? @"@2x" : @""];
+                expectedFileName = [NSString stringWithFormat:@"%@~ipad%@", imageSetName, scaleSuffix];
             } else {
                 if (is4inch){
                     expectedFileName = [NSString stringWithFormat:@"%@-568h@2x", imageSetName];
                 } else {
-                    expectedFileName = [NSString stringWithFormat:@"%@%@", imageSetName, isRetina ? @"@2x" : @""];
+                    expectedFileName = [NSString stringWithFormat:@"%@%@", imageSetName, scaleSuffix];
                 }
             }
             if (![fileName isEqualToString:expectedFileName]){
