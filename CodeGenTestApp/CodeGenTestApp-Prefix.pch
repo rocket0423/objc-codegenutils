@@ -14,6 +14,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
-    #import "CodeGenTestApp-Swift.h"
+    #import "CGTAImagesCatalog.h"
+    #import "CGTAFontList.h"
+    #import "CGTATestAppColorList.h"
     #import "CGTAMainStoryboardIdentifiers.h"
 #endif

@@ -176,9 +176,27 @@
             [implementation appendFormat:@"import UIKit\n\n\n"];
             [implementation appendString:[self.implementationContents componentsJoinedByString:@""]];
         }
-    } else if (!self.skipClassDeclaration) {
-        [implementation appendFormat:@"import UIKit\n\n\n"];
-        [implementation appendFormat:@"%@class %@: NSObject {\n\n%@}\n", (self.targetObjC ? @"@objc " : @""), self.className, [self.implementationContents componentsJoinedByString:@""]];
+    } else {
+        if (self.targetObjC){
+            NSString *classNameH = [self.className stringByAppendingPathExtension:@"h"];
+            NSString *classNameM = [self.className stringByAppendingPathExtension:@"m"];
+            NSURL *objcInterfaceURL = [currentDirectory URLByAppendingPathComponent:classNameH];
+            implementationURL = [currentDirectory URLByAppendingPathComponent:classNameM];
+            
+            NSMutableString *interface = [implementation mutableCopy];
+            [interface appendFormat:@"#import <UIKit/UIKit.h>\n\n\n"];
+            [interface appendFormat:@"@interface %@ : NSObject\n\n%@\n@end\n", self.className, [self.objcItems componentsJoinedByString:@""]];
+            
+            [implementation appendFormat:@"#import \"%@\"\n\n\n", classNameH];
+            [implementation appendFormat:@"@implementation %@\n\n%@\n@end\n", self.className, [self.implementationContents componentsJoinedByString:@"\n"]];
+            
+            if (![interface isEqualToString:[NSString stringWithContentsOfURL:objcInterfaceURL encoding:NSUTF8StringEncoding error:NULL]]) {
+                [interface writeToURL:objcInterfaceURL atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+            }
+        } else {
+            [implementation appendFormat:@"import UIKit\n\n\n"];
+            [implementation appendFormat:@"%@class %@: NSObject {\n\n%@}\n", (self.targetObjC ? @"@objc " : @""), self.className, [self.implementationContents componentsJoinedByString:@""]];
+        }
     }
 
     if (![implementation isEqualToString:[NSString stringWithContentsOfURL:implementationURL encoding:NSUTF8StringEncoding error:NULL]]) {

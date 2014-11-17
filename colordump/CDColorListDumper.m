@@ -33,6 +33,8 @@
     
     if (!self.implementationContents)
         self.implementationContents = [NSMutableArray array];
+    if (!self.objcItems && self.targetObjC)
+        self.objcItems = [NSMutableArray array];
     
     for (NSString *key in colorList.allKeys) {
         NSColor *color = [colorList colorWithKey:key];
@@ -44,8 +46,18 @@
         CGFloat r, g, b, a;
         [color getRed:&r green:&g blue:&b alpha:&a];
         
-        NSMutableString *method = [[NSMutableString alloc] initWithFormat:@"    class func %@Color() -> UIColor", [self methodNameForKey:key]];
-        [method appendFormat:@"{\n        return UIColor(red: %.3f, green: %.3f, blue: %.3f, alpha: %.3f)\n    }\n\n", r, g, b, a];
+        NSMutableString *method;
+        if (self.targetObjC){
+            NSString *declaration = [NSString stringWithFormat:@"+ (UIColor *)%@Color;\n", [self methodNameForKey:key]];
+            [self.objcItems addObject:declaration];
+            
+            method = [declaration mutableCopy];
+            [method appendFormat:@"{\n    return [UIColor colorWithRed:%.3ff green:%.3ff blue:%.3ff alpha:%.3ff];\n}\n", r, g, b, a];
+        } else {
+            method = [[NSMutableString alloc] initWithFormat:@"    class func %@Color() -> UIColor", [self methodNameForKey:key]];
+            [method appendFormat:@"{\n        return UIColor(red: %.3f, green: %.3f, blue: %.3f, alpha: %.3f)\n    }\n\n", r, g, b, a];
+        }
+        
         [self.implementationContents addObject:method];
     }
     
