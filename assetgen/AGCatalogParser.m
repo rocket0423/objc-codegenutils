@@ -105,6 +105,13 @@
     if (!contents) {
         return;
     }
+    BOOL templateImage = NO;
+    if ([contents objectForKey:@"info"]){
+        NSDictionary *info = [contents objectForKey:@"info"];
+        if ([info objectForKey:@"template-rendering-intent"] && [[info objectForKey:@"template-rendering-intent"] isEqualToString:@"template"]){
+            templateImage = YES;
+        }
+    }
     
     // Sort the variants: retina4 comes first, then iphone/ipad-specific, then universal
     // Within each group, 2x comes before 1x
@@ -144,12 +151,29 @@
     }
     
     // If we're only targeting iOS 7, short circuit since the asset catalog will have been compiled for us.
-    if (!self.targetiOS6) {
+    if (self.appVersion >= 8.0){
+        // iOS 8 compiles template template
         if (self.targetObjC){
             [implementation appendFormat:@"    return [UIImage imageNamed:@\"%@\"];\n", imageSetName];
             [implementation appendString:@"}\n"];
         } else {
             [implementation appendFormat:@"        return UIImage(named: \"%@\")\n", imageSetName];
+            [implementation appendString:@"    }\n\n"];
+        }
+    } else if (self.appVersion >= 7.0) {
+        if (self.targetObjC){
+            if (templateImage) {
+                [implementation appendFormat:@"    return [[UIImage imageNamed:@\"%@\"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];\n", imageSetName];
+            } else {
+                [implementation appendFormat:@"    return [UIImage imageNamed:@\"%@\"];\n", imageSetName];
+            }
+            [implementation appendString:@"}\n"];
+        } else {
+            if (templateImage) {
+                [implementation appendFormat:@"        return UIImage(named: \"%@\")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)\n", imageSetName];
+            } else {
+                [implementation appendFormat:@"        return UIImage(named: \"%@\")\n", imageSetName];
+            }
             [implementation appendString:@"    }\n\n"];
         }
     } else {
@@ -247,10 +271,18 @@
                 NSString *scaleIndentation = [indentation stringByAppendingString:@"    "];
                 if (self.targetObjC){
                     [implementation appendFormat:@"%@if ([UIScreen mainScreen].scale == %.1ff || image == nil) {\n", scaleIndentation, scale];
-                    [implementation appendFormat:@"%@    UIImage *tempImage = [UIImage imageNamed:@\"%@%@\"];\n", scaleIndentation, imageSetName, (isRetina4Inch ? @"-568h" : @"")];
+                    if (templateImage){
+                        [implementation appendFormat:@"%@    UIImage *tempImage = [[UIImage imageNamed:@\"%@%@\"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];\n", scaleIndentation, imageSetName, (isRetina4Inch ? @"-568h" : @"")];
+                    } else {
+                        [implementation appendFormat:@"%@    UIImage *tempImage = [UIImage imageNamed:@\"%@%@\"];\n", scaleIndentation, imageSetName, (isRetina4Inch ? @"-568h" : @"")];
+                    }
                 } else {
                     [implementation appendFormat:@"%@    if (UIScreen.mainScreen().scale == %.1f || image == nil) {\n", scaleIndentation, scale];
-                    [implementation appendFormat:@"%@        var tempImage: UIImage? = UIImage(named: \"%@%@\")\n", scaleIndentation, imageSetName, (isRetina4Inch ? @"-568h" : @"")];
+                    if (templateImage){
+                        [implementation appendFormat:@"%@        var tempImage: UIImage? = UIImage(named: \"%@%@\")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)\n", scaleIndentation, imageSetName, (isRetina4Inch ? @"-568h" : @"")];
+                    } else {
+                        [implementation appendFormat:@"%@        var tempImage: UIImage? = UIImage(named: \"%@%@\")\n", scaleIndentation, imageSetName, (isRetina4Inch ? @"-568h" : @"")];
+                    }
                 }
                 
                 NSDictionary *resizing = variant[@"resizing"];
@@ -305,11 +337,19 @@
         } else if (hasRetina4Inch){
             if (numImages == 1){
                 if (self.targetObjC){
-                    [implementation appendFormat:@"    return [UIImage imageNamed:@\"%@-568h\"];\n", imageSetName];
+                    if (templateImage){
+                        [implementation appendFormat:@"    return [[UIImage imageNamed:@\"%@-568h\"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];\n", imageSetName];
+                    } else {
+                        [implementation appendFormat:@"    return [UIImage imageNamed:@\"%@-568h\"];\n", imageSetName];
+                    }
                     [implementation appendString:@"}\n"];
 
                 } else {
-                    [implementation appendFormat:@"        return UIImage(named: \"%@-568h\")\n", imageSetName];
+                    if (templateImage){
+                        [implementation appendFormat:@"        return UIImage(named: \"%@-568h\")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)\n", imageSetName];
+                    } else {
+                        [implementation appendFormat:@"        return UIImage(named: \"%@-568h\")\n", imageSetName];
+                    }
                     [implementation appendString:@"    }\n"];
                 }
             } else {
@@ -317,11 +357,19 @@
                     [implementation appendString:@"    UIImage *image = nil;\n\n"];
                     [implementation appendString:@"    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && [UIScreen mainScreen].bounds.size.height == 568.0f) {\n"];
                     [implementation appendString:@"        if ([UIScreen mainScreen].scale == 2.0f) {\n"];
-                    [implementation appendFormat:@"            image = [UIImage imageNamed:@\"%@-568h\"];\n", imageSetName];
+                    if (templateImage){
+                        [implementation appendFormat:@"            image = [[UIImage imageNamed:@\"%@-568h\"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];\n", imageSetName];
+                    } else {
+                        [implementation appendFormat:@"            image = [UIImage imageNamed:@\"%@-568h\"];\n", imageSetName];
+                    }
                     [implementation appendString:@"        }\n"];
                     [implementation appendString:@"    }\n\n"];
                     [implementation appendString:@"    if (image == nil){\n"];
-                    [implementation appendFormat:@"        image = [UIImage imageNamed:@\"%@\"];\n", imageSetName];
+                    if (templateImage){
+                        [implementation appendFormat:@"        image = [[UIImage imageNamed:@\"%@\"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];\n", imageSetName];
+                    } else {
+                        [implementation appendFormat:@"        image = [UIImage imageNamed:@\"%@\"];\n", imageSetName];
+                    }
                     [implementation appendString:@"    }\n\n"];
                     [implementation appendString:@"    return image;\n"];
                     [implementation appendString:@"}\n"];
@@ -329,11 +377,19 @@
                     [implementation appendString:@"        var image: UIImage?\n\n"];
                     [implementation appendString:@"        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && UIScreen.mainScreen().bounds.height == 568.0) {\n"];
                     [implementation appendString:@"            if (UIScreen.mainScreen().scale == 2.0) {\n"];
-                    [implementation appendFormat:@"                image = UIImage(named: \"%@-568h\")\n", imageSetName];
+                    if (templateImage){
+                        [implementation appendFormat:@"                image = UIImage(named: \"%@-568h\")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)\n", imageSetName];
+                    } else {
+                        [implementation appendFormat:@"                image = UIImage(named: \"%@-568h\")\n", imageSetName];
+                    }
                     [implementation appendString:@"            }\n"];
                     [implementation appendString:@"        }\n\n"];
                     [implementation appendString:@"        if (image == nil) {\n"];
-                    [implementation appendFormat:@"            image = UIImage(named: \"%@\")\n", imageSetName];
+                    if (templateImage){
+                        [implementation appendFormat:@"            image = UIImage(named: \"%@\")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)\n", imageSetName];
+                    } else {
+                        [implementation appendFormat:@"            image = UIImage(named: \"%@\")\n", imageSetName];
+                    }
                     [implementation appendString:@"        }\n\n"];
                     [implementation appendString:@"        return image\n"];
                     [implementation appendString:@"    }\n"];
@@ -341,10 +397,18 @@
             }
         } else {
             if (self.targetObjC){
-                [implementation appendFormat:@"    return [UIImage imageNamed:@\"%@\"];\n", imageSetName];
+                if (templateImage){
+                    [implementation appendFormat:@"    return [[UIImage imageNamed:@\"%@\"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];\n", imageSetName];
+                } else {
+                    [implementation appendFormat:@"    return [UIImage imageNamed:@\"%@\"];\n", imageSetName];
+                }
                 [implementation appendString:@"}\n"];
             } else {
-                [implementation appendFormat:@"        return UIImage(named: \"%@\")\n", imageSetName];
+                if (templateImage){
+                    [implementation appendFormat:@"        return UIImage(named: \"%@\")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)\n", imageSetName];
+                } else {
+                    [implementation appendFormat:@"        return UIImage(named: \"%@\")\n", imageSetName];
+                }
                 [implementation appendString:@"    }\n\n"];
             }
         }

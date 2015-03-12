@@ -19,6 +19,7 @@
 @property (copy) NSURL *inputURL;
 @property (copy) NSURL *searchingURL;
 @property (copy) NSString *classPrefix;
+@property float appVersion;
 @property BOOL targetiOS6;
 @property BOOL targetObjC;
 @property BOOL skipClassDeclaration;

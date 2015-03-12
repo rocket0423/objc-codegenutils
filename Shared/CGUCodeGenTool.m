@@ -38,10 +38,8 @@
     BOOL objc = NO;
     NSMutableArray *inputURLs = [NSMutableArray array];
     
-	NSString *currentAppVersion = [CGUCodeGenTool runStringAsCommand:@"echo \"$IPHONEOS_DEPLOYMENT_TARGET\""];
-	if ([currentAppVersion floatValue] > 0.0 && [currentAppVersion floatValue] < 7.0){
-		target6 = YES;
-	}
+    float currentVersion = [[CGUCodeGenTool runStringAsCommand:@"echo \"$IPHONEOS_DEPLOYMENT_TARGET\""] floatValue];
+	
     infoPlist = [CGUCodeGenTool runStringAsCommand:@"echo \"$SRCROOT/$INFOPLIST_FILE\""];
     if (![[NSFileManager defaultManager] fileExistsAtPath:infoPlist]){
         infoPlist = [CGUCodeGenTool runStringAsCommand:@"echo \"$INFOPLIST_FILE\""];
@@ -55,6 +53,7 @@
                 printf("       %s -h\n\n", basename((char *)argv[0]));
                 printf("Options:\n");
                 printf("    -6          Target iOS 6 in addition to iOS 7\n");
+                printf("    -v          Minimum app version supported\n");
                 printf("    -o <path>   Output files at <path>\n");
                 printf("    -i <path>   Info Plist file at <path>\n");
                 printf("    -f <path>   Search for *.%s folders starting from <path>\n", [fileExtension UTF8String]);
@@ -84,6 +83,8 @@
                 infoPlist = [[NSString stringWithFormat:@"%s", argv[++i]] stringByExpandingTildeInPath];
             } else if ([nextArgument isEqualToString:@"-objc"]){
                 objc = YES;
+            } else if ([nextArgument isEqualToString:@"-v"]){
+                currentVersion = [[NSString stringWithFormat:@"%s", argv[++i]] floatValue];
             }
         }
         
@@ -95,6 +96,9 @@
                 }
             }
         }
+    }
+    if (!target6 && currentVersion > 0.0 && currentVersion < 7.0){
+        target6 = YES;
     }
     
     dispatch_group_t group = dispatch_group_create();
@@ -112,6 +116,7 @@
         target.infoPlistFile = infoPlist;
         target.inputURL = url;
         target.targetiOS6 = target6;
+        target.appVersion = currentVersion;
         target.targetObjC = objc;
         target.classPrefix = classPrefix;
         target.writeSingleFile = singleFile;
