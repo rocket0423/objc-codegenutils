@@ -20,6 +20,10 @@
 		A89D8FE717CFFDCE0077F2B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */; };
 		A89D8FEA17CFFDCE0077F2B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A89D8FE917CFFDCE0077F2B5 /* main.m */; };
 		A89D8FF617CFFED90077F2B5 /* AGCatalogParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A89D8FF517CFFED90077F2B5 /* AGCatalogParser.m */; };
+		BD80FDD51B856BD90014B78B /* CGUCodeGenTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A885F8AD17DA8DE400A29164 /* CGUCodeGenTool.m */; };
+		BD80FDD81B856BD90014B78B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */; };
+		BD80FDE31B856C600014B78B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDDF1B856C600014B78B /* main.m */; };
+		BD80FDE41B856C600014B78B /* SLStringsLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDE11B856C600014B78B /* SLStringsLocalization.m */; };
 		BDA8B7E3192AB25600F18A49 /* CGUCodeGenTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A885F8AD17DA8DE400A29164 /* CGUCodeGenTool.m */; };
 		BDA8B7E6192AB25600F18A49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */; };
 		BDA8B7F2192AB2EB00F18A49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA8B7F0192AB2EB00F18A49 /* main.m */; };
@@ -50,6 +54,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		A89D8FE117CFFDCE0077F2B5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		BD80FDD91B856BD90014B78B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -101,6 +114,11 @@
 		A89D8FEC17CFFDCE0077F2B5 /* assetgen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "assetgen-Prefix.pch"; sourceTree = "<group>"; };
 		A89D8FF417CFFED90077F2B5 /* AGCatalogParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCatalogParser.h; sourceTree = "<group>"; };
 		A89D8FF517CFFED90077F2B5 /* AGCatalogParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCatalogParser.m; sourceTree = "<group>"; };
+		BD80FDDD1B856BD90014B78B /* objc-stringslocalized */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-stringslocalized"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD80FDDF1B856C600014B78B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BD80FDE01B856C600014B78B /* SLStringsLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLStringsLocalization.h; sourceTree = "<group>"; };
+		BD80FDE11B856C600014B78B /* SLStringsLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLStringsLocalization.m; sourceTree = "<group>"; };
+		BD80FDE21B856C600014B78B /* stringslocalized-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "stringslocalized-Prefix.pch"; sourceTree = "<group>"; };
 		BDA8B7EB192AB25600F18A49 /* objc-assetverify */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-assetverify"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA8B7EF192AB2EB00F18A49 /* assetverify-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "assetverify-Prefix.pch"; sourceTree = "<group>"; };
 		BDA8B7F0192AB2EB00F18A49 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -136,6 +154,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A89D8FE717CFFDCE0077F2B5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD80FDD71B856BD90014B78B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD80FDD81B856BD90014B78B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +234,7 @@
 		A89D8FDA17CFFDCE0077F2B5 = {
 			isa = PBXGroup;
 			children = (
+				BD80FDDE1B856C600014B78B /* stringslocalized */,
 				BDA8B7EC192AB2EB00F18A49 /* assetverify */,
 				A89D8FE817CFFDCE0077F2B5 /* assetgen */,
 				A885F89D17DA8C7A00A29164 /* colordump */,
@@ -227,6 +254,7 @@
 				A838791F18A04BF700B386D6 /* objc-identifierconstants */,
 				BDC4D71218CE443D00C439FC /* objc-customfontlist */,
 				BDA8B7EB192AB25600F18A49 /* objc-assetverify */,
+				BD80FDDD1B856BD90014B78B /* objc-stringslocalized */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,6 +286,25 @@
 			isa = PBXGroup;
 			children = (
 				A89D8FEC17CFFDCE0077F2B5 /* assetgen-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD80FDDE1B856C600014B78B /* stringslocalized */ = {
+			isa = PBXGroup;
+			children = (
+				BD80FDE01B856C600014B78B /* SLStringsLocalization.h */,
+				BD80FDE11B856C600014B78B /* SLStringsLocalization.m */,
+				BD80FDDF1B856C600014B78B /* main.m */,
+				BD80FDE51B856C8E0014B78B /* Supporting Files */,
+			);
+			path = stringslocalized;
+			sourceTree = "<group>";
+		};
+		BD80FDE51B856C8E0014B78B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD80FDE21B856C600014B78B /* stringslocalized-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -354,6 +401,23 @@
 			productReference = A89D8FE317CFFDCE0077F2B5 /* objc-assetgen */;
 			productType = "com.apple.product-type.tool";
 		};
+		BD80FDD21B856BD90014B78B /* stringslocalized */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD80FDDA1B856BD90014B78B /* Build configuration list for PBXNativeTarget "stringslocalized" */;
+			buildPhases = (
+				BD80FDD31B856BD90014B78B /* Sources */,
+				BD80FDD71B856BD90014B78B /* Frameworks */,
+				BD80FDD91B856BD90014B78B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = stringslocalized;
+			productName = assetgen;
+			productReference = BD80FDDD1B856BD90014B78B /* objc-stringslocalized */;
+			productType = "com.apple.product-type.tool";
+		};
 		BDA8B7E0192AB25600F18A49 /* assetverify */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BDA8B7E8192AB25600F18A49 /* Build configuration list for PBXNativeTarget "assetverify" */;
@@ -411,6 +475,7 @@
 			projectRoot = "";
 			targets = (
 				A89D8FE217CFFDCE0077F2B5 /* assetgen */,
+				BD80FDD21B856BD90014B78B /* stringslocalized */,
 				A885F89A17DA8C7A00A29164 /* colordump */,
 				A838791E18A04BF700B386D6 /* identifierconstants */,
 				BDC4D70718CE443D00C439FC /* customfontlist */,
@@ -447,6 +512,16 @@
 				A89D8FF617CFFED90077F2B5 /* AGCatalogParser.m in Sources */,
 				A885F8AE17DA8DE400A29164 /* CGUCodeGenTool.m in Sources */,
 				A89D8FEA17CFFDCE0077F2B5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD80FDD31B856BD90014B78B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD80FDE41B856C600014B78B /* SLStringsLocalization.m in Sources */,
+				BD80FDD51B856BD90014B78B /* CGUCodeGenTool.m in Sources */,
+				BD80FDE31B856C600014B78B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +682,24 @@
 			};
 			name = Release;
 		};
+		BD80FDDB1B856BD90014B78B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "stringslocalized/stringslocalized-Prefix.pch";
+				PRODUCT_NAME = "objc-stringslocalized";
+			};
+			name = Debug;
+		};
+		BD80FDDC1B856BD90014B78B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "stringslocalized/stringslocalized-Prefix.pch";
+				PRODUCT_NAME = "objc-stringslocalized";
+			};
+			name = Release;
+		};
 		BDA8B7E9192AB25600F18A49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -684,6 +777,15 @@
 			buildConfigurations = (
 				A89D8FF217CFFDCE0077F2B5 /* Debug */,
 				A89D8FF317CFFDCE0077F2B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD80FDDA1B856BD90014B78B /* Build configuration list for PBXNativeTarget "stringslocalized" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD80FDDB1B856BD90014B78B /* Debug */,
+				BD80FDDC1B856BD90014B78B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

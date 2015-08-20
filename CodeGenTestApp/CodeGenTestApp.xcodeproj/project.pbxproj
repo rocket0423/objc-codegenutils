@@ -18,10 +18,12 @@
 		A881854118A9B622002803FC /* CGTAImagesCatalog+RuntimeHackery.m in Sources */ = {isa = PBXBuildFile; fileRef = A838793518A05B6D00B386D6 /* CGTAImagesCatalog+RuntimeHackery.m */; };
 		A881854218A9B622002803FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A83878E518A0367C00B386D6 /* main.m */; };
 		A881854418A9B663002803FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83878EB18A0367C00B386D6 /* Main.storyboard */; };
-		BD0A2B1E1A1AA44500B96522 /* CGTAImagesCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A2B1D1A1AA44500B96522 /* CGTAImagesCatalog.m */; };
 		BD0A2B211A1AA44B00B96522 /* CGTATestAppColorList.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A2B201A1AA44B00B96522 /* CGTATestAppColorList.m */; };
-		BD0A2B241A1AA44F00B96522 /* CGTAFontList.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A2B231A1AA44F00B96522 /* CGTAFontList.m */; };
 		BD0A2B271A1AA45600B96522 /* CGTAMainStoryboardIdentifiers.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0A2B261A1AA45600B96522 /* CGTAMainStoryboardIdentifiers.m */; };
+		BD80FDCF1B855C9F0014B78B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD80FDD11B855C9F0014B78B /* Localizable.strings */; };
+		BD80FDED1B857E910014B78B /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDEC1B857E910014B78B /* Strings.m */; };
+		BD80FDF01B8585E30014B78B /* CGTAFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDEF1B8585E30014B78B /* CGTAFonts.m */; };
+		BD80FDF31B8586150014B78B /* CGTAImagesCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDF21B8586150014B78B /* CGTAImagesCatalog.m */; };
 		BDFA8B1E18CE4EC10087BB74 /* tracfk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDFA8B1D18CE4EC10087BB74 /* tracfk.ttf */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = A838791E18A04BF700B386D6;
 			remoteInfo = identifierconstants;
+		};
+		BD80FDE61B856E760014B78B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A881852718A9B520002803FC /* codegenutils.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BD80FDD21B856BD90014B78B;
+			remoteInfo = stringslocalized;
+		};
+		BD80FDE91B856E760014B78B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A881852718A9B520002803FC /* codegenutils.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BD80FDDD1B856BD90014B78B;
+			remoteInfo = stringslocalized;
 		};
 		BDA8B7F8192ABB6F00F18A49 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -119,14 +135,18 @@
 		A881852518A9B512002803FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A881852718A9B520002803FC /* codegenutils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = codegenutils.xcodeproj; path = ../codegenutils.xcodeproj; sourceTree = "<group>"; };
 		A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		BD0A2B1C1A1AA44500B96522 /* CGTAImagesCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTAImagesCatalog.h; sourceTree = "<group>"; };
-		BD0A2B1D1A1AA44500B96522 /* CGTAImagesCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTAImagesCatalog.m; sourceTree = "<group>"; };
 		BD0A2B1F1A1AA44B00B96522 /* CGTATestAppColorList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTATestAppColorList.h; sourceTree = "<group>"; };
 		BD0A2B201A1AA44B00B96522 /* CGTATestAppColorList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTATestAppColorList.m; sourceTree = "<group>"; };
-		BD0A2B221A1AA44F00B96522 /* CGTAFontList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTAFontList.h; sourceTree = "<group>"; };
-		BD0A2B231A1AA44F00B96522 /* CGTAFontList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTAFontList.m; sourceTree = "<group>"; };
 		BD0A2B251A1AA45600B96522 /* CGTAMainStoryboardIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTAMainStoryboardIdentifiers.h; sourceTree = "<group>"; };
 		BD0A2B261A1AA45600B96522 /* CGTAMainStoryboardIdentifiers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTAMainStoryboardIdentifiers.m; sourceTree = "<group>"; };
+		BD80FDD01B855C9F0014B78B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BD80FDEB1B857E910014B78B /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Strings.h; sourceTree = "<group>"; };
+		BD80FDEC1B857E910014B78B /* Strings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Strings.m; sourceTree = "<group>"; };
+		BD80FDEE1B8585E30014B78B /* CGTAFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTAFonts.h; sourceTree = "<group>"; };
+		BD80FDEF1B8585E30014B78B /* CGTAFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTAFonts.m; sourceTree = "<group>"; };
+		BD80FDF11B8586150014B78B /* CGTAImagesCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTAImagesCatalog.h; sourceTree = "<group>"; };
+		BD80FDF21B8586150014B78B /* CGTAImagesCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTAImagesCatalog.m; sourceTree = "<group>"; };
+		BD80FDF41B858D800014B78B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BD9C6ECA194B7A4F0024E368 /* CodeGenTestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CodeGenTestApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		BDFA8B1D18CE4EC10087BB74 /* tracfk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tracfk.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +178,8 @@
 				A83878F218A0367C00B386D6 /* CGTADetailViewController.m */,
 				A838791718A0456500B386D6 /* Derived Sources */,
 				A83878E018A0367C00B386D6 /* Supporting Files */,
+				BD80FDEB1B857E910014B78B /* Strings.h */,
+				BD80FDEC1B857E910014B78B /* Strings.m */,
 			);
 			name = CodeGenTestApp;
 			sourceTree = SOURCE_ROOT;
@@ -171,6 +193,7 @@
 				A83878E518A0367C00B386D6 /* main.m */,
 				A83878E718A0367C00B386D6 /* CodeGenTestApp-Prefix.pch */,
 				BD9C6ECA194B7A4F0024E368 /* CodeGenTestApp-Bridging-Header.h */,
+				BD80FDD11B855C9F0014B78B /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -192,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				A881852E18A9B520002803FC /* objc-assetgen */,
+				BD80FDEA1B856E760014B78B /* objc-stringslocalized */,
 				A881853018A9B520002803FC /* objc-colordump */,
 				A881853218A9B520002803FC /* objc-identifierconstants */,
 				BDFA8B1A18CE47970087BB74 /* objc-customfontlist */,
@@ -232,8 +256,8 @@
 		BD738E0F1947B33A00127B0D /* Catalogs */ = {
 			isa = PBXGroup;
 			children = (
-				BD0A2B1C1A1AA44500B96522 /* CGTAImagesCatalog.h */,
-				BD0A2B1D1A1AA44500B96522 /* CGTAImagesCatalog.m */,
+				BD80FDF11B8586150014B78B /* CGTAImagesCatalog.h */,
+				BD80FDF21B8586150014B78B /* CGTAImagesCatalog.m */,
 			);
 			path = Catalogs;
 			sourceTree = "<group>";
@@ -250,8 +274,8 @@
 		BD738E131947B33A00127B0D /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				BD0A2B221A1AA44F00B96522 /* CGTAFontList.h */,
-				BD0A2B231A1AA44F00B96522 /* CGTAFontList.m */,
+				BD80FDEE1B8585E30014B78B /* CGTAFonts.h */,
+				BD80FDEF1B8585E30014B78B /* CGTAFonts.m */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -280,6 +304,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				BD80FDE71B856E760014B78B /* PBXTargetDependency */,
 				BDA8B7FB192ABC6400F18A49 /* PBXTargetDependency */,
 				BDFA8B1718CE47970087BB74 /* PBXTargetDependency */,
 				A881853418A9B53F002803FC /* PBXTargetDependency */,
@@ -307,6 +332,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = A89D8FDA17CFFDCE0077F2B5;
 			productRefGroup = A89D8FE417CFFDCE0077F2B5 /* Products */;
@@ -346,6 +372,13 @@
 			remoteRef = A881853118A9B520002803FC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BD80FDEA1B856E760014B78B /* objc-stringslocalized */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "objc-stringslocalized";
+			remoteRef = BD80FDE91B856E760014B78B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		BDA8B7F9192ABB6F00F18A49 /* objc-assetverify */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
@@ -367,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD80FDCF1B855C9F0014B78B /* Localizable.strings in Resources */,
 				A881854418A9B663002803FC /* Main.storyboard in Resources */,
 				A881853A18A9B614002803FC /* Images.xcassets in Resources */,
 				BDFA8B1E18CE4EC10087BB74 /* tracfk.ttf in Resources */,
@@ -389,7 +423,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "DERIVED_SOURCES=\"$SRCROOT/Derived Sources\"\nTOOL_PATH=\"$BUILD_ROOT/$CONFIGURATION\"\n\nIDENTIFIERS_PATH=\"$DERIVED_SOURCES/Identifiers\"\nCATALOGS_PATH=\"$DERIVED_SOURCES/Catalogs\"\nFONTS_PATH=\"$DERIVED_SOURCES/Fonts\"\nCOLORS_PATH=\"$DERIVED_SOURCES/Colors\"\nVERIFY_PATH=\"$DERIVED_SOURCES/Verify\"\n\nrm -rf \"$IDENTIFIERS_PATH\"\nrm -rf \"$CATALOGS_PATH\"\nrm -rf \"$FONTS_PATH\"\nrm -rf \"$COLORS_PATH\"\nrm -rf \"$VERIFY_PATH\"\nmkdir -p \"$IDENTIFIERS_PATH\"\nmkdir -p \"$CATALOGS_PATH\"\nmkdir -p \"$FONTS_PATH\"\nmkdir -p \"$COLORS_PATH\"\nmkdir -p \"$VERIFY_PATH\"\n\n\"$TOOL_PATH/objc-assetgen\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/objc-identifierconstants\" -f \"$SRCROOT\" -o \"$IDENTIFIERS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/objc-customfontlist\" -u -s -f \"$SRCROOT\" -o \"$FONTS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/objc-colordump\" -f \"$SRCROOT\" -o \"$COLORS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/objc-assetverify\" -f \"$SRCROOT\" -o \"$VERIFY_PATH\" -p CGTA -objc\n";
+			shellScript = "DERIVED_SOURCES=\"$SRCROOT/Derived Sources\"\nTOOL_PATH=\"$BUILD_ROOT/$CONFIGURATION\"\n\nIDENTIFIERS_PATH=\"$DERIVED_SOURCES/Identifiers\"\nCATALOGS_PATH=\"$DERIVED_SOURCES/Catalogs\"\nFONTS_PATH=\"$DERIVED_SOURCES/Fonts\"\nCOLORS_PATH=\"$DERIVED_SOURCES/Colors\"\nVERIFY_PATH=\"$DERIVED_SOURCES/Verify\"\nSTRINGS_PATH=\"$DERIVED_SOURCES/Strings\"\n\nrm -rf \"$IDENTIFIERS_PATH\"\nrm -rf \"$CATALOGS_PATH\"\nrm -rf \"$FONTS_PATH\"\nrm -rf \"$COLORS_PATH\"\nrm -rf \"$VERIFY_PATH\"\nrm -rf \"$STRINGS_PATH\"\nmkdir -p \"$IDENTIFIERS_PATH\"\nmkdir -p \"$CATALOGS_PATH\"\nmkdir -p \"$FONTS_PATH\"\nmkdir -p \"$COLORS_PATH\"\nmkdir -p \"$VERIFY_PATH\"\nmkdir -p \"$STRINGS_PATH\"\n\n\"$TOOL_PATH/objc-assetgen\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/objc-identifierconstants\" -f \"$SRCROOT\" -o \"$IDENTIFIERS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/objc-customfontlist\" -u -s -f \"$SRCROOT\" -o \"$FONTS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/objc-colordump\" -f \"$SRCROOT\" -o \"$COLORS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/objc-assetverify\" -f \"$SRCROOT\" -o \"$VERIFY_PATH\" -p CGTA -objc\n\"$TOOL_PATH/objc-stringslocalized\" -f \"$SRCROOT\" -o \"$STRINGS_PATH\" -p CGTA -objc\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -400,9 +434,10 @@
 			files = (
 				A881853918A9B609002803FC /* CGTAAppDelegate.m in Sources */,
 				A881853C18A9B622002803FC /* CGTAMasterViewController.m in Sources */,
+				BD80FDF01B8585E30014B78B /* CGTAFonts.m in Sources */,
 				BD0A2B271A1AA45600B96522 /* CGTAMainStoryboardIdentifiers.m in Sources */,
-				BD0A2B1E1A1AA44500B96522 /* CGTAImagesCatalog.m in Sources */,
-				BD0A2B241A1AA44F00B96522 /* CGTAFontList.m in Sources */,
+				BD80FDF31B8586150014B78B /* CGTAImagesCatalog.m in Sources */,
+				BD80FDED1B857E910014B78B /* Strings.m in Sources */,
 				BD0A2B211A1AA44B00B96522 /* CGTATestAppColorList.m in Sources */,
 				A881854118A9B622002803FC /* CGTAImagesCatalog+RuntimeHackery.m in Sources */,
 				A881854218A9B622002803FC /* main.m in Sources */,
@@ -427,6 +462,11 @@
 			isa = PBXTargetDependency;
 			name = identifierconstants;
 			targetProxy = A881853718A9B53F002803FC /* PBXContainerItemProxy */;
+		};
+		BD80FDE71B856E760014B78B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = stringslocalized;
+			targetProxy = BD80FDE61B856E760014B78B /* PBXContainerItemProxy */;
 		};
 		BDA8B7FB192ABC6400F18A49 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -455,6 +495,15 @@
 				A83878EC18A0367C00B386D6 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BD80FDD11B855C9F0014B78B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD80FDD01B855C9F0014B78B /* Base */,
+				BD80FDF41B858D800014B78B /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

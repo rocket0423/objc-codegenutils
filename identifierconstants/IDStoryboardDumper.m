@@ -10,13 +10,6 @@
 #import "IDStoryboardDumper.h"
 
 
-@interface NSString (IDStoryboardAddition)
-
-- (NSString *)IDS_titlecaseString;
-
-@end
-
-
 @implementation IDStoryboardDumper
 
 + (NSArray *)inputFileExtension;
@@ -91,28 +84,13 @@
             [self.objcItems addObject:[NSString stringWithFormat:@"extern NSString *const %@;\n", key]];
             [self.implementationContents addObject:[NSString stringWithFormat:@"NSString *const %@ = @\"%@\";\n", key, uniqueKeys[key]]];
         } else {
-            [self.implementationContents addObject:[NSString stringWithFormat:@"let %@ = \"%@\"\n", key, uniqueKeys[key]]];
+            [self.implementationContents addObject:[NSString stringWithFormat:@"var %@: String {return \"%@\"}\n", key, uniqueKeys[key]]];
         }
     }
     
     if (!self.writeSingleFile || self.lastFile)
         [self writeOutputFiles];
     completionBlock();
-}
-
-@end
-
-
-@implementation NSString (IDStoryboardAddition)
-
-- (NSString *)IDS_titlecaseString;
-{
-    NSArray *words = [self componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSMutableString *output = [NSMutableString string];
-    for (NSString *word in words) {
-        [output appendFormat:@"%@%@", [[word substringToIndex:1] uppercaseString], [word substringFromIndex:1]];
-    }
-    return output;
 }
 
 @end

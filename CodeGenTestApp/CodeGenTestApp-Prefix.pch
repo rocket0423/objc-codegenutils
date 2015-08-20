@@ -15,7 +15,7 @@
     #import <Foundation/Foundation.h>
 
     #import "CGTAImagesCatalog.h"
-    #import "CGTAFontList.h"
+    #import "CGTAFonts.h"
     #import "CGTATestAppColorList.h"
     #import "CGTAMainStoryboardIdentifiers.h"
 #endif

@@ -114,6 +114,7 @@
         }
         target.searchingURL = searchURL;
         target.infoPlistFile = infoPlist;
+        target.allFileURLs = inputURLs;
         target.inputURL = url;
         target.targetiOS6 = target6;
         target.appVersion = currentVersion;
@@ -243,6 +244,21 @@
     } else {
         return nil;
     }
+}
+
+@end
+
+
+@implementation NSString (CGUCodeGenToolAddition)
+
+- (NSString *)IDS_titlecaseString;
+{
+    NSArray *words = [self componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSMutableString *output = [NSMutableString string];
+    for (NSString *word in words) {
+        [output appendFormat:@"%@%@", [[word substringToIndex:1] uppercaseString], [word substringFromIndex:1]];
+    }
+    return output;
 }
 
 @end

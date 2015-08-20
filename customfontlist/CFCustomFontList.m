@@ -19,7 +19,7 @@
 {
     NSString *fontFileName = [[self.inputURL lastPathComponent] stringByDeletingPathExtension];
     if (self.writeSingleFile)
-        self.className = [NSString stringWithFormat:@"%@FontList", self.classPrefix];
+        self.className = [NSString stringWithFormat:@"%@Fonts", self.classPrefix];
     else
         self.className = [NSString stringWithFormat:@"%@%@Font", self.classPrefix, fontFileName];
     if (!self.implementationContents)

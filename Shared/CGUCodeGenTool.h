@@ -9,6 +9,11 @@
 
 #import <Foundation/Foundation.h>
 
+@interface NSString (CGUCodeGenToolAddition)
+
+- (NSString *)IDS_titlecaseString;
+
+@end
 
 @interface CGUCodeGenTool : NSObject
 
@@ -18,6 +23,7 @@
 
 @property (copy) NSURL *inputURL;
 @property (copy) NSURL *searchingURL;
+@property (copy) NSArray *allFileURLs;
 @property (copy) NSString *classPrefix;
 @property float appVersion;
 @property BOOL targetiOS6;

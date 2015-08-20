@@ -9,6 +9,10 @@
 			<string>+ (UIImage *)argentinaImage;</string>
 			<string>    return [UIImage imageNamed:@"Argentina"];</string>
 		</array>
+		<key>Strings.m</key>
+		<array>
+			<string>+ (NSString *)argentinaImage;</string>
+		</array>
 	</dict>
 	<key>Australia</key>
 	<dict>

@@ -38,7 +38,7 @@
                 self.objcItems = [[NSMutableArray alloc] init];
             
             if (self.writeSingleFile)
-                self.className = [[NSString stringWithFormat:@"%@ImagesCatalog", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
+                self.className = [[NSString stringWithFormat:@"%@Images", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
             else
                 self.className = [[NSString stringWithFormat:@"%@%@Catalog", self.classPrefix, [[self.inputURL lastPathComponent] stringByDeletingPathExtension]] stringByReplacingOccurrencesOfString:@" " withString:@""];
             
@@ -64,7 +64,7 @@
             self.objcItems = [NSMutableArray array];
         
         if (self.writeSingleFile)
-            self.className = [[NSString stringWithFormat:@"%@ImagesCatalog", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
+            self.className = [[NSString stringWithFormat:@"%@Images", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
         else
             self.className = [[NSString stringWithFormat:@"%@%@Catalog", self.classPrefix, [[self.inputURL lastPathComponent] stringByDeletingPathExtension]] stringByReplacingOccurrencesOfString:@" " withString:@""];
         
@@ -147,7 +147,7 @@
         implementation = [interface mutableCopy];
         [implementation appendString:@"{\n"];
     } else {
-        implementation = [[NSMutableString alloc] initWithFormat:@"    class func %@Image() -> UIImage? {\n", methodName];
+        implementation = [[NSMutableString alloc] initWithFormat:@"    static var %@Image: UIImage? {\n", methodName];
     }
     
     // If we're only targeting iOS 7, short circuit since the asset catalog will have been compiled for us.
@@ -174,7 +174,7 @@
             } else {
                 [implementation appendFormat:@"        return UIImage(named: \"%@\")\n", imageSetName];
             }
-            [implementation appendString:@"    }\n\n"];
+            [implementation appendString:@"    }\n"];
         }
     } else {
         NSMutableArray *updatedImagesJson = [[NSMutableArray alloc] initWithCapacity:[variants count]];
