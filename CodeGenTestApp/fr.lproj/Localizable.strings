@@ -21,3 +21,4 @@
 
 // Test
 "login error_message" = "Localized";
+"global_unauthorized" = "Unauthorized\nPlease Login again."; // Needs Translation

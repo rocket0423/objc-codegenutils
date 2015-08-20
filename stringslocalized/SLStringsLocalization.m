@@ -11,6 +11,7 @@
 
 @interface NSString (SLStringsAddition)
 
+- (NSString *)SLS_formattedString;
 - (NSString *)SLS_titlecaseString;
 
 @end
@@ -55,7 +56,7 @@
     
     NSDictionary *localizationDict = [NSDictionary dictionaryWithContentsOfURL:self.inputURL];
     for (NSString *nextKey in [localizationDict allKeys]) {
-        NSString *localizedString = [localizationDict objectForKey:nextKey];
+        NSString *localizedString = [[localizationDict objectForKey:nextKey] SLS_formattedString];
         NSMutableString *implementation = nil;
         if (self.targetObjC){
             implementation = [[NSMutableString alloc] init];
@@ -138,6 +139,11 @@
 
 
 @implementation NSString (SLStringsAddition)
+
+- (NSString *)SLS_formattedString;
+{
+    return [self stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"];
+}
 
 - (NSString *)SLS_titlecaseString;
 {
