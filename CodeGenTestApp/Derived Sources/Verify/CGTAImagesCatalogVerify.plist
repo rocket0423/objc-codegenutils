@@ -396,7 +396,7 @@
 		<array>
 			<string>    allFlagImages = @[[UIImage imageNamed:@"USA"], [UIImage imageNamed:@"Canada"], [UIImage imageNamed:@"UK"], [UIImage imageNamed:@"Australia"]];</string>
 			<string>    allFlagImages = @[[CGTAImagesCatalog usaImage], [CGTAImagesCatalog canadaImage], [CGTAImagesCatalog ukImage], [CGTAImagesCatalog australiaImage]];</string>
-			<string>    CGTAFlagCollectionViewCell *cell = (CGTAFlagCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CGTAMainStoryboardImageCellIdentifier forIndexPath:indexPath];</string>
+			<string>    CGTAFlagCollectionViewCell *cell = (CGTAFlagCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CGTAMainStoryboardIdentifiers.ImageCellIdentifier forIndexPath:indexPath];</string>
 		</array>
 		<key>Main.storyboard</key>
 		<array>

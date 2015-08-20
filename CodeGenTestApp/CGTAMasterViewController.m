@@ -39,7 +39,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 {
-    if ([segue.identifier isEqualToString:CGTAMainStoryboardTapOnFlagIdentifier]) {
+    if ([segue.identifier isEqualToString:CGTAMainStoryboardIdentifiers.TapOnFlagIdentifier]) {
         CGTADetailViewController *detailViewController = segue.destinationViewController;
         detailViewController.image = ((CGTAFlagCollectionViewCell *)sender).imageView.image;
     }
@@ -85,7 +85,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    CGTAFlagCollectionViewCell *cell = (CGTAFlagCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CGTAMainStoryboardImageCellIdentifier forIndexPath:indexPath];
+    CGTAFlagCollectionViewCell *cell = (CGTAFlagCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CGTAMainStoryboardIdentifiers.ImageCellIdentifier forIndexPath:indexPath];
     cell.imageView.image = self.flagImages[indexPath.item];
     return cell;
 }

@@ -20,7 +20,7 @@
 - (void)startWithCompletionHandler:(dispatch_block_t)completionBlock;
 {
     NSString *extension = [[self.inputURL pathExtension] IDS_titlecaseString];
-    self.skipClassDeclaration = YES;
+//    self.skipClassDeclaration = YES;
     NSString *filename = [[self.inputURL lastPathComponent] stringByDeletingPathExtension];
     NSString *formattedFilename = [filename stringByReplacingOccurrencesOfString:@" " withString:@""];
     BOOL containsExtensionText = NO;
@@ -51,10 +51,18 @@
     NSMutableDictionary *uniqueKeys = [NSMutableDictionary dictionary];
 	NSMutableArray *allKeys = [[NSMutableArray alloc] init];
 	NSString *extensionKey;
-    if (containsExtensionText){
-		extensionKey = [NSString stringWithFormat:@"%@%@Name", self.classPrefix, formattedFilename];
+    if (self.writeSingleFile) {
+        if (containsExtensionText){
+            extensionKey = [NSString stringWithFormat:@"%@Name", formattedFilename];
+        } else {
+            extensionKey = [NSString stringWithFormat:@"%@%@Name", formattedFilename, extension];
+        }
     } else {
-        extensionKey = [NSString stringWithFormat:@"%@%@%@Name", self.classPrefix, formattedFilename, extension];
+        if (containsExtensionText){
+            extensionKey = [NSString stringWithFormat:@"Name"];
+        } else {
+            extensionKey = [NSString stringWithFormat:@"%@Name", extension];
+        }
     }
     uniqueKeys[extensionKey] = filename;
 	[allKeys addObject:extensionKey];
@@ -63,9 +71,9 @@
         if ([identifier stringByReplacingOccurrencesOfString:@" " withString:@""].length > 0){
             NSString *key = nil;
             if (containsExtensionText){
-                key = [NSString stringWithFormat:@"%@%@%@Identifier", self.classPrefix, formattedFilename, [identifier IDS_titlecaseString]];
+                key = [NSString stringWithFormat:@"%@Identifier", [identifier IDS_titlecaseString]];
             } else {
-                key = [NSString stringWithFormat:@"%@%@%@%@Identifier", self.classPrefix, formattedFilename, extension, [identifier IDS_titlecaseString]];
+                key = [NSString stringWithFormat:@"%@Identifier", [identifier IDS_titlecaseString]];
             }
             uniqueKeys[key] = identifier;
             [allKeys addObject:key];
@@ -80,11 +88,30 @@
     }
     
     for (NSString *key in [loadedKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]) {
+        NSString *identifierValue = uniqueKeys[key];
+        NSMutableString *implementation = nil;
         if (self.targetObjC) {
-            [self.objcItems addObject:[NSString stringWithFormat:@"extern NSString *const %@;\n", key]];
-            [self.implementationContents addObject:[NSString stringWithFormat:@"NSString *const %@ = @\"%@\";\n", key, uniqueKeys[key]]];
+            implementation = [[NSMutableString alloc] init];
+            NSString *interface = [NSString stringWithFormat:@"+ (NSString *)%@;\n", key];
+            @synchronized(self.objcItems) {
+                [self.objcItems addObject:interface];
+            }
+            
+            [implementation appendFormat:@"/// %@\n", identifierValue];
+            [implementation appendString:interface];
+            [implementation appendString:@"{\n"];
+            [implementation appendFormat:@"    return @\"%@\";\n", identifierValue];
+            [implementation appendString:@"}\n\n"];
         } else {
-            [self.implementationContents addObject:[NSString stringWithFormat:@"var %@: String {return \"%@\"}\n", key, uniqueKeys[key]]];
+            implementation = [[NSMutableString alloc] init];
+            [implementation appendFormat:@"    /// %@\n", identifierValue];
+            [implementation appendFormat:@"    static var %@: String {\n", key];
+            [implementation appendFormat:@"        return \"%@\"\n", identifierValue];
+            [implementation appendString:@"    }\n\n"];
+        }
+        
+        @synchronized(self.implementationContents) {
+            [self.implementationContents addObject:implementation];
         }
     }
     
