@@ -21,4 +21,3 @@
 
 // Test
 "login error_message" = "Localized";
-"login error_message2" = "There was an error in attmpting to login. Please try again later."; // Needs Translation

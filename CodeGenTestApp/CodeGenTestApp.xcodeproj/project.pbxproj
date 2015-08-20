@@ -24,6 +24,7 @@
 		BD80FDED1B857E910014B78B /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDEC1B857E910014B78B /* Strings.m */; };
 		BD80FDF01B8585E30014B78B /* CGTAFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDEF1B8585E30014B78B /* CGTAFonts.m */; };
 		BD80FDF31B8586150014B78B /* CGTAImagesCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDF21B8586150014B78B /* CGTAImagesCatalog.m */; };
+		BD80FE061B862A680014B78B /* CGTALocalizableStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FE051B862A680014B78B /* CGTALocalizableStrings.m */; };
 		BDFA8B1E18CE4EC10087BB74 /* tracfk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDFA8B1D18CE4EC10087BB74 /* tracfk.ttf */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +148,8 @@
 		BD80FDF11B8586150014B78B /* CGTAImagesCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTAImagesCatalog.h; sourceTree = "<group>"; };
 		BD80FDF21B8586150014B78B /* CGTAImagesCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTAImagesCatalog.m; sourceTree = "<group>"; };
 		BD80FDF41B858D800014B78B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BD80FE041B862A680014B78B /* CGTALocalizableStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTALocalizableStrings.h; sourceTree = "<group>"; };
+		BD80FE051B862A680014B78B /* CGTALocalizableStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTALocalizableStrings.m; sourceTree = "<group>"; };
 		BD9C6ECA194B7A4F0024E368 /* CodeGenTestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CodeGenTestApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		BDFA8B1D18CE4EC10087BB74 /* tracfk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tracfk.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,6 +208,7 @@
 				BD738E111947B33A00127B0D /* Colors */,
 				BD738E131947B33A00127B0D /* Fonts */,
 				BD738E151947B33A00127B0D /* Identifiers */,
+				BD80FE011B862A4C0014B78B /* Strings */,
 				A838793418A05B6D00B386D6 /* CGTAImagesCatalog+RuntimeHackery.h */,
 				A838793518A05B6D00B386D6 /* CGTAImagesCatalog+RuntimeHackery.m */,
 			);
@@ -287,6 +291,15 @@
 				BD0A2B261A1AA45600B96522 /* CGTAMainStoryboardIdentifiers.m */,
 			);
 			path = Identifiers;
+			sourceTree = "<group>";
+		};
+		BD80FE011B862A4C0014B78B /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				BD80FE041B862A680014B78B /* CGTALocalizableStrings.h */,
+				BD80FE051B862A680014B78B /* CGTALocalizableStrings.m */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,6 +452,7 @@
 				BD80FDF31B8586150014B78B /* CGTAImagesCatalog.m in Sources */,
 				BD80FDED1B857E910014B78B /* Strings.m in Sources */,
 				BD0A2B211A1AA44B00B96522 /* CGTATestAppColorList.m in Sources */,
+				BD80FE061B862A680014B78B /* CGTALocalizableStrings.m in Sources */,
 				A881854118A9B622002803FC /* CGTAImagesCatalog+RuntimeHackery.m in Sources */,
 				A881854218A9B622002803FC /* main.m in Sources */,
 				A881853D18A9B622002803FC /* CGTADetailViewController.m in Sources */,

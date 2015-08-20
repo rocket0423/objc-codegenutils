@@ -34,6 +34,9 @@
     NSArray *pathComponents = [self.inputURL pathComponents];
     if ([pathComponents count] > 1) {
         if (![[pathComponents objectAtIndex:([pathComponents count] - 2)] isEqualToString:@"Base.lproj"]) {
+            if (self.writeSingleFile && self.lastFile && self.implementationContents) {
+                [self writeOutputFiles];
+            }
             completionBlock();
             return;
         }
@@ -52,21 +55,25 @@
     
     NSDictionary *localizationDict = [NSDictionary dictionaryWithContentsOfURL:self.inputURL];
     for (NSString *nextKey in [localizationDict allKeys]) {
+        NSString *localizedString = [localizationDict objectForKey:nextKey];
         NSMutableString *implementation = nil;
         if (self.targetObjC){
+            implementation = [[NSMutableString alloc] init];
             NSString *interface = [NSString stringWithFormat:@"+ (NSString *)%@;\n", [nextKey SLS_titlecaseString]];
             @synchronized(self.objcItems) {
                 [self.objcItems addObject:interface];
             }
             
-            implementation = [interface mutableCopy];
+            [implementation appendFormat:@"/// %@\n", localizedString];
+            [implementation appendString:interface];
             [implementation appendString:@"{\n"];
-            [implementation appendFormat:@"    return NSLocalizedString(@\"%@\", @\"%@\");\n", nextKey, [localizationDict objectForKey:nextKey]];
+            [implementation appendFormat:@"    return NSLocalizedString(@\"%@\", @\"%@\");\n", nextKey, localizedString];
             [implementation appendString:@"}\n\n"];
         } else {
             implementation = [[NSMutableString alloc] init];
+            [implementation appendFormat:@"    /// %@\n", localizedString];
             [implementation appendFormat:@"    static var %@: String {\n", [nextKey SLS_titlecaseString]];
-            [implementation appendFormat:@"        return NSLocalizedString(\"%@\", comment: \"%@\")\n", nextKey, [localizationDict objectForKey:nextKey]];
+            [implementation appendFormat:@"        return NSLocalizedString(\"%@\", comment: \"%@\")\n", nextKey, localizedString];
             [implementation appendString:@"    }\n\n"];
         }
         

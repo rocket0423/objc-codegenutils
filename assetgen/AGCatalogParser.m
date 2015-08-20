@@ -174,7 +174,7 @@
             } else {
                 [implementation appendFormat:@"        return UIImage(named: \"%@\")\n", imageSetName];
             }
-            [implementation appendString:@"    }\n"];
+            [implementation appendString:@"    }\n\n"];
         }
     } else {
         NSMutableArray *updatedImagesJson = [[NSMutableArray alloc] initWithCapacity:[variants count]];
