@@ -22,3 +22,4 @@
 // Test
 "login error_message" = "There was an error in attmpting to login. Please try again later.";
 "global_unauthorized" = "Unauthorized\nPlease Login again.";
+"global_test" = "test";

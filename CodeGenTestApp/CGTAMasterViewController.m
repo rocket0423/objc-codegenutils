@@ -39,7 +39,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 {
-    if ([segue.identifier isEqualToString:CGTAMainStoryboardIdentifiers.TapOnFlagIdentifier]) {
+    if ([segue.identifier isEqualToString:CGTAMainStoryboardIdentifiers.TapOnFlag]) {
         CGTADetailViewController *detailViewController = segue.destinationViewController;
         detailViewController.image = ((CGTAFlagCollectionViewCell *)sender).imageView.image;
     }
@@ -64,7 +64,7 @@
     
 
     // New version: get the properly compiler-checked spelling from the image catalog.
-    allFlagImages = @[[CGTAImagesCatalog usaImage], [CGTAImagesCatalog canadaImage], [CGTAImagesCatalog ukImage], [CGTAImagesCatalog australiaImage]];
+    allFlagImages = @[CGTAImagesCatalog.usa, CGTAImagesCatalog.canada, CGTAImagesCatalog.uk, CGTAImagesCatalog.australia];
     return allFlagImages;
 
     // But really, why not use a little runtime hackery because we can?
@@ -85,7 +85,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    CGTAFlagCollectionViewCell *cell = (CGTAFlagCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CGTAMainStoryboardIdentifiers.ImageCellIdentifier forIndexPath:indexPath];
+    CGTAFlagCollectionViewCell *cell = (CGTAFlagCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CGTAMainStoryboardIdentifiers.ImageCell forIndexPath:indexPath];
     cell.imageView.image = self.flagImages[indexPath.item];
     return cell;
 }

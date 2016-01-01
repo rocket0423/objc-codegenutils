@@ -139,7 +139,7 @@
     
     NSMutableString *implementation;
     if (self.targetObjC){
-        NSString *interface = [NSString stringWithFormat:@"+ (UIImage *)%@Image;\n", methodName];
+        NSString *interface = [NSString stringWithFormat:@"+ (UIImage *)%@;\n", methodName];
         @synchronized(self.objcItems) {
             [self.objcItems addObject:interface];
         }
@@ -147,7 +147,7 @@
         implementation = [interface mutableCopy];
         [implementation appendString:@"{\n"];
     } else {
-        implementation = [[NSMutableString alloc] initWithFormat:@"    static var %@Image: UIImage? {\n", methodName];
+        implementation = [[NSMutableString alloc] initWithFormat:@"    static var %@: UIImage? {\n", methodName];
     }
     
     // If we're only targeting iOS 7, short circuit since the asset catalog will have been compiled for us.

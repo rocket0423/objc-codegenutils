@@ -69,12 +69,7 @@
     
     for (NSString *identifier in identifiers) {
         if ([identifier stringByReplacingOccurrencesOfString:@" " withString:@""].length > 0){
-            NSString *key = nil;
-            if (containsExtensionText){
-                key = [NSString stringWithFormat:@"%@Identifier", [identifier IDS_titlecaseString]];
-            } else {
-                key = [NSString stringWithFormat:@"%@Identifier", [identifier IDS_titlecaseString]];
-            }
+            NSString *key = [NSString stringWithFormat:@"%@", [identifier IDS_titlecaseString]];
             uniqueKeys[key] = identifier;
             [allKeys addObject:key];
         }

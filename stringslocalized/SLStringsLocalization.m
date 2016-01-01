@@ -68,13 +68,13 @@
             [implementation appendFormat:@"/// %@\n", localizedString];
             [implementation appendString:interface];
             [implementation appendString:@"{\n"];
-            [implementation appendFormat:@"    return NSLocalizedString(@\"%@\", @\"%@\");\n", nextKey, localizedString];
+            [implementation appendFormat:@"    return NSLocalizedStringFromTable(@\"%@\", @\"%@\", @\"%@\");\n", nextKey, localizationFileName, localizedString];
             [implementation appendString:@"}\n\n"];
         } else {
             implementation = [[NSMutableString alloc] init];
             [implementation appendFormat:@"    /// %@\n", localizedString];
             [implementation appendFormat:@"    static var %@: String {\n", [nextKey SLS_titlecaseString]];
-            [implementation appendFormat:@"        return NSLocalizedString(\"%@\", comment: \"%@\")\n", nextKey, localizedString];
+            [implementation appendFormat:@"        return NSLocalizedString(\"%@\", tableName: \"%@\", comment: \"%@\")\n", nextKey, localizationFileName, localizedString];
             [implementation appendString:@"    }\n\n"];
         }
         
@@ -96,6 +96,26 @@
         if (nextFile == self.inputURL || ![[nextFile lastPathComponent] isEqualToString:[self.inputURL lastPathComponent]]) {
             continue;
         }
+        NSArray *currentPathComponents = [self.inputURL pathComponents];
+        NSArray *nextSetOfPathComponents = [nextFile pathComponents];
+        NSUInteger max = 4;
+        if (currentPathComponents.count < max) {
+            max = currentPathComponents.count;
+        }
+        if (nextSetOfPathComponents.count < max) {
+            max = nextSetOfPathComponents.count;
+        }
+        BOOL sameLocalizationFile = YES;
+        for (int i = 3; i <= max; i++) {
+            if (![[currentPathComponents objectAtIndex:(currentPathComponents.count - i)] isEqualToString:[nextSetOfPathComponents objectAtIndex:(nextSetOfPathComponents.count - i)]]) {
+                sameLocalizationFile = NO;
+                break;
+            }
+        }
+        if (!sameLocalizationFile) {
+            continue;
+        }
+        
         NSMutableString *mutableString = [[NSMutableString alloc] init];
         NSString *nextString = [NSString stringWithContentsOfURL:nextFile encoding:NSUTF8StringEncoding error:nil];
         NSArray *nextComponents = [nextString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];

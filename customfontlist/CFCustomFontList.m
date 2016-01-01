@@ -36,7 +36,7 @@
             method = [declaration mutableCopy];
             [method appendFormat:@"{\n    return [UIFont fontWithName:@\"%@\" size:fontSize];\n}\n", fontName];
         } else {
-            method = [[NSMutableString alloc] initWithFormat:@"    class func %@FontOfSize(fontSize : CGFloat) -> UIFont {", [self methodNameForKey:fontName]];
+            method = [[NSMutableString alloc] initWithFormat:@"    class func %@FontOfSize(fontSize : CGFloat) -> UIFont? {", [self methodNameForKey:fontName]];
             [method appendFormat:@"\n        return UIFont(name: \"%@\", size: fontSize)\n    }\n\n", fontName];
         }
         if (self.uniqueItemCheck || ![self.implementationContents containsObject:method]) {
