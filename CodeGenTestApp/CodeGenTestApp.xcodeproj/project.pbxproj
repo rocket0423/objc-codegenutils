@@ -25,6 +25,8 @@
 		BD80FDF01B8585E30014B78B /* CGTAFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDEF1B8585E30014B78B /* CGTAFonts.m */; };
 		BD80FDF31B8586150014B78B /* CGTAImagesCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDF21B8586150014B78B /* CGTAImagesCatalog.m */; };
 		BD80FE061B862A680014B78B /* CGTALocalizableStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FE051B862A680014B78B /* CGTALocalizableStrings.m */; };
+		BD9054C81C8A1B9500C36A09 /* Rockwell Extra Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9054C61C8A1B9500C36A09 /* Rockwell Extra Bold.ttf */; };
+		BD9054C91C8A1B9500C36A09 /* Rockwell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9054C71C8A1B9500C36A09 /* Rockwell.ttf */; };
 		BDFA8B1E18CE4EC10087BB74 /* tracfk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDFA8B1D18CE4EC10087BB74 /* tracfk.ttf */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +152,8 @@
 		BD80FDF41B858D800014B78B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BD80FE041B862A680014B78B /* CGTALocalizableStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGTALocalizableStrings.h; sourceTree = "<group>"; };
 		BD80FE051B862A680014B78B /* CGTALocalizableStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGTALocalizableStrings.m; sourceTree = "<group>"; };
+		BD9054C61C8A1B9500C36A09 /* Rockwell Extra Bold.ttf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Rockwell Extra Bold.ttf"; sourceTree = "<group>"; };
+		BD9054C71C8A1B9500C36A09 /* Rockwell.ttf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Rockwell.ttf; sourceTree = "<group>"; };
 		BD9C6ECA194B7A4F0024E368 /* CodeGenTestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CodeGenTestApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		BDFA8B1D18CE4EC10087BB74 /* tracfk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tracfk.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +194,8 @@
 		A83878E018A0367C00B386D6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BD9054C61C8A1B9500C36A09 /* Rockwell Extra Bold.ttf */,
+				BD9054C71C8A1B9500C36A09 /* Rockwell.ttf */,
 				BDFA8B1D18CE4EC10087BB74 /* tracfk.ttf */,
 				A83878E118A0367C00B386D6 /* CodeGenTestApp-Info.plist */,
 				A83878E218A0367C00B386D6 /* InfoPlist.strings */,
@@ -416,8 +422,10 @@
 				BD80FDCF1B855C9F0014B78B /* Localizable.strings in Resources */,
 				A881854418A9B663002803FC /* Main.storyboard in Resources */,
 				A881853A18A9B614002803FC /* Images.xcassets in Resources */,
+				BD9054C91C8A1B9500C36A09 /* Rockwell.ttf in Resources */,
 				BDFA8B1E18CE4EC10087BB74 /* tracfk.ttf in Resources */,
 				A83878E418A0367C00B386D6 /* InfoPlist.strings in Resources */,
+				BD9054C81C8A1B9500C36A09 /* Rockwell Extra Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

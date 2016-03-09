@@ -222,9 +222,15 @@
     } else {
         [mutableKey replaceCharactersInRange:NSMakeRange(0, 1) withString:[[key substringToIndex:1] lowercaseString]];
     }
-    [mutableKey replaceOccurrencesOfString:@" " withString:@"" options:0 range:NSMakeRange(0, mutableKey.length)];
-    [mutableKey replaceOccurrencesOfString:@"~" withString:@"" options:0 range:NSMakeRange(0, mutableKey.length)];
     [mutableKey replaceOccurrencesOfString:@"-" withString:@"_" options:0 range:NSMakeRange(0, mutableKey.length)];
+    
+    NSMutableCharacterSet *charactersWanted = [NSMutableCharacterSet alphanumericCharacterSet];
+    [charactersWanted addCharactersInString:@"_"];
+    mutableKey = [[[mutableKey componentsSeparatedByCharactersInSet: [charactersWanted invertedSet]] componentsJoinedByString: @""] mutableCopy];
+    
+    while ([mutableKey rangeOfString:@"^\\d" options:NSRegularExpressionSearch].location != NSNotFound) {
+        [mutableKey deleteCharactersInRange:NSMakeRange(0, 1)];
+    }
     return [mutableKey copy];
 }
 

@@ -60,7 +60,7 @@
         NSMutableString *implementation = nil;
         if (self.targetObjC){
             implementation = [[NSMutableString alloc] init];
-            NSString *interface = [NSString stringWithFormat:@"+ (NSString *)%@;\n", [nextKey SLS_titlecaseString]];
+            NSString *interface = [NSString stringWithFormat:@"+ (NSString *)%@;\n", [[self methodNameForKey:nextKey] SLS_titlecaseString]];
             @synchronized(self.objcItems) {
                 [self.objcItems addObject:interface];
             }
@@ -73,7 +73,7 @@
         } else {
             implementation = [[NSMutableString alloc] init];
             [implementation appendFormat:@"    /// %@\n", localizedString];
-            [implementation appendFormat:@"    static var %@: String {\n", [nextKey SLS_titlecaseString]];
+            [implementation appendFormat:@"    static var %@: String {\n", [[self methodNameForKey:nextKey] SLS_titlecaseString]];
             [implementation appendFormat:@"        return NSLocalizedString(\"%@\", tableName: \"%@\", comment: \"%@\")\n", nextKey, localizationFileName, localizedString];
             [implementation appendString:@"    }\n\n"];
         }
