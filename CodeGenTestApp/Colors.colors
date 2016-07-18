@@ -1,0 +1,14 @@
+/* 
+  Colors.strings
+
+  Created by Justin Carstens on 7/16/16.
+*/
+
+
+"main" = "2a2a2a";
+"secondary" = "e3c139";
+"apple" = "e3c139";
+"rgb255" = "55,55,55";
+"rgba255" = "55,55,55,255";
+"rgb" = "0.4,0.3,0.5";
+"rgba" = "0.4,0.3,0.5,1";

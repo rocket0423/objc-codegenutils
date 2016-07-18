@@ -11,12 +11,7 @@
 		A838792318A04BF700B386D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A838792218A04BF700B386D6 /* main.m */; };
 		A838792B18A04C0E00B386D6 /* CGUCodeGenTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A885F8AD17DA8DE400A29164 /* CGUCodeGenTool.m */; };
 		A838792E18A04C3400B386D6 /* IDStoryboardDumper.m in Sources */ = {isa = PBXBuildFile; fileRef = A838792D18A04C3400B386D6 /* IDStoryboardDumper.m */; };
-		A885F89C17DA8C7A00A29164 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */; };
-		A885F89F17DA8C7A00A29164 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A885F89E17DA8C7A00A29164 /* main.m */; };
 		A885F8AE17DA8DE400A29164 /* CGUCodeGenTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A885F8AD17DA8DE400A29164 /* CGUCodeGenTool.m */; };
-		A885F8AF17DA8DE400A29164 /* CGUCodeGenTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A885F8AD17DA8DE400A29164 /* CGUCodeGenTool.m */; };
-		A885F8B217DA921600A29164 /* CDColorListDumper.m in Sources */ = {isa = PBXBuildFile; fileRef = A885F8B117DA921600A29164 /* CDColorListDumper.m */; };
-		A885F8B417DA929800A29164 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A885F8B317DA929800A29164 /* AppKit.framework */; };
 		A89D8FE717CFFDCE0077F2B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */; };
 		A89D8FEA17CFFDCE0077F2B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A89D8FE917CFFDCE0077F2B5 /* main.m */; };
 		A89D8FF617CFFED90077F2B5 /* AGCatalogParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A89D8FF517CFFED90077F2B5 /* AGCatalogParser.m */; };
@@ -32,19 +27,14 @@
 		BDC4D70D18CE443D00C439FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */; };
 		BDC4D71618CE44C800C439FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC4D71518CE44C800C439FC /* main.m */; };
 		BDC4D71A18CE451500C439FC /* CFCustomFontList.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC4D71918CE451500C439FC /* CFCustomFontList.m */; };
+		BDE896931D3A8B2300231DC3 /* CGUCodeGenTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A885F8AD17DA8DE400A29164 /* CGUCodeGenTool.m */; };
+		BDE896971D3A8B2300231DC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */; };
+		BDE8969D1D3A8B8300231DC3 /* CLColors.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE8968E1D39B90700231DC3 /* CLColors.m */; };
+		BDE8969E1D3A8B8800231DC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE896901D39B90700231DC3 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		A838791D18A04BF700B386D6 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		A885F89917DA8C7A00A29164 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -89,6 +79,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		BDE896981D3A8B2300231DC3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -100,13 +99,8 @@
 		A838792518A04BF700B386D6 /* identifierconstants-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "identifierconstants-Prefix.pch"; sourceTree = "<group>"; };
 		A838792C18A04C3400B386D6 /* IDStoryboardDumper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDStoryboardDumper.h; sourceTree = "<group>"; };
 		A838792D18A04C3400B386D6 /* IDStoryboardDumper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDStoryboardDumper.m; sourceTree = "<group>"; };
-		A885F89B17DA8C7A00A29164 /* objc-colordump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-colordump"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A885F89E17DA8C7A00A29164 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A885F8A117DA8C7A00A29164 /* colordump-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "colordump-Prefix.pch"; sourceTree = "<group>"; };
 		A885F8AC17DA8DE400A29164 /* CGUCodeGenTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGUCodeGenTool.h; sourceTree = "<group>"; };
 		A885F8AD17DA8DE400A29164 /* CGUCodeGenTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGUCodeGenTool.m; sourceTree = "<group>"; };
-		A885F8B017DA921600A29164 /* CDColorListDumper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDColorListDumper.h; sourceTree = "<group>"; };
-		A885F8B117DA921600A29164 /* CDColorListDumper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDColorListDumper.m; sourceTree = "<group>"; };
 		A885F8B317DA929800A29164 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A89D8FE317CFFDCE0077F2B5 /* objc-assetgen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-assetgen"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -129,6 +123,11 @@
 		BDC4D71518CE44C800C439FC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BDC4D71818CE451500C439FC /* CFCustomFontList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFCustomFontList.h; sourceTree = "<group>"; };
 		BDC4D71918CE451500C439FC /* CFCustomFontList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFCustomFontList.m; sourceTree = "<group>"; };
+		BDE8968D1D39B90700231DC3 /* CLColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLColors.h; sourceTree = "<group>"; };
+		BDE8968E1D39B90700231DC3 /* CLColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLColors.m; sourceTree = "<group>"; };
+		BDE8968F1D39B90700231DC3 /* colorslist-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "colorslist-Prefix.pch"; sourceTree = "<group>"; };
+		BDE896901D39B90700231DC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BDE8969C1D3A8B2300231DC3 /* objc-colorlist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-colorlist"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,15 +136,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A838792018A04BF700B386D6 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A885F89817DA8C7A00A29164 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A885F8B417DA929800A29164 /* AppKit.framework in Frameworks */,
-				A885F89C17DA8C7A00A29164 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +171,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BDE896961D3A8B2300231DC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDE896971D3A8B2300231DC3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -203,25 +201,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A885F89D17DA8C7A00A29164 /* colordump */ = {
-			isa = PBXGroup;
-			children = (
-				A885F8B017DA921600A29164 /* CDColorListDumper.h */,
-				A885F8B117DA921600A29164 /* CDColorListDumper.m */,
-				A885F89E17DA8C7A00A29164 /* main.m */,
-				A885F8A017DA8C7A00A29164 /* Supporting Files */,
-			);
-			path = colordump;
-			sourceTree = "<group>";
-		};
-		A885F8A017DA8C7A00A29164 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A885F8A117DA8C7A00A29164 /* colordump-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		A885F8A717DA8CBA00A29164 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,10 +213,10 @@
 		A89D8FDA17CFFDCE0077F2B5 = {
 			isa = PBXGroup;
 			children = (
+				BDE8968C1D39B90700231DC3 /* colorslist */,
 				BD80FDDE1B856C600014B78B /* stringslocalized */,
 				BDA8B7EC192AB2EB00F18A49 /* assetverify */,
 				A89D8FE817CFFDCE0077F2B5 /* assetgen */,
-				A885F89D17DA8C7A00A29164 /* colordump */,
 				A838792118A04BF700B386D6 /* identifierconstants */,
 				BDC4D71318CE44C800C439FC /* customfontlist */,
 				A885F8A717DA8CBA00A29164 /* Shared */,
@@ -250,11 +229,11 @@
 			isa = PBXGroup;
 			children = (
 				A89D8FE317CFFDCE0077F2B5 /* objc-assetgen */,
-				A885F89B17DA8C7A00A29164 /* objc-colordump */,
 				A838791F18A04BF700B386D6 /* objc-identifierconstants */,
 				BDC4D71218CE443D00C439FC /* objc-customfontlist */,
 				BDA8B7EB192AB25600F18A49 /* objc-assetverify */,
 				BD80FDDD1B856BD90014B78B /* objc-stringslocalized */,
+				BDE8969C1D3A8B2300231DC3 /* objc-colorlist */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -347,6 +326,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BDE8968C1D39B90700231DC3 /* colorslist */ = {
+			isa = PBXGroup;
+			children = (
+				BDE8968D1D39B90700231DC3 /* CLColors.h */,
+				BDE8968E1D39B90700231DC3 /* CLColors.m */,
+				BDE8968F1D39B90700231DC3 /* colorslist-Prefix.pch */,
+				BDE896901D39B90700231DC3 /* main.m */,
+			);
+			path = colorslist;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -365,23 +355,6 @@
 			name = identifierconstants;
 			productName = identiferconstants;
 			productReference = A838791F18A04BF700B386D6 /* objc-identifierconstants */;
-			productType = "com.apple.product-type.tool";
-		};
-		A885F89A17DA8C7A00A29164 /* colordump */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A885F8A417DA8C7A00A29164 /* Build configuration list for PBXNativeTarget "colordump" */;
-			buildPhases = (
-				A885F89717DA8C7A00A29164 /* Sources */,
-				A885F89817DA8C7A00A29164 /* Frameworks */,
-				A885F89917DA8C7A00A29164 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = colordump;
-			productName = colordump;
-			productReference = A885F89B17DA8C7A00A29164 /* objc-colordump */;
 			productType = "com.apple.product-type.tool";
 		};
 		A89D8FE217CFFDCE0077F2B5 /* assetgen */ = {
@@ -452,13 +425,30 @@
 			productReference = BDC4D71218CE443D00C439FC /* objc-customfontlist */;
 			productType = "com.apple.product-type.tool";
 		};
+		BDE896911D3A8B2300231DC3 /* colorlist */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDE896991D3A8B2300231DC3 /* Build configuration list for PBXNativeTarget "colorlist" */;
+			buildPhases = (
+				BDE896921D3A8B2300231DC3 /* Sources */,
+				BDE896961D3A8B2300231DC3 /* Frameworks */,
+				BDE896981D3A8B2300231DC3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = colorlist;
+			productName = identiferconstants;
+			productReference = BDE8969C1D3A8B2300231DC3 /* objc-colorlist */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A89D8FDB17CFFDCE0077F2B5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Square, Inc";
 			};
 			buildConfigurationList = A89D8FDE17CFFDCE0077F2B5 /* Build configuration list for PBXProject "codegenutils" */;
@@ -476,10 +466,10 @@
 			targets = (
 				A89D8FE217CFFDCE0077F2B5 /* assetgen */,
 				BD80FDD21B856BD90014B78B /* stringslocalized */,
-				A885F89A17DA8C7A00A29164 /* colordump */,
 				A838791E18A04BF700B386D6 /* identifierconstants */,
 				BDC4D70718CE443D00C439FC /* customfontlist */,
 				BDA8B7E0192AB25600F18A49 /* assetverify */,
+				BDE896911D3A8B2300231DC3 /* colorlist */,
 			);
 		};
 /* End PBXProject section */
@@ -492,16 +482,6 @@
 				A838792318A04BF700B386D6 /* main.m in Sources */,
 				A838792B18A04C0E00B386D6 /* CGUCodeGenTool.m in Sources */,
 				A838792E18A04C3400B386D6 /* IDStoryboardDumper.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A885F89717DA8C7A00A29164 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A885F89F17DA8C7A00A29164 /* main.m in Sources */,
-				A885F8B217DA921600A29164 /* CDColorListDumper.m in Sources */,
-				A885F8AF17DA8DE400A29164 /* CGUCodeGenTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +525,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BDE896921D3A8B2300231DC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDE896931D3A8B2300231DC3 /* CGUCodeGenTool.m in Sources */,
+				BDE8969D1D3A8B8300231DC3 /* CLColors.m in Sources */,
+				BDE8969E1D3A8B8800231DC3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
@@ -572,28 +562,6 @@
 			};
 			name = Release;
 		};
-		A885F8A517DA8C7A00A29164 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "colordump/colordump-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				PRODUCT_NAME = "objc-colordump";
-			};
-			name = Debug;
-		};
-		A885F8A617DA8C7A00A29164 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "colordump/colordump-Prefix.pch";
-				PRODUCT_NAME = "objc-colordump";
-			};
-			name = Release;
-		};
 		A89D8FEF17CFFDCE0077F2B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -611,6 +579,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -742,6 +711,30 @@
 			};
 			name = Release;
 		};
+		BDE8969A1D3A8B2300231DC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "customfontlist/customfontlist-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "objc-colorlist";
+			};
+			name = Debug;
+		};
+		BDE8969B1D3A8B2300231DC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "customfontlist/customfontlist-Prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "objc-colorlist";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -750,15 +743,6 @@
 			buildConfigurations = (
 				A838792918A04BF700B386D6 /* Debug */,
 				A838792A18A04BF700B386D6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A885F8A417DA8C7A00A29164 /* Build configuration list for PBXNativeTarget "colordump" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A885F8A517DA8C7A00A29164 /* Debug */,
-				A885F8A617DA8C7A00A29164 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -804,6 +788,15 @@
 			buildConfigurations = (
 				BDC4D71018CE443D00C439FC /* Debug */,
 				BDC4D71118CE443D00C439FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDE896991D3A8B2300231DC3 /* Build configuration list for PBXNativeTarget "colorlist" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDE8969A1D3A8B2300231DC3 /* Debug */,
+				BDE8969B1D3A8B2300231DC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

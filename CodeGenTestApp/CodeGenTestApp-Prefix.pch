@@ -16,6 +16,6 @@
 
     #import "CGTAImagesCatalog.h"
     #import "CGTAFonts.h"
-    #import "CGTATestAppColorList.h"
+//    #import "CGTATestAppColorList.h"
     #import "CGTAMainStoryboardIdentifiers.h"
 #endif

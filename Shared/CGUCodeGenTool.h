@@ -37,6 +37,7 @@
 @property (copy) NSString *infoPlistFile;
 @property (strong) NSMutableArray *implementationContents;
 @property (strong) NSMutableArray *objcItems;
+@property BOOL hasWarning;
 
 - (void)startWithCompletionHandler:(dispatch_block_t)completionBlock;
 

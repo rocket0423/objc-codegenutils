@@ -33,7 +33,7 @@
     layer.startPoint = CGPointMake(0.5, 0.5);
     layer.endPoint = CGPointMake(0.5, 1.0);
     
-    layer.colors = @[(id)[UIColor whiteColor].CGColor, (id)[CGTATestAppColorList tealColor].CGColor];
+//    layer.colors = @[(id)[UIColor whiteColor].CGColor, (id)[CGTATestAppColorList tealColor].CGColor];
     layer.frame = self.view.layer.bounds;
     [self.view.layer insertSublayer:layer atIndex:0];
 }

@@ -36,6 +36,7 @@
     BOOL singleFile = NO;
     BOOL uniqueCheck = NO;
     BOOL objc = NO;
+    
     NSMutableArray *inputURLs = [NSMutableArray array];
     
     float currentVersion = [[CGUCodeGenTool runStringAsCommand:@"echo \"$IPHONEOS_DEPLOYMENT_TARGET\""] floatValue];
@@ -106,11 +107,13 @@
     CGUCodeGenTool *target;
     if (singleFile){
         target = [self new];
+        target.hasWarning = NO;
     }
     for (NSURL *url in inputURLs) {
         dispatch_group_enter(group);
         if (!singleFile){
             target = [self new];
+            target.hasWarning = NO;
         }
         target.searchingURL = searchURL;
         target.infoPlistFile = infoPlist;

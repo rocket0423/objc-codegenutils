@@ -42,7 +42,7 @@
             return;
         }
     }
-    [self synchronizeFiles];
+    BOOL hasTranslations = [self synchronizeFiles];
     
     NSString *localizationFileName = [[self.inputURL lastPathComponent] stringByDeletingPathExtension];
     if (self.writeSingleFile)
@@ -68,13 +68,21 @@
             [implementation appendFormat:@"/// %@\n", localizedString];
             [implementation appendString:interface];
             [implementation appendString:@"{\n"];
-            [implementation appendFormat:@"    return NSLocalizedStringFromTable(@\"%@\", @\"%@\", @\"%@\");\n", nextKey, localizationFileName, localizedString];
+            if (hasTranslations) {
+                [implementation appendFormat:@"    return NSLocalizedStringFromTable(@\"%@\", @\"%@\", @\"%@\");\n", nextKey, localizationFileName, localizedString];
+            } else {
+                [implementation appendFormat:@"    return @\"%@\";\n", localizedString];
+            }
             [implementation appendString:@"}\n\n"];
         } else {
             implementation = [[NSMutableString alloc] init];
             [implementation appendFormat:@"    /// %@\n", localizedString];
             [implementation appendFormat:@"    static var %@: String {\n", [[self methodNameForKey:nextKey] SLS_titlecaseString]];
-            [implementation appendFormat:@"        return NSLocalizedString(\"%@\", tableName: \"%@\", comment: \"%@\")\n", nextKey, localizationFileName, localizedString];
+            if (hasTranslations) {
+                [implementation appendFormat:@"        return NSLocalizedString(\"%@\", tableName: \"%@\", comment: \"%@\")\n", nextKey, localizationFileName, localizedString];
+            } else {
+                [implementation appendFormat:@"        return \"%@\"\n", localizedString];
+            }
             [implementation appendString:@"    }\n\n"];
         }
         
@@ -89,13 +97,15 @@
     completionBlock();
 }
 
-- (void)synchronizeFiles {
+- (BOOL)synchronizeFiles {
+    BOOL hasTranslations = NO;
     NSString *mainString = [NSString stringWithContentsOfURL:self.inputURL encoding:NSUTF8StringEncoding error:nil];
     NSArray *mainComponents = [mainString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     for (NSURL *nextFile in self.allFileURLs) {
         if (nextFile == self.inputURL || ![[nextFile lastPathComponent] isEqualToString:[self.inputURL lastPathComponent]]) {
             continue;
         }
+        hasTranslations = YES;
         NSArray *currentPathComponents = [self.inputURL pathComponents];
         NSArray *nextSetOfPathComponents = [nextFile pathComponents];
         NSUInteger max = 4;
@@ -134,6 +144,7 @@
         }
         [[mutableString substringToIndex:(mutableString.length - 1)] writeToURL:nextFile atomically:YES encoding:NSUTF8StringEncoding error:nil];
     }
+    return hasTranslations;
 }
 
 - (NSString *)keyForComponent:(NSString *)component {

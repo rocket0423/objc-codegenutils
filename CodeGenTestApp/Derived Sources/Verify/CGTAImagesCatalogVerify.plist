@@ -4,7 +4,7 @@
 <dict>
 	<key>Argentina</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)argentina;</string>
 			<string>    return [UIImage imageNamed:@"Argentina"];</string>
@@ -16,7 +16,7 @@
 	</dict>
 	<key>Australia</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)australia;</string>
 			<string>    return [UIImage imageNamed:@"Australia"];</string>
@@ -29,7 +29,7 @@
 	</dict>
 	<key>Austria</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)austria;</string>
 			<string>    return [UIImage imageNamed:@"Austria"];</string>
@@ -37,7 +37,7 @@
 	</dict>
 	<key>Belgium</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)belgium;</string>
 			<string>    return [UIImage imageNamed:@"Belgium"];</string>
@@ -45,7 +45,7 @@
 	</dict>
 	<key>Brazil</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)brazil;</string>
 			<string>    return [UIImage imageNamed:@"Brazil"];</string>
@@ -53,7 +53,7 @@
 	</dict>
 	<key>Cameroon</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)cameroon;</string>
 			<string>    return [UIImage imageNamed:@"Cameroon"];</string>
@@ -61,7 +61,7 @@
 	</dict>
 	<key>Canada</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)canada;</string>
 			<string>    return [UIImage imageNamed:@"Canada"];</string>
@@ -74,7 +74,7 @@
 	</dict>
 	<key>Chile</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)chile;</string>
 			<string>    return [UIImage imageNamed:@"Chile"];</string>
@@ -82,7 +82,7 @@
 	</dict>
 	<key>China</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)china;</string>
 			<string>    return [UIImage imageNamed:@"China"];</string>
@@ -90,7 +90,7 @@
 	</dict>
 	<key>Denmark</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)denmark;</string>
 			<string>    return [UIImage imageNamed:@"Denmark"];</string>
@@ -98,7 +98,7 @@
 	</dict>
 	<key>Finland</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)finland;</string>
 			<string>    return [UIImage imageNamed:@"Finland"];</string>
@@ -106,7 +106,7 @@
 	</dict>
 	<key>France</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)france;</string>
 			<string>    return [UIImage imageNamed:@"France"];</string>
@@ -114,7 +114,7 @@
 	</dict>
 	<key>Germany</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)germany;</string>
 			<string>    return [UIImage imageNamed:@"Germany"];</string>
@@ -122,7 +122,7 @@
 	</dict>
 	<key>Greece</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)greece;</string>
 			<string>    return [UIImage imageNamed:@"Greece"];</string>
@@ -130,14 +130,14 @@
 	</dict>
 	<key>Hong Kong</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>    return [UIImage imageNamed:@"Hong Kong"];</string>
 		</array>
 	</dict>
 	<key>Hungary</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)hungary;</string>
 			<string>    return [UIImage imageNamed:@"Hungary"];</string>
@@ -145,7 +145,7 @@
 	</dict>
 	<key>Iceland</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)iceland;</string>
 			<string>    return [UIImage imageNamed:@"Iceland"];</string>
@@ -153,7 +153,7 @@
 	</dict>
 	<key>India</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)india;</string>
 			<string>    return [UIImage imageNamed:@"India"];</string>
@@ -161,7 +161,7 @@
 	</dict>
 	<key>Indonesia</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)indonesia;</string>
 			<string>    return [UIImage imageNamed:@"Indonesia"];</string>
@@ -169,7 +169,7 @@
 	</dict>
 	<key>Ireland</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)ireland;</string>
 			<string>    return [UIImage imageNamed:@"Ireland"];</string>
@@ -177,7 +177,7 @@
 	</dict>
 	<key>Israel</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)israel;</string>
 			<string>    return [UIImage imageNamed:@"Israel"];</string>
@@ -185,7 +185,7 @@
 	</dict>
 	<key>Italy</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)italy;</string>
 			<string>    return [UIImage imageNamed:@"Italy"];</string>
@@ -193,7 +193,7 @@
 	</dict>
 	<key>Japan</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)japan;</string>
 			<string>    return [UIImage imageNamed:@"Japan"];</string>
@@ -201,7 +201,7 @@
 	</dict>
 	<key>Malaysia</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)malaysia;</string>
 			<string>    return [UIImage imageNamed:@"Malaysia"];</string>
@@ -209,7 +209,7 @@
 	</dict>
 	<key>Mexico</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)mexico;</string>
 			<string>    return [UIImage imageNamed:@"Mexico"];</string>
@@ -217,7 +217,7 @@
 	</dict>
 	<key>Netherlands</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)netherlands;</string>
 			<string>    return [UIImage imageNamed:@"Netherlands"];</string>
@@ -225,14 +225,14 @@
 	</dict>
 	<key>New Zealand</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>    return [UIImage imageNamed:@"New Zealand"];</string>
 		</array>
 	</dict>
 	<key>Norway</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)norway;</string>
 			<string>    return [UIImage imageNamed:@"Norway"];</string>
@@ -240,7 +240,7 @@
 	</dict>
 	<key>Pakistan</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)pakistan;</string>
 			<string>    return [UIImage imageNamed:@"Pakistan"];</string>
@@ -248,7 +248,7 @@
 	</dict>
 	<key>Palestine</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)palestine;</string>
 			<string>    return [UIImage imageNamed:@"Palestine"];</string>
@@ -256,7 +256,7 @@
 	</dict>
 	<key>Peru</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)peru;</string>
 			<string>    return [UIImage imageNamed:@"Peru"];</string>
@@ -264,7 +264,7 @@
 	</dict>
 	<key>Poland</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)poland;</string>
 			<string>    return [UIImage imageNamed:@"Poland"];</string>
@@ -272,7 +272,7 @@
 	</dict>
 	<key>Portugal</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)portugal;</string>
 			<string>    return [UIImage imageNamed:@"Portugal"];</string>
@@ -280,14 +280,14 @@
 	</dict>
 	<key>Puerto Rico</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>    return [UIImage imageNamed:@"Puerto Rico"];</string>
 		</array>
 	</dict>
 	<key>Romania</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)romania;</string>
 			<string>    return [UIImage imageNamed:@"Romania"];</string>
@@ -295,7 +295,7 @@
 	</dict>
 	<key>Russia</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)russia;</string>
 			<string>    return [UIImage imageNamed:@"Russia"];</string>
@@ -303,14 +303,14 @@
 	</dict>
 	<key>Saudi Arabia</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>    return [UIImage imageNamed:@"Saudi Arabia"];</string>
 		</array>
 	</dict>
 	<key>Singapore</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)singapore;</string>
 			<string>    return [UIImage imageNamed:@"Singapore"];</string>
@@ -318,21 +318,21 @@
 	</dict>
 	<key>South Africa</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>    return [UIImage imageNamed:@"South Africa"];</string>
 		</array>
 	</dict>
 	<key>South Korea</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>    return [UIImage imageNamed:@"South Korea"];</string>
 		</array>
 	</dict>
 	<key>Spain</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)spain;</string>
 			<string>    return [UIImage imageNamed:@"Spain"];</string>
@@ -340,7 +340,7 @@
 	</dict>
 	<key>Sweden</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)sweden;</string>
 			<string>    return [UIImage imageNamed:@"Sweden"];</string>
@@ -348,7 +348,7 @@
 	</dict>
 	<key>Switzerland</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)switzerland;</string>
 			<string>    return [UIImage imageNamed:@"Switzerland"];</string>
@@ -356,7 +356,7 @@
 	</dict>
 	<key>Thailand</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)thailand;</string>
 			<string>    return [UIImage imageNamed:@"Thailand"];</string>
@@ -364,7 +364,7 @@
 	</dict>
 	<key>Turkey</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)turkey;</string>
 			<string>    return [UIImage imageNamed:@"Turkey"];</string>
@@ -372,7 +372,7 @@
 	</dict>
 	<key>UK</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)uk;</string>
 			<string>    return [UIImage imageNamed:@"UK"];</string>
@@ -387,7 +387,7 @@
 	</dict>
 	<key>USA</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)usa;</string>
 			<string>    return [UIImage imageNamed:@"USA"];</string>
@@ -408,7 +408,7 @@
 	</dict>
 	<key>Ukraine</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)ukraine;</string>
 			<string>    return [UIImage imageNamed:@"Ukraine"];</string>
@@ -416,7 +416,7 @@
 	</dict>
 	<key>Uruguay</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)uruguay;</string>
 			<string>    return [UIImage imageNamed:@"Uruguay"];</string>
@@ -424,7 +424,7 @@
 	</dict>
 	<key>Venezuela</key>
 	<dict>
-		<key>CGTAImagesCatalog.m</key>
+		<key>CGTAImages.m</key>
 		<array>
 			<string>+ (UIImage *)venezuela;</string>
 			<string>    return [UIImage imageNamed:@"Venezuela"];</string>
