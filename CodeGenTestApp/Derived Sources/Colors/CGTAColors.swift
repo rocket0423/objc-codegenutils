@@ -1,5 +1,5 @@
 //
-// This file is generated from all .colors files by objc-colorlist.
+// This file is generated from all .colors files by colorlist.
 // Please do not edit.
 //
 

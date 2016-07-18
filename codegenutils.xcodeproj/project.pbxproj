@@ -19,10 +19,6 @@
 		BD80FDD81B856BD90014B78B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */; };
 		BD80FDE31B856C600014B78B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDDF1B856C600014B78B /* main.m */; };
 		BD80FDE41B856C600014B78B /* SLStringsLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80FDE11B856C600014B78B /* SLStringsLocalization.m */; };
-		BDA8B7E3192AB25600F18A49 /* CGUCodeGenTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A885F8AD17DA8DE400A29164 /* CGUCodeGenTool.m */; };
-		BDA8B7E6192AB25600F18A49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */; };
-		BDA8B7F2192AB2EB00F18A49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA8B7F0192AB2EB00F18A49 /* main.m */; };
-		BDA8B7F5192AB31700F18A49 /* AGCatalogVerify.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA8B7F4192AB31700F18A49 /* AGCatalogVerify.m */; };
 		BDC4D70A18CE443D00C439FC /* CGUCodeGenTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A885F8AD17DA8DE400A29164 /* CGUCodeGenTool.m */; };
 		BDC4D70D18CE443D00C439FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */; };
 		BDC4D71618CE44C800C439FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC4D71518CE44C800C439FC /* main.m */; };
@@ -61,15 +57,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
-		BDA8B7E7192AB25600F18A49 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		BDC4D70E18CE443D00C439FC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,7 +81,7 @@
 		A83878DB18A0367C00B386D6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A83878DD18A0367C00B386D6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A83878FB18A0367C00B386D6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		A838791F18A04BF700B386D6 /* objc-identifierconstants */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-identifierconstants"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A838791F18A04BF700B386D6 /* identifierconstants */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = identifierconstants; sourceTree = BUILT_PRODUCTS_DIR; };
 		A838792218A04BF700B386D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A838792518A04BF700B386D6 /* identifierconstants-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "identifierconstants-Prefix.pch"; sourceTree = "<group>"; };
 		A838792C18A04C3400B386D6 /* IDStoryboardDumper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDStoryboardDumper.h; sourceTree = "<group>"; };
@@ -102,23 +89,18 @@
 		A885F8AC17DA8DE400A29164 /* CGUCodeGenTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGUCodeGenTool.h; sourceTree = "<group>"; };
 		A885F8AD17DA8DE400A29164 /* CGUCodeGenTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGUCodeGenTool.m; sourceTree = "<group>"; };
 		A885F8B317DA929800A29164 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		A89D8FE317CFFDCE0077F2B5 /* objc-assetgen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-assetgen"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A89D8FE317CFFDCE0077F2B5 /* assetgen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = assetgen; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89D8FE617CFFDCE0077F2B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A89D8FE917CFFDCE0077F2B5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A89D8FEC17CFFDCE0077F2B5 /* assetgen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "assetgen-Prefix.pch"; sourceTree = "<group>"; };
 		A89D8FF417CFFED90077F2B5 /* AGCatalogParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCatalogParser.h; sourceTree = "<group>"; };
 		A89D8FF517CFFED90077F2B5 /* AGCatalogParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCatalogParser.m; sourceTree = "<group>"; };
-		BD80FDDD1B856BD90014B78B /* objc-stringslocalized */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-stringslocalized"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD80FDDD1B856BD90014B78B /* stringslocalized */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = stringslocalized; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD80FDDF1B856C600014B78B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BD80FDE01B856C600014B78B /* SLStringsLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLStringsLocalization.h; sourceTree = "<group>"; };
 		BD80FDE11B856C600014B78B /* SLStringsLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLStringsLocalization.m; sourceTree = "<group>"; };
 		BD80FDE21B856C600014B78B /* stringslocalized-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "stringslocalized-Prefix.pch"; sourceTree = "<group>"; };
-		BDA8B7EB192AB25600F18A49 /* objc-assetverify */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-assetverify"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BDA8B7EF192AB2EB00F18A49 /* assetverify-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "assetverify-Prefix.pch"; sourceTree = "<group>"; };
-		BDA8B7F0192AB2EB00F18A49 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BDA8B7F3192AB31700F18A49 /* AGCatalogVerify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCatalogVerify.h; sourceTree = "<group>"; };
-		BDA8B7F4192AB31700F18A49 /* AGCatalogVerify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCatalogVerify.m; sourceTree = "<group>"; };
-		BDC4D71218CE443D00C439FC /* objc-customfontlist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-customfontlist"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC4D71218CE443D00C439FC /* customfontlist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = customfontlist; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC4D71418CE44C800C439FC /* customfontlist-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "customfontlist-Prefix.pch"; sourceTree = "<group>"; };
 		BDC4D71518CE44C800C439FC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BDC4D71818CE451500C439FC /* CFCustomFontList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFCustomFontList.h; sourceTree = "<group>"; };
@@ -127,7 +109,7 @@
 		BDE8968E1D39B90700231DC3 /* CLColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLColors.m; sourceTree = "<group>"; };
 		BDE8968F1D39B90700231DC3 /* colorslist-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "colorslist-Prefix.pch"; sourceTree = "<group>"; };
 		BDE896901D39B90700231DC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BDE8969C1D3A8B2300231DC3 /* objc-colorlist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-colorlist"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDE8969C1D3A8B2300231DC3 /* colorlist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = colorlist; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,14 +134,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD80FDD81B856BD90014B78B /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BDA8B7E5192AB25600F18A49 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BDA8B7E6192AB25600F18A49 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +189,6 @@
 			children = (
 				BDE8968C1D39B90700231DC3 /* colorslist */,
 				BD80FDDE1B856C600014B78B /* stringslocalized */,
-				BDA8B7EC192AB2EB00F18A49 /* assetverify */,
 				A89D8FE817CFFDCE0077F2B5 /* assetgen */,
 				A838792118A04BF700B386D6 /* identifierconstants */,
 				BDC4D71318CE44C800C439FC /* customfontlist */,
@@ -228,12 +201,11 @@
 		A89D8FE417CFFDCE0077F2B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A89D8FE317CFFDCE0077F2B5 /* objc-assetgen */,
-				A838791F18A04BF700B386D6 /* objc-identifierconstants */,
-				BDC4D71218CE443D00C439FC /* objc-customfontlist */,
-				BDA8B7EB192AB25600F18A49 /* objc-assetverify */,
-				BD80FDDD1B856BD90014B78B /* objc-stringslocalized */,
-				BDE8969C1D3A8B2300231DC3 /* objc-colorlist */,
+				A89D8FE317CFFDCE0077F2B5 /* assetgen */,
+				A838791F18A04BF700B386D6 /* identifierconstants */,
+				BDC4D71218CE443D00C439FC /* customfontlist */,
+				BD80FDDD1B856BD90014B78B /* stringslocalized */,
+				BDE8969C1D3A8B2300231DC3 /* colorlist */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -288,25 +260,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BDA8B7EC192AB2EB00F18A49 /* assetverify */ = {
-			isa = PBXGroup;
-			children = (
-				BDA8B7F3192AB31700F18A49 /* AGCatalogVerify.h */,
-				BDA8B7F4192AB31700F18A49 /* AGCatalogVerify.m */,
-				BDA8B7F0192AB2EB00F18A49 /* main.m */,
-				BDA8B7F6192AB32400F18A49 /* Supporting Files */,
-			);
-			path = assetverify;
-			sourceTree = "<group>";
-		};
-		BDA8B7F6192AB32400F18A49 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				BDA8B7EF192AB2EB00F18A49 /* assetverify-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		BDC4D71318CE44C800C439FC /* customfontlist */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,7 +307,7 @@
 			);
 			name = identifierconstants;
 			productName = identiferconstants;
-			productReference = A838791F18A04BF700B386D6 /* objc-identifierconstants */;
+			productReference = A838791F18A04BF700B386D6 /* identifierconstants */;
 			productType = "com.apple.product-type.tool";
 		};
 		A89D8FE217CFFDCE0077F2B5 /* assetgen */ = {
@@ -371,7 +324,7 @@
 			);
 			name = assetgen;
 			productName = assetgen;
-			productReference = A89D8FE317CFFDCE0077F2B5 /* objc-assetgen */;
+			productReference = A89D8FE317CFFDCE0077F2B5 /* assetgen */;
 			productType = "com.apple.product-type.tool";
 		};
 		BD80FDD21B856BD90014B78B /* stringslocalized */ = {
@@ -388,24 +341,7 @@
 			);
 			name = stringslocalized;
 			productName = assetgen;
-			productReference = BD80FDDD1B856BD90014B78B /* objc-stringslocalized */;
-			productType = "com.apple.product-type.tool";
-		};
-		BDA8B7E0192AB25600F18A49 /* assetverify */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BDA8B7E8192AB25600F18A49 /* Build configuration list for PBXNativeTarget "assetverify" */;
-			buildPhases = (
-				BDA8B7E1192AB25600F18A49 /* Sources */,
-				BDA8B7E5192AB25600F18A49 /* Frameworks */,
-				BDA8B7E7192AB25600F18A49 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = assetverify;
-			productName = assetgen;
-			productReference = BDA8B7EB192AB25600F18A49 /* objc-assetverify */;
+			productReference = BD80FDDD1B856BD90014B78B /* stringslocalized */;
 			productType = "com.apple.product-type.tool";
 		};
 		BDC4D70718CE443D00C439FC /* customfontlist */ = {
@@ -422,7 +358,7 @@
 			);
 			name = customfontlist;
 			productName = identiferconstants;
-			productReference = BDC4D71218CE443D00C439FC /* objc-customfontlist */;
+			productReference = BDC4D71218CE443D00C439FC /* customfontlist */;
 			productType = "com.apple.product-type.tool";
 		};
 		BDE896911D3A8B2300231DC3 /* colorlist */ = {
@@ -439,7 +375,7 @@
 			);
 			name = colorlist;
 			productName = identiferconstants;
-			productReference = BDE8969C1D3A8B2300231DC3 /* objc-colorlist */;
+			productReference = BDE8969C1D3A8B2300231DC3 /* colorlist */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -468,7 +404,6 @@
 				BD80FDD21B856BD90014B78B /* stringslocalized */,
 				A838791E18A04BF700B386D6 /* identifierconstants */,
 				BDC4D70718CE443D00C439FC /* customfontlist */,
-				BDA8B7E0192AB25600F18A49 /* assetverify */,
 				BDE896911D3A8B2300231DC3 /* colorlist */,
 			);
 		};
@@ -505,16 +440,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BDA8B7E1192AB25600F18A49 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BDA8B7F2192AB2EB00F18A49 /* main.m in Sources */,
-				BDA8B7F5192AB31700F18A49 /* AGCatalogVerify.m in Sources */,
-				BDA8B7E3192AB25600F18A49 /* CGUCodeGenTool.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BDC4D70818CE443D00C439FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,7 +473,7 @@
 					"$(inherited)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "objc-$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
@@ -558,7 +483,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "identifierconstants/identifierconstants-Prefix.pch";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "objc-$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -638,7 +563,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "assetgen/assetgen-Prefix.pch";
-				PRODUCT_NAME = "objc-assetgen";
+				PRODUCT_NAME = assetgen;
 			};
 			name = Debug;
 		};
@@ -647,7 +572,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "assetgen/assetgen-Prefix.pch";
-				PRODUCT_NAME = "objc-assetgen";
+				PRODUCT_NAME = assetgen;
 			};
 			name = Release;
 		};
@@ -656,7 +581,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "stringslocalized/stringslocalized-Prefix.pch";
-				PRODUCT_NAME = "objc-stringslocalized";
+				PRODUCT_NAME = stringslocalized;
 			};
 			name = Debug;
 		};
@@ -665,25 +590,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "stringslocalized/stringslocalized-Prefix.pch";
-				PRODUCT_NAME = "objc-stringslocalized";
-			};
-			name = Release;
-		};
-		BDA8B7E9192AB25600F18A49 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "assetgen/assetgen-Prefix.pch";
-				PRODUCT_NAME = "objc-assetverify";
-			};
-			name = Debug;
-		};
-		BDA8B7EA192AB25600F18A49 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "assetgen/assetgen-Prefix.pch";
-				PRODUCT_NAME = "objc-assetverify";
+				PRODUCT_NAME = stringslocalized;
 			};
 			name = Release;
 		};
@@ -697,7 +604,7 @@
 					"$(inherited)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "objc-customfontlist";
+				PRODUCT_NAME = customfontlist;
 			};
 			name = Debug;
 		};
@@ -707,7 +614,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "customfontlist/customfontlist-Prefix.pch";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "objc-customfontlist";
+				PRODUCT_NAME = customfontlist;
 			};
 			name = Release;
 		};
@@ -721,7 +628,7 @@
 					"$(inherited)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "objc-colorlist";
+				PRODUCT_NAME = colorlist;
 			};
 			name = Debug;
 		};
@@ -731,7 +638,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "customfontlist/customfontlist-Prefix.pch";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "objc-colorlist";
+				PRODUCT_NAME = colorlist;
 			};
 			name = Release;
 		};
@@ -770,15 +677,6 @@
 			buildConfigurations = (
 				BD80FDDB1B856BD90014B78B /* Debug */,
 				BD80FDDC1B856BD90014B78B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BDA8B7E8192AB25600F18A49 /* Build configuration list for PBXNativeTarget "assetverify" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BDA8B7E9192AB25600F18A49 /* Debug */,
-				BDA8B7EA192AB25600F18A49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

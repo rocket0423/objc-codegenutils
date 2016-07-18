@@ -39,7 +39,7 @@
             method = [[NSMutableString alloc] initWithFormat:@"    class func %@FontOfSize(fontSize : CGFloat) -> UIFont? {", [self methodNameForKey:fontName]];
             [method appendFormat:@"\n        return UIFont(name: \"%@\", size: fontSize)\n    }\n\n", fontName];
         }
-        if (self.uniqueItemCheck || ![self.implementationContents containsObject:method]) {
+        if (self.verifyItems || ![self.implementationContents containsObject:method]) {
             if (self.targetObjC){
                 [self.objcItems addObject:declaration];
             }

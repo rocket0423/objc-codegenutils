@@ -76,7 +76,7 @@
     }
 	
 	NSArray *loadedKeys;
-	if (self.uniqueItemCheck){
+	if (self.verifyItems){
 		loadedKeys = allKeys;
 	} else {
 		loadedKeys = [uniqueKeys allKeys];

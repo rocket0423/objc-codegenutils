@@ -26,12 +26,11 @@
 @property (copy) NSArray *allFileURLs;
 @property (copy) NSString *classPrefix;
 @property float appVersion;
-@property BOOL targetiOS6;
 @property BOOL targetObjC;
 @property BOOL skipClassDeclaration;
 @property BOOL writeSingleFile;
 @property BOOL lastFile;
-@property BOOL uniqueItemCheck;
+@property BOOL verifyItems;
 @property (copy) NSString *className;
 
 @property (copy) NSString *infoPlistFile;

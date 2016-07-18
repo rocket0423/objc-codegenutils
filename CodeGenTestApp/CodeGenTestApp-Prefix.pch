@@ -14,8 +14,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
-    #import "CGTAImagesCatalog.h"
+    #import "CGTAImages.h"
     #import "CGTAFonts.h"
 //    #import "CGTATestAppColorList.h"
-    #import "CGTAMainStoryboardIdentifiers.h"
+    #import "CGTAIdentifiers.h"
 #endif

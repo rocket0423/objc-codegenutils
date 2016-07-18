@@ -1,5 +1,5 @@
 //
-// This file is generated from all .storyboard files by objc-identifierconstants.
+// This file is generated from all .storyboard files by identifierconstants.
 // Please do not edit.
 //
 

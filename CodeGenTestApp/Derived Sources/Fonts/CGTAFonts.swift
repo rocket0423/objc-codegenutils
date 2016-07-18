@@ -1,5 +1,5 @@
 //
-// This file is generated from all .ttf files by objc-customfontlist.
+// This file is generated from all .ttf files by customfontlist.
 // Please do not edit.
 //
 

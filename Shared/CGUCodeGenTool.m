@@ -32,10 +32,9 @@
     NSURL *searchURL = nil;
     NSString *classPrefix = @"";
     NSString *infoPlist = @"";
-    BOOL target6 = NO;
-    BOOL singleFile = NO;
-    BOOL uniqueCheck = NO;
+    BOOL singleFile = YES;
     BOOL objc = NO;
+    BOOL verify = YES;
     
     NSMutableArray *inputURLs = [NSMutableArray array];
     
@@ -50,18 +49,17 @@
         for (int i=0;i<argc;i++){
             NSString *nextArgument = [NSString stringWithFormat:@"%s", argv[i]];
             if ([nextArgument isEqualToString:@"-h"]){
-                printf("Usage: %s [-6] [-s] [-u] [-objc] [-i <path>] [-o <path>] [-f <path>] [-p <prefix>]\n", basename((char *)argv[0]));
+                printf("Usage: %s [-dnverify] [-version] [-i] [-objc] [-iplist <path>] [-o <path>] [-f <path>] [-p <prefix>]\n", basename((char *)argv[0]));
                 printf("       %s -h\n\n", basename((char *)argv[0]));
                 printf("Options:\n");
-                printf("    -6          Target iOS 6 in addition to iOS 7\n");
-                printf("    -v          Minimum app version supported\n");
                 printf("    -o <path>   Output files at <path>\n");
-                printf("    -i <path>   Info Plist file at <path>\n");
                 printf("    -f <path>   Search for *.%s folders starting from <path>\n", [fileExtension UTF8String]);
                 printf("    -p <prefix> Use <prefix> as the class prefix in the generated code\n");
-                printf("    -s          Generates everything in one file instead of multiple files");
+                printf("    -i          Generates everything in their own file instead of one file");
                 printf("    -objc       Generates files that can be used by objc by default they are created for swift only");
-                printf("    -u          Used to make sure there are only unique items if they are duplicates it will write the duplicate to file causing error\n");
+                printf("    -version    Minimum app version supported\n");
+                printf("    -dnverify   Do not verify any of the code default is to always verify\n");
+                printf("    -iplist <path>   Info Plist file at <path>\n");
                 printf("    -h          Print this help and exit\n");
                 return 0;
             } else if ([nextArgument isEqualToString:@"-o"]){
@@ -74,18 +72,16 @@
                 searchURL = [NSURL fileURLWithPath:searchPath];
             } else if ([nextArgument isEqualToString:@"-p"]){
                 classPrefix = [NSString stringWithFormat:@"%s", argv[++i]];
-            } else if ([nextArgument isEqualToString:@"-6"]){
-                target6 = YES;
-            } else if ([nextArgument isEqualToString:@"-s"]){
-                singleFile = YES;
-            } else if ([nextArgument isEqualToString:@"-u"]){
-                uniqueCheck = YES;
             } else if ([nextArgument isEqualToString:@"-i"]){
+                singleFile = NO;
+            } else if ([nextArgument isEqualToString:@"-iplist"]){
                 infoPlist = [[NSString stringWithFormat:@"%s", argv[++i]] stringByExpandingTildeInPath];
             } else if ([nextArgument isEqualToString:@"-objc"]){
                 objc = YES;
-            } else if ([nextArgument isEqualToString:@"-v"]){
+            } else if ([nextArgument isEqualToString:@"-version"]){
                 currentVersion = [[NSString stringWithFormat:@"%s", argv[++i]] floatValue];
+            } else if ([nextArgument isEqualToString:@"-dnverify"]){
+                verify = NO;
             }
         }
         
@@ -97,9 +93,6 @@
                 }
             }
         }
-    }
-    if (!target6 && currentVersion > 0.0 && currentVersion < 7.0){
-        target6 = YES;
     }
     
     dispatch_group_t group = dispatch_group_create();
@@ -119,12 +112,11 @@
         target.infoPlistFile = infoPlist;
         target.allFileURLs = inputURLs;
         target.inputURL = url;
-        target.targetiOS6 = target6;
         target.appVersion = currentVersion;
         target.targetObjC = objc;
+        target.verifyItems = verify;
         target.classPrefix = classPrefix;
         target.writeSingleFile = singleFile;
-		target.uniqueItemCheck = uniqueCheck;
         target.lastFile = ([inputURLs lastObject] == url);
         target.toolName = [[NSString stringWithUTF8String:argv[0]] lastPathComponent];
         [target startWithCompletionHandler:^{

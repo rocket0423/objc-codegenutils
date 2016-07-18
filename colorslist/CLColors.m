@@ -77,7 +77,7 @@
                 [implementation appendFormat:@"alpha:%@)\n", [self formattedFloat:[rgbColors objectAtIndex:3]]];
                 [implementation appendString:@"    }\n\n"];
             }
-        } else {
+        } else if (self.verifyItems) {
             if (self.targetObjC){
                 [implementation appendString:@"#warning Invalid Color"];
                 [implementation appendFormat:@"// Invalid Hex Color %@ '%@' please make sure it is in the proper format 'AAAAAA' with no '#'\n", methodName, colorString];

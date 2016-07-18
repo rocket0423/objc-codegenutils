@@ -1,5 +1,5 @@
 //
-// This file is generated from all .strings files by objc-stringslocalized.
+// This file is generated from all .strings files by stringslocalized.
 // Please do not edit.
 //
 

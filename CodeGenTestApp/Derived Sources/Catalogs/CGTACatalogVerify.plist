@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Argentina</key>
+	<dict/>
+	<key>Australia</key>
+	<dict>
+		<key>CGTAMasterViewController.m</key>
+		<array>
+			<string>    allFlagImages = @[CGTAImages.usa, [CGTAImages canada], CGTAImages.uk, CGTAImages.australia];</string>
+		</array>
+	</dict>
+	<key>Austria</key>
+	<dict/>
+	<key>Belgium</key>
+	<dict/>
+	<key>Brazil</key>
+	<dict/>
+	<key>Cameroon</key>
+	<dict/>
+	<key>Canada</key>
+	<dict>
+		<key>CGTAMasterViewController.m</key>
+		<array>
+			<string>    allFlagImages = @[CGTAImages.usa, [CGTAImages canada], CGTAImages.uk, CGTAImages.australia];</string>
+		</array>
+	</dict>
+	<key>Chile</key>
+	<dict/>
+	<key>China</key>
+	<dict/>
+	<key>Denmark</key>
+	<dict/>
+	<key>Finland</key>
+	<dict/>
+	<key>France</key>
+	<dict/>
+	<key>Germany</key>
+	<dict/>
+	<key>Greece</key>
+	<dict/>
+	<key>Hong Kong</key>
+	<dict/>
+	<key>Hungary</key>
+	<dict/>
+	<key>Iceland</key>
+	<dict/>
+	<key>India</key>
+	<dict/>
+	<key>Indonesia</key>
+	<dict/>
+	<key>Ireland</key>
+	<dict/>
+	<key>Israel</key>
+	<dict/>
+	<key>Italy</key>
+	<dict/>
+	<key>Japan</key>
+	<dict/>
+	<key>Malaysia</key>
+	<dict/>
+	<key>Mexico</key>
+	<dict/>
+	<key>Netherlands</key>
+	<dict/>
+	<key>New Zealand</key>
+	<dict/>
+	<key>Norway</key>
+	<dict/>
+	<key>Pakistan</key>
+	<dict/>
+	<key>Palestine</key>
+	<dict/>
+	<key>Peru</key>
+	<dict/>
+	<key>Poland</key>
+	<dict/>
+	<key>Portugal</key>
+	<dict/>
+	<key>Puerto Rico</key>
+	<dict/>
+	<key>Romania</key>
+	<dict/>
+	<key>Russia</key>
+	<dict/>
+	<key>Saudi Arabia</key>
+	<dict/>
+	<key>Singapore</key>
+	<dict/>
+	<key>South Africa</key>
+	<dict/>
+	<key>South Korea</key>
+	<dict/>
+	<key>Spain</key>
+	<dict/>
+	<key>Sweden</key>
+	<dict/>
+	<key>Switzerland</key>
+	<dict/>
+	<key>Thailand</key>
+	<dict/>
+	<key>Turkey</key>
+	<dict/>
+	<key>UK</key>
+	<dict>
+		<key>CGTAMasterViewController.m</key>
+		<array>
+			<string>    allFlagImages = @[CGTAImages.usa, [CGTAImages canada], CGTAImages.uk, CGTAImages.australia];</string>
+		</array>
+	</dict>
+	<key>USA</key>
+	<dict>
+		<key>CGTAMasterViewController.m</key>
+		<array>
+			<string>    allFlagImages = @[CGTAImages.usa, [CGTAImages canada], CGTAImages.uk, CGTAImages.australia];</string>
+		</array>
+		<key>Main.storyboard</key>
+		<array>
+			<string>                                        &lt;imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="USA" translatesAutoresizingMaskIntoConstraints="NO" id="LPM-aq-eVP"&gt;</string>
+			<string>                                        &lt;imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="USA" translatesAutoresizingMaskIntoConstraints="NO" id="2NO-Yu-fto"&gt;</string>
+			<string>                            &lt;imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="USA" translatesAutoresizingMaskIntoConstraints="NO" id="A76-iE-vAf"&gt;</string>
+		</array>
+	</dict>
+	<key>Ukraine</key>
+	<dict/>
+	<key>Uruguay</key>
+	<dict/>
+	<key>Venezuela</key>
+	<dict/>
+</dict>
+</plist>
