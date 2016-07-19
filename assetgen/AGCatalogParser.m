@@ -10,7 +10,10 @@
 #import "AGCatalogParser.h"
 
 
-@interface AGCatalogParser ()
+@interface AGCatalogParser () {
+    NSMutableArray *currentImages;
+    NSString *usedImageString;
+}
 
 @property (strong) NSArray *imageSetURLs;
 
@@ -22,6 +25,15 @@
 + (NSArray *)inputFileExtension;
 {
     return @[@"xcassets"];
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        currentImages = [[NSMutableArray alloc] init];
+    }
+    return self;
 }
 
 - (void)startWithCompletionHandler:(dispatch_block_t)completionBlock;
@@ -37,22 +49,30 @@
             if (!self.objcItems && self.targetObjC)
                 self.objcItems = [[NSMutableArray alloc] init];
             
+            
             if (self.writeSingleFile)
                 self.className = [[NSString stringWithFormat:@"%@Images", self.classPrefix] stringByReplacingOccurrencesOfString:@" " withString:@""];
             else
                 self.className = [[NSString stringWithFormat:@"%@%@Catalog", self.classPrefix, [[self.inputURL lastPathComponent] stringByDeletingPathExtension]] stringByReplacingOccurrencesOfString:@" " withString:@""];
             
+            // Get the verify images
+            if (self.verifyItems && usedImageString == nil) {
+                [self findUsedImages];
+            }
+            
             dispatch_group_async(dispatchGroup, dispatchQueue, ^{
                 for (NSURL *imageSetURL in self.imageSetURLs) {
                     [self parseImageSetAtURL:imageSetURL];
+                }
+                if (!self.writeSingleFile || self.lastFile) {
+                    if (self.hasWarning) {
+                        [self writeWarning];
+                    }
                 }
             });
             
             dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER);
             if (!self.writeSingleFile || self.lastFile) {
-                if (self.hasWarning) {
-                    [self writeWarning];
-                }
                 [self writeOutputFiles];
             }
             
@@ -72,11 +92,20 @@
         else
             self.className = [[NSString stringWithFormat:@"%@%@Catalog", self.classPrefix, [[self.inputURL lastPathComponent] stringByDeletingPathExtension]] stringByReplacingOccurrencesOfString:@" " withString:@""];
         
+        // Get the verify images
+        if (self.verifyItems && usedImageString == nil) {
+            [self findUsedImages];
+        }
+        
         for (NSURL *imageSetURL in self.imageSetURLs) {
-			[self parseImageSetAtURL:imageSetURL];
+            [self parseImageSetAtURL:imageSetURL];
         }
         
         if (!self.writeSingleFile || self.lastFile) {
+            if (self.verifyItems && self.writeSingleFile) {
+                // Only works for single file
+                [self checkStoryboardNibs];
+            }
             if (self.hasWarning) {
                 [self writeWarning];
             }
@@ -113,9 +142,88 @@
     self.imageSetURLs = [imageSetURLs copy];
 }
 
+- (void)findUsedImages {
+    NSString *absolutePath = [[[self.searchingURL absoluteString] substringFromIndex:7] stringByReplacingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
+    
+    // Extensions
+    NSArray *extensionsToCheck = @[@"swift", @"m", @"storyboard", @"xib", @"html", @"css"];
+    NSMutableString *includeExtensionsString = [[NSMutableString alloc] init];
+    for (NSString *extension in extensionsToCheck){
+        [includeExtensionsString appendFormat:@" --include=*.%@", extension];
+    }
+    
+    // Patterns
+    NSMutableString *commandPatterns = [[NSMutableString alloc] init];
+    [commandPatterns appendFormat:@" -e \"image=\\\"*\\\"\""];
+    [commandPatterns appendFormat:@" -e \"Images\\.*\""];
+    [commandPatterns appendFormat:@" -e \"Images *\""];
+    
+    // Command
+    NSString *command = [NSString stringWithFormat:@"grep -i -r%@%@ \"%@\"", includeExtensionsString, commandPatterns, absolutePath];
+    usedImageString = [CGUCodeGenTool runStringAsCommand:command];
+}
+
+- (void)checkStoryboardNibs {
+    // Get hte storyboard and Nib Images
+    NSMutableArray *missingImages = [[NSMutableArray alloc] init];
+    NSString *absolutePath = [[[self.searchingURL absoluteString] substringFromIndex:7] stringByReplacingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
+    
+    // Extensions
+    NSArray *extensionsToCheck = @[@"storyboard", @"xib"];
+    NSMutableString *includeExtensionsString = [[NSMutableString alloc] init];
+    for (NSString *extension in extensionsToCheck){
+        [includeExtensionsString appendFormat:@" --include=*.%@", extension];
+    }
+    
+    NSString *command = [NSString stringWithFormat:@"grep -i -r%@ \"image=\\\"*\\\"\" \"%@\"", includeExtensionsString, absolutePath];
+    NSString *result = [CGUCodeGenTool runStringAsCommand:command];
+    if (result){
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"image=\".*?\"" options:0 error:NULL];
+        NSArray *regexMatches = [regex matchesInString:result options:0 range:NSMakeRange(0, [result length])];
+        for (NSTextCheckingResult *match in regexMatches) {
+            NSString *fullString = [result substringWithRange:[match rangeAtIndex:0]];
+            NSString *imageName = [fullString substringWithRange:NSMakeRange(7, [fullString length] - 8)];
+            if (![currentImages containsObject:imageName]) {
+                [missingImages addObject:imageName];
+            }
+        }
+    }
+    
+    // Show the warnings
+    for (NSString *nextImage in missingImages) {
+        NSMutableString *implementation = [[NSMutableString alloc] init];
+        if (self.targetObjC) {
+            [implementation appendFormat:@"#warning Storyboard or Nib has a missing image '%@'\n", nextImage];
+        } else {
+            [implementation appendFormat:@"    // Storyboard or Nib has a missing image '%@'\n", nextImage];
+            [implementation appendFormat:@"    private var %@: UIImage? {\n", [self methodNameForKey:nextImage]];
+            [implementation appendString:@"        MissingImage()\n"];
+            [implementation appendFormat:@"        return nil\n"];
+            [implementation appendString:@"    }\n\n"];
+        }
+        
+        @synchronized(self.implementationContents) {
+            [self.implementationContents addObject:implementation];
+        }
+    }
+    
+    // Write Error Function For Swift so warning will show
+    if ([missingImages count] > 0 && !self.targetObjC) {
+        NSMutableString *implementation = [[NSMutableString alloc] init];
+        [implementation appendString:@"    /// Warning message so console is notified.\n"];
+        [implementation appendString:@"    @available(iOS, deprecated=1.0, message=\"Missing Storyboard or Nib Image\")\n"];
+        [implementation appendString:@"    private func MissingImage(){}\n\n"];
+        
+        @synchronized(self.implementationContents) {
+            [self.implementationContents addObject:implementation];
+        }
+    }
+}
+
 - (void)parseImageSetAtURL:(NSURL *)url;
 {
     NSString *imageSetName = [[url lastPathComponent] stringByDeletingPathExtension];
+    [currentImages addObject:imageSetName];
     NSString *methodName = [self methodNameForKey:imageSetName];
     NSURL *contentsURL = [url URLByAppendingPathComponent:@"Contents.json"];
     NSData *contentsData = [NSData dataWithContentsOfURL:contentsURL options:NSDataReadingMappedIfSafe error:NULL];
@@ -127,6 +235,7 @@
     if (!contents) {
         return;
     }
+    
     BOOL templateImage = NO;
     if ([contents objectForKey:@"info"]){
         NSDictionary *info = [contents objectForKey:@"info"];
@@ -135,9 +244,7 @@
         }
     }
     
-    
     BOOL usedImage = [self usedImage:imageSetName];
-    
     
     NSMutableString *implementation;
     if (self.targetObjC){
@@ -195,18 +302,18 @@
 }
 
 - (BOOL)usedImage:(NSString *)imageSetName{
-    NSString *absolutePath = [[[self.searchingURL absoluteString] substringFromIndex:7] stringByReplacingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
-    NSArray *extensionsToCheck = @[@"swift", @"m", @"storyboard", @"xib", @"html", @"css"];
-    for (NSString *extension in extensionsToCheck){
-        NSMutableArray *commands = [[NSMutableArray alloc] initWithCapacity:3];
-        [commands addObject:[NSString stringWithFormat:@"grep -i -r --include=*.%@ \"image=\\\"%@\\\"\" \"%@\"", extension, imageSetName, absolutePath]];
-        [commands addObject:[NSString stringWithFormat:@"grep -i -r --include=*.%@ \"Images\\.%@\" \"%@\"", extension, imageSetName, absolutePath]];
-        [commands addObject:[NSString stringWithFormat:@"grep -i -r --include=*.%@ \"Images %@\" \"%@\"", extension, imageSetName, absolutePath]];
-        for (NSString *command in commands) {
-            if ([CGUCodeGenTool runStringAsCommand:command]){
-                return YES;
-            }
-        }
+    if (usedImageString == nil) {
+        return NO;
+    }
+    if ([usedImageString containsString:[NSString stringWithFormat:@"image=\"%@\"", imageSetName]]) {
+        return YES;
+    }
+    NSString *methodName = [self methodNameForKey:imageSetName];
+    if ([usedImageString containsString:[NSString stringWithFormat:@"Images.%@", methodName]]) {
+        return YES;
+    }
+    if ([usedImageString containsString:[NSString stringWithFormat:@"Images %@]", methodName]]) {
+        return YES;
     }
     return NO;
 }

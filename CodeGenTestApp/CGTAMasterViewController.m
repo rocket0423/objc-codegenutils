@@ -60,11 +60,11 @@
 
     // Initial version: full of strings that you have to type correctly!
     // Misspell any of these and your app will crash on trying to add `nil` to an array.
-    allFlagImages = @[[UIImage imageNamed:@"USA"], [UIImage imageNamed:@"Canada"], [UIImage imageNamed:@"UK"], [UIImage imageNamed:@"Australia"]];
+    allFlagImages = @[[UIImage imageNamed:@"Chile"], [UIImage imageNamed:@"Canada"], [UIImage imageNamed:@"UK"], [UIImage imageNamed:@"Australia"]];
     
 
     // New version: get the properly compiler-checked spelling from the image catalog.
-    allFlagImages = @[CGTAImages.usa, [CGTAImages canada], CGTAImages.uk, CGTAImages.australia];
+    allFlagImages = @[CGTAImages.brazil, [CGTAImages canada], CGTAImages.uk, CGTAImages.australia];
     return allFlagImages;
 
     // But really, why not use a little runtime hackery because we can?

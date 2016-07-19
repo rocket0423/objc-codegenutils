@@ -76,20 +76,6 @@
 			remoteGlobalIDString = BD80FDDD1B856BD90014B78B;
 			remoteInfo = stringslocalized;
 		};
-		BDA8B7F8192ABB6F00F18A49 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A881852718A9B520002803FC /* codegenutils.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BDA8B7EB192AB25600F18A49;
-			remoteInfo = assetverify;
-		};
-		BDA8B7FA192ABC6400F18A49 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A881852718A9B520002803FC /* codegenutils.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BDA8B7E0192AB25600F18A49;
-			remoteInfo = assetverify;
-		};
 		BDE896A01D3A8BB600231DC3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A881852718A9B520002803FC /* codegenutils.xcodeproj */;
@@ -228,11 +214,10 @@
 		A881852818A9B520002803FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A881852E18A9B520002803FC /* objc-assetgen */,
-				BD80FDEA1B856E760014B78B /* objc-stringslocalized */,
-				A881853218A9B520002803FC /* objc-identifierconstants */,
-				BDFA8B1A18CE47970087BB74 /* objc-customfontlist */,
-				BDA8B7F9192ABB6F00F18A49 /* objc-assetverify */,
+				A881852E18A9B520002803FC /* assetgen */,
+				BD80FDEA1B856E760014B78B /* stringslocalized */,
+				A881853218A9B520002803FC /* identifierconstants */,
+				BDFA8B1A18CE47970087BB74 /* customfontlist */,
 				BDE896A11D3A8BB600231DC3 /* colorlist */,
 			);
 			name = Products;
@@ -334,7 +319,6 @@
 			dependencies = (
 				BDE896A31D3A8BCF00231DC3 /* PBXTargetDependency */,
 				BD80FDE71B856E760014B78B /* PBXTargetDependency */,
-				BDA8B7FB192ABC6400F18A49 /* PBXTargetDependency */,
 				BDFA8B1718CE47970087BB74 /* PBXTargetDependency */,
 				A881853418A9B53F002803FC /* PBXTargetDependency */,
 				A881853818A9B53F002803FC /* PBXTargetDependency */,
@@ -379,32 +363,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A881852E18A9B520002803FC /* objc-assetgen */ = {
+		A881852E18A9B520002803FC /* assetgen */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
-			path = "objc-assetgen";
+			path = assetgen;
 			remoteRef = A881852D18A9B520002803FC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A881853218A9B520002803FC /* objc-identifierconstants */ = {
+		A881853218A9B520002803FC /* identifierconstants */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
-			path = "objc-identifierconstants";
+			path = identifierconstants;
 			remoteRef = A881853118A9B520002803FC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		BD80FDEA1B856E760014B78B /* objc-stringslocalized */ = {
+		BD80FDEA1B856E760014B78B /* stringslocalized */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
-			path = "objc-stringslocalized";
+			path = stringslocalized;
 			remoteRef = BD80FDE91B856E760014B78B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BDA8B7F9192ABB6F00F18A49 /* objc-assetverify */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = "objc-assetverify";
-			remoteRef = BDA8B7F8192ABB6F00F18A49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		BDE896A11D3A8BB600231DC3 /* colorlist */ = {
@@ -414,10 +391,10 @@
 			remoteRef = BDE896A01D3A8BB600231DC3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		BDFA8B1A18CE47970087BB74 /* objc-customfontlist */ = {
+		BDFA8B1A18CE47970087BB74 /* customfontlist */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
-			path = "objc-customfontlist";
+			path = customfontlist;
 			remoteRef = BDFA8B1918CE47970087BB74 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -452,7 +429,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "DERIVED_SOURCES=\"$SRCROOT/Derived Sources\"\nTOOL_PATH=\"$BUILD_ROOT/$CONFIGURATION\"\n\nIDENTIFIERS_PATH=\"$DERIVED_SOURCES/Identifiers\"\nCATALOGS_PATH=\"$DERIVED_SOURCES/Catalogs\"\nFONTS_PATH=\"$DERIVED_SOURCES/Fonts\"\nCOLORS_PATH=\"$DERIVED_SOURCES/Colors\"\nVERIFY_PATH=\"$DERIVED_SOURCES/Verify\"\nSTRINGS_PATH=\"$DERIVED_SOURCES/Strings\"\n\nrm -rf \"$IDENTIFIERS_PATH\"\nrm -rf \"$CATALOGS_PATH\"\nrm -rf \"$FONTS_PATH\"\nrm -rf \"$COLORS_PATH\"\nrm -rf \"$VERIFY_PATH\"\nrm -rf \"$STRINGS_PATH\"\nmkdir -p \"$IDENTIFIERS_PATH\"\nmkdir -p \"$CATALOGS_PATH\"\nmkdir -p \"$FONTS_PATH\"\nmkdir -p \"$COLORS_PATH\"\nmkdir -p \"$VERIFY_PATH\"\nmkdir -p \"$STRINGS_PATH\"\n\n\"$TOOL_PATH/assetverify\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA\n\"$TOOL_PATH/assetgen\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/assetgen\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA\n\"$TOOL_PATH/identifierconstants\" -f \"$SRCROOT\" -o \"$IDENTIFIERS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/identifierconstants\" -f \"$SRCROOT\" -o \"$IDENTIFIERS_PATH\" -p CGTA\n\"$TOOL_PATH/customfontlist\" -f \"$SRCROOT\" -o \"$FONTS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/customfontlist\" -f \"$SRCROOT\" -o \"$FONTS_PATH\" -p CGTA\n\"$TOOL_PATH/colorlist\" -f \"$SRCROOT\" -o \"$COLORS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/colorlist\" -f \"$SRCROOT\" -o \"$COLORS_PATH\" -p CGTA\n\"$TOOL_PATH/stringslocalized\" -f \"$SRCROOT\" -o \"$STRINGS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/stringslocalized\" -f \"$SRCROOT\" -o \"$STRINGS_PATH\" -p CGTA\n";
+			shellScript = "DERIVED_SOURCES=\"$SRCROOT/Derived Sources\"\nTOOL_PATH=\"$BUILD_ROOT/$CONFIGURATION\"\n\nIDENTIFIERS_PATH=\"$DERIVED_SOURCES/Identifiers\"\nCATALOGS_PATH=\"$DERIVED_SOURCES/Catalogs\"\nFONTS_PATH=\"$DERIVED_SOURCES/Fonts\"\nCOLORS_PATH=\"$DERIVED_SOURCES/Colors\"\nVERIFY_PATH=\"$DERIVED_SOURCES/Verify\"\nSTRINGS_PATH=\"$DERIVED_SOURCES/Strings\"\n\nrm -rf \"$IDENTIFIERS_PATH\"\nrm -rf \"$CATALOGS_PATH\"\nrm -rf \"$FONTS_PATH\"\nrm -rf \"$COLORS_PATH\"\nrm -rf \"$VERIFY_PATH\"\nrm -rf \"$STRINGS_PATH\"\nmkdir -p \"$IDENTIFIERS_PATH\"\nmkdir -p \"$CATALOGS_PATH\"\nmkdir -p \"$FONTS_PATH\"\nmkdir -p \"$COLORS_PATH\"\nmkdir -p \"$VERIFY_PATH\"\nmkdir -p \"$STRINGS_PATH\"\n\n\"$TOOL_PATH/assetgen\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA -objc -dnverify\n\"$TOOL_PATH/assetgen\" -f \"$SRCROOT\" -o \"$CATALOGS_PATH\" -p CGTA -dnverify\n\"$TOOL_PATH/identifierconstants\" -f \"$SRCROOT\" -o \"$IDENTIFIERS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/identifierconstants\" -f \"$SRCROOT\" -o \"$IDENTIFIERS_PATH\" -p CGTA\n\"$TOOL_PATH/customfontlist\" -f \"$SRCROOT\" -o \"$FONTS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/customfontlist\" -f \"$SRCROOT\" -o \"$FONTS_PATH\" -p CGTA\n\"$TOOL_PATH/colorlist\" -f \"$SRCROOT\" -o \"$COLORS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/colorlist\" -f \"$SRCROOT\" -o \"$COLORS_PATH\" -p CGTA\n\"$TOOL_PATH/stringslocalized\" -f \"$SRCROOT\" -o \"$STRINGS_PATH\" -p CGTA -objc\n\"$TOOL_PATH/stringslocalized\" -f \"$SRCROOT\" -o \"$STRINGS_PATH\" -p CGTA\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -496,11 +473,6 @@
 			isa = PBXTargetDependency;
 			name = stringslocalized;
 			targetProxy = BD80FDE61B856E760014B78B /* PBXContainerItemProxy */;
-		};
-		BDA8B7FB192ABC6400F18A49 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = assetverify;
-			targetProxy = BDA8B7FA192ABC6400F18A49 /* PBXContainerItemProxy */;
 		};
 		BDE896A31D3A8BCF00231DC3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -29,6 +29,8 @@
 
 + (int)startWithArgc:(int)argc argv:(const char **)argv;
 {
+    NSDate *startTime = [NSDate date];
+    NSString *workingTool = [[NSString stringWithUTF8String:argv[0]] lastPathComponent];
     NSURL *searchURL = nil;
     NSString *classPrefix = @"";
     NSString *infoPlist = @"";
@@ -118,13 +120,14 @@
         target.classPrefix = classPrefix;
         target.writeSingleFile = singleFile;
         target.lastFile = ([inputURLs lastObject] == url);
-        target.toolName = [[NSString stringWithUTF8String:argv[0]] lastPathComponent];
+        target.toolName = workingTool;
         [target startWithCompletionHandler:^{
             dispatch_group_leave(group);
         }];
     }
     
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    NSLog(@"Tool %@ finished in %f seconds", workingTool, [[NSDate date] timeIntervalSinceDate:startTime]);
     return 0;
 }
 
