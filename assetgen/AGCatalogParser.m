@@ -178,6 +178,18 @@
     NSString *command = [NSString stringWithFormat:@"grep -i -r%@ \"image=\\\"*\\\"\" \"%@\"", includeExtensionsString, absolutePath];
     NSString *result = [CGUCodeGenTool runStringAsCommand:command];
     if (result){
+        // Remove the results from pods because we have no control over those.
+        NSArray *results = [result componentsSeparatedByString:@"\n"];
+        NSMutableArray *nonPodResults = [[NSMutableArray alloc] initWithCapacity:[results count]];
+        NSLog(@"%@", [absolutePath stringByAppendingString:@"/Pods"]);
+        for (NSString *nextResult in results) {
+            NSLog(@"%@", nextResult);
+            if (![nextResult hasPrefix:[absolutePath stringByAppendingString:@"/Pods"]]) {
+                [nonPodResults addObject:nextResult];
+            }
+        }
+        result = [nonPodResults componentsJoinedByString:@"\n"];
+        
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"image=\".*?\"" options:0 error:NULL];
         NSArray *regexMatches = [regex matchesInString:result options:0 range:NSMakeRange(0, [result length])];
         for (NSTextCheckingResult *match in regexMatches) {
