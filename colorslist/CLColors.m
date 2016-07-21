@@ -62,19 +62,19 @@
                 [implementation appendString:interface];
                 [implementation appendString:@"{\n"];
                 [implementation appendString:@"    return [UIColor "];
-                [implementation appendFormat:@"colorWithRed:%@ ", [self formattedFloat:[rgbColors objectAtIndex:0]]];
-                [implementation appendFormat:@"green:%@ ", [self formattedFloat:[rgbColors objectAtIndex:1]]];
-                [implementation appendFormat:@"blue:%@ ", [self formattedFloat:[rgbColors objectAtIndex:2]]];
-                [implementation appendFormat:@"alpha:%@];\n", [self formattedFloat:[rgbColors objectAtIndex:3]]];
+                [implementation appendFormat:@"colorWithRed:%@ ", [rgbColors objectAtIndex:0]];
+                [implementation appendFormat:@"green:%@ ", [rgbColors objectAtIndex:1]];
+                [implementation appendFormat:@"blue:%@ ", [rgbColors objectAtIndex:2]];
+                [implementation appendFormat:@"alpha:%@];\n", [rgbColors objectAtIndex:3]];
                 [implementation appendString:@"}\n\n"];
             } else {
                 [implementation appendFormat:@"    // %@ Color %@\n", [methodName CLC_capitalizedString], colorString];
                 [implementation appendFormat:@"    static var %@: UIColor {\n", methodName];
                 [implementation appendString:@"        return UIColor("];
-                [implementation appendFormat:@"red:%@, ", [self formattedFloat:[rgbColors objectAtIndex:0]]];
-                [implementation appendFormat:@"green:%@, ", [self formattedFloat:[rgbColors objectAtIndex:1]]];
-                [implementation appendFormat:@"blue:%@, ", [self formattedFloat:[rgbColors objectAtIndex:2]]];
-                [implementation appendFormat:@"alpha:%@)\n", [self formattedFloat:[rgbColors objectAtIndex:3]]];
+                [implementation appendFormat:@"red:%@, ", [rgbColors objectAtIndex:0]];
+                [implementation appendFormat:@"green:%@, ", [rgbColors objectAtIndex:1]];
+                [implementation appendFormat:@"blue:%@, ", [rgbColors objectAtIndex:2]];
+                [implementation appendFormat:@"alpha:%@)\n", [rgbColors objectAtIndex:3]];
                 [implementation appendString:@"    }\n\n"];
             }
         } else if (self.verifyItems) {
@@ -108,20 +108,6 @@
     completionBlock();
 }
 
-- (NSString *)formattedFloat:(NSString *)floatString {
-    if (![floatString containsString:@"."]) {
-        return floatString;
-    }
-    while ([floatString hasSuffix:@"0"]) {
-        floatString = [floatString substringToIndex:(floatString.length - 1)];
-    }
-    if ([floatString hasSuffix:@"."]) {
-        return [floatString substringToIndex:(floatString.length - 1)];
-    } else {
-        return floatString;
-    }
-}
-
 - (NSArray *)convertHexString:(NSString *)hexString {
     if ([hexString length] != 6) {
         return nil;
@@ -140,9 +126,9 @@
     r = (col >> 16) & 0xFF;
     
     NSMutableArray *convertedComponents = [[NSMutableArray alloc] initWithCapacity:4];
-    [convertedComponents addObject:[NSString stringWithFormat:@"%f", ((float)r/255.0)]];
-    [convertedComponents addObject:[NSString stringWithFormat:@"%f", ((float)g/255.0)]];
-    [convertedComponents addObject:[NSString stringWithFormat:@"%f", ((float)b/255.0)]];
+    [convertedComponents addObject:[NSString stringWithFormat:@"%g", ((float)r/255.0)]];
+    [convertedComponents addObject:[NSString stringWithFormat:@"%g", ((float)g/255.0)]];
+    [convertedComponents addObject:[NSString stringWithFormat:@"%g", ((float)b/255.0)]];
     [convertedComponents addObject:[NSString stringWithFormat:@"1"]];
     return convertedComponents;
 }
@@ -177,18 +163,18 @@
                 [components addObject:@"1"];
             }
         } else {
-            NSString *redValue = [components objectAtIndex:3];
-            if (![self isValidFloatString:redValue]) {
+            NSString *alphaValue = [components objectAtIndex:3];
+            if (![self isValidFloatString:alphaValue]) {
                 return nil;
             }
-            is255Components = (is255Components || [self is255Value:redValue]);
+            is255Components = (is255Components || [self is255Value:alphaValue]);
         }
         if (is255Components) {
             NSMutableArray *convertedComponents = [[NSMutableArray alloc] initWithCapacity:4];
-            [convertedComponents addObject:[NSString stringWithFormat:@"%f", ([[components objectAtIndex:0] floatValue] / 255.0)]];
-            [convertedComponents addObject:[NSString stringWithFormat:@"%f", ([[components objectAtIndex:1] floatValue] / 255.0)]];
-            [convertedComponents addObject:[NSString stringWithFormat:@"%f", ([[components objectAtIndex:2] floatValue] / 255.0)]];
-            [convertedComponents addObject:[NSString stringWithFormat:@"%f", ([[components objectAtIndex:3] floatValue] / 255.0)]];
+            [convertedComponents addObject:[NSString stringWithFormat:@"%g", ([[components objectAtIndex:0] floatValue] / 255.0)]];
+            [convertedComponents addObject:[NSString stringWithFormat:@"%g", ([[components objectAtIndex:1] floatValue] / 255.0)]];
+            [convertedComponents addObject:[NSString stringWithFormat:@"%g", ([[components objectAtIndex:2] floatValue] / 255.0)]];
+            [convertedComponents addObject:[NSString stringWithFormat:@"%g", ([[components objectAtIndex:3] floatValue] / 255.0)]];
             return convertedComponents;
         } else {
             return components;
